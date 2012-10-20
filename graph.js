@@ -3,7 +3,7 @@ var width = 1200,
 
 var force = d3.layout.force()
     .size([width, height])
-    .charge(-400);
+    .charge(-500);
 
 var svg = d3.select("#graph").append("svg")
     .attr("width", width)
@@ -14,6 +14,7 @@ d3.json('graph.json', function(graph) {
         .nodes(graph.nodes)
         .links(graph.links)
         .start();
+
 
     var link = svg.selectAll("line.link")
         .data(graph.links)
@@ -27,7 +28,7 @@ d3.json('graph.json', function(graph) {
         .enter()
         .append("circle")
         .attr("class", "node")
-        .attr("r", function(n) { return n.story_count * 4; })
+        .attr("r", function(n) { return 10; return n.story_count * 4; })
         .style("fill", function(n) { return d3.rgb(n.color.r, n.color.g, n.color.b); });
 
     force.on("tick", function() {
