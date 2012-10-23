@@ -1,10 +1,10 @@
-var width = 1200,
-    height = 900;
+var width = 2400,
+    height = 2000;
 
 var force = d3.layout.force()
     .size([width, height])
     .gravity(0.01)
-    .charge(-80)
+    .charge(-200)
     .linkDistance(function(d) { return (d.source.story_count + d.target.story_count) * 4 + 50; });
 
 
@@ -12,7 +12,7 @@ var svg = d3.select("#graph").append("svg")
     .attr("width", width)
     .attr("height", height);
 
-d3.json('graph.json', function(graph) {
+d3.json('graph3.json', function(graph) {
     force
         .nodes(graph.nodes)
         .links(graph.links)
@@ -30,7 +30,7 @@ d3.json('graph.json', function(graph) {
         .enter()
         .append("line")
         .attr("class", "link")
-        .style("stroke-width", function(l) { return l.weight * 3; });
+        .style("stroke-width", function(l) { return l.weight * 1.2; });
 
     var node = svg.selectAll("circle.node")
         .data(graph.nodes)
@@ -77,9 +77,9 @@ function collide(node) {
       var x = node.x - quad.point.x,
           y = node.y - quad.point.y,
           l = Math.sqrt(x * x + y * y),
-          r = node.story_count * 4 + quad.point.story_count * 4;
+          r = (node.story_count + quad.point.story_count) * 4;
       if (l < r) {
-        l = (l - r) / l * 0.003;
+        l = (l - r) / l * 0.01;
         node.x -= x *= l;
         node.y -= y *= l;
         quad.point.x += x;

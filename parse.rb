@@ -15,7 +15,7 @@ class MyDocument < Nokogiri::XML::SAX::Document
             link['target'] = @nodes.index { |node| node['id'] == link['target'] }
             link
         end
-        File.open('graph2.json', 'w').write({'nodes' => @nodes, 'links' => @links}.to_json)
+        File.open('graph3.json', 'w').write({'nodes' => @nodes, 'links' => @links}.to_json)
     end
 
     def start_element name, attributes = []
@@ -60,4 +60,5 @@ end
 parser = Nokogiri::XML::SAX::Parser.new(MyDocument.new)
 
 # Feed the parser some XML
-parser.parse(File.open('sopa_media_link_monthly_2010-10-02_2010-11-02.gexf'))
+#parser.parse(File.open('data/sopa_media_link_monthly_2010-10-02_2010-11-02.gexf'))
+parser.parse(File.open('data/sopa_media_link_monthly_2010-11-02_2010-12-02.gexf'))
