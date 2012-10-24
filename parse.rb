@@ -1,6 +1,8 @@
 require 'nokogiri'
 require 'json/ext'
 
+@@frames = []
+
 class MyDocument < Nokogiri::XML::SAX::Document
     def start_document
         @nodes = []
@@ -15,7 +17,7 @@ class MyDocument < Nokogiri::XML::SAX::Document
             link['target'] = @nodes.index { |node| node['id'] == link['target'] }
             link
         end
-        File.open('graph3.json', 'w').write({'nodes' => @nodes, 'links' => @links}.to_json)
+        @@frames << {'nodes' => @nodes, 'links' => @links}
     end
 
     def start_element name, attributes = []
@@ -45,6 +47,13 @@ class MyDocument < Nokogiri::XML::SAX::Document
                 'g' => attributes['g'].to_i, 
                 'b' => attributes['b'].to_i
             }
+        when 'viz:size'
+            @active_node['size'] = attributes['value'].to_f
+        when 'viz:position'
+            @active_node['position'] = {
+                'x' => attributes['x'].to_f,
+                'y' => attributes['y'].to_f
+            }
         end
     end
 
@@ -59,6 +68,13 @@ end
 # Create a new parser
 parser = Nokogiri::XML::SAX::Parser.new(MyDocument.new)
 
+filenames = Dir.entries('key_frames').reject! { |filename| filename[0] == '.' }.sort_by! { |filename| filename.to_i }
+
 # Feed the parser some XML
 #parser.parse(File.open('data/sopa_media_link_monthly_2010-10-02_2010-11-02.gexf'))
-parser.parse(File.open('data/sopa_media_link_monthly_2010-11-02_2010-12-02.gexf'))
+filenames.each do |filename|
+    puts "key_frames/#{filename}"
+    parser.parse_file("key_frames/#{filename}")
+end
+
+File.open('frames.json', 'w') {|f| f.write(@@frames.to_json) }
