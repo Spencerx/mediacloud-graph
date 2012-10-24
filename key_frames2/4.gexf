@@ -1,0 +1,1913 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gexf xmlns="http://www.gexf.net/1.2draft" version="1.2" xmlns:viz="http://www.gexf.net/1.2draft/viz" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd">
+  <meta lastmodifieddate="2012-10-24">
+    <creator>Gephi 0.8.1</creator>
+    <description></description>
+  </meta>
+  <graph defaultedgetype="undirected" start="2011-10-01" end="2011-10-26T19:31:40.879" timeformat="date" mode="dynamic">
+    <attributes class="node" mode="static">
+      <attribute id="0" title="sentiment_58billion" type="integer"></attribute>
+      <attribute id="1" title="tagged_dns" type="integer"></attribute>
+      <attribute id="2" title="tagged_coica" type="integer"></attribute>
+      <attribute id="3" title="url" type="string"></attribute>
+      <attribute id="4" title="media_type" type="string"></attribute>
+      <attribute id="5" title="tagged_pipa" type="integer"></attribute>
+      <attribute id="6" title="link_count" type="integer"></attribute>
+      <attribute id="7" title="tagged_steal" type="integer"></attribute>
+      <attribute id="8" title="tagged_break" type="integer"></attribute>
+      <attribute id="9" title="tagged_china" type="integer"></attribute>
+      <attribute id="10" title="story_count" type="integer"></attribute>
+      <attribute id="11" title="tagged_sopa" type="integer"></attribute>
+      <attribute id="12" title="link_weight" type="float"></attribute>
+      <attribute id="13" title="tagged_jobs" type="integer"></attribute>
+      <attribute id="14" title="tagged_58billion" type="integer"></attribute>
+      <attribute id="15" title="tagged_acta" type="integer"></attribute>
+    </attributes>
+    <attributes class="node" mode="dynamic">
+      <attribute id="score" title="score" type="integer"></attribute>
+    </attributes>
+    <attributes class="edge" mode="dynamic">
+      <attribute id="weight" title="Weight" type="float"></attribute>
+    </attributes>
+    <nodes>
+      <node id="18362" label="youtube.com" start="2011-10-26" end="2011-10-26">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="0"></attvalue>
+          <attvalue for="2" value="0"></attvalue>
+          <attvalue for="3" value="http://www.youtube.com"></attvalue>
+          <attvalue for="4" value="User-Generated Content Platform, Networking Site, or Internet Tool (A general communication and networking platform or tool, like Wikipedia, YouTube, Twitter, and Scribd, or a search engine like Google or speech platform like the Daily Kos)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="70"></attvalue>
+          <attvalue for="7" value="1"></attvalue>
+          <attvalue for="8" value="1"></attvalue>
+          <attvalue for="9" value="0"></attvalue>
+          <attvalue for="10" value="47"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="84.369026"></attvalue>
+          <attvalue for="13" value="1"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="1"></attvalue>
+        </attvalues>
+        <viz:size value="0.30434778"></viz:size>
+        <viz:position x="0.5343186" y="0.48448703" z="0.0"></viz:position>
+        <viz:color r="172" g="203" b="187"></viz:color>
+      </node>
+      <node id="18370" label="en.wikipedia.org" start="2011-10-26" end="2011-10-26">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://en.wikipedia.org"></attvalue>
+          <attvalue for="4" value="User-Generated Content Platform, Networking Site, or Internet Tool (A general communication and networking platform or tool, like Wikipedia, YouTube, Twitter, and Scribd, or a search engine like Google or speech platform like the Daily Kos)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="611"></attvalue>
+          <attvalue for="7" value="1"></attvalue>
+          <attvalue for="8" value="1"></attvalue>
+          <attvalue for="9" value="1"></attvalue>
+          <attvalue for="10" value="47"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="770.2085"></attvalue>
+          <attvalue for="13" value="1"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="1"></attvalue>
+        </attvalues>
+        <viz:size value="0.6086956"></viz:size>
+        <viz:position x="0.35612202" y="0.9743714" z="0.0"></viz:position>
+        <viz:color r="246" g="205" b="155"></viz:color>
+      </node>
+      <node id="5968" label="Hacker News">
+        <spells>
+          <spell start="2011-10-12" end="2011-10-12"></spell>
+          <spell start="2011-10-26" end="2011-10-26"></spell>
+        </spells>
+        <attvalues>
+          <attvalue for="0" value="1"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://news.ycombinator.com/"></attvalue>
+          <attvalue for="4" value="Social Linking Site (A site that aggregates links based at least partially on user submissions and/or ranking, such as Reddit, Digg, Slashdot, MetaFilter, StumbleUpon, and other social news sites)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="29"></attvalue>
+          <attvalue for="7" value="1"></attvalue>
+          <attvalue for="8" value="1"></attvalue>
+          <attvalue for="9" value="1"></attvalue>
+          <attvalue for="10" value="323"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="32.96311"></attvalue>
+          <attvalue for="13" value="1"></attvalue>
+          <attvalue for="14" value="1"></attvalue>
+          <attvalue for="15" value="1"></attvalue>
+        </attvalues>
+        <viz:size value="0.7826087"></viz:size>
+        <viz:position x="0.68771607" y="1.0" z="0.0"></viz:position>
+        <viz:color r="232" g="125" b="98"></viz:color>
+      </node>
+      <node id="18340" label="judiciary.house.gov" start="2011-10-26" end="2011-10-26">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="0"></attvalue>
+          <attvalue for="3" value="http://judiciary.house.gov"></attvalue>
+          <attvalue for="4" value="Government (A site associated with and run by a government-affiliated entity, such as the DOJ website, White House blog, or a U.S. Senator's official website)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="174"></attvalue>
+          <attvalue for="7" value="1"></attvalue>
+          <attvalue for="8" value="0"></attvalue>
+          <attvalue for="9" value="0"></attvalue>
+          <attvalue for="10" value="10"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="237.12505"></attvalue>
+          <attvalue for="13" value="1"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.5652174"></viz:size>
+        <viz:position x="0.8288788" y="0.28329924" z="0.0"></viz:position>
+        <viz:color r="249" g="225" b="169"></viz:color>
+      </node>
+      <node id="4491" label="Techdirt">
+        <spells>
+          <spell start="2011-10-09" end="2011-10-09"></spell>
+          <spell start="2011-10-13" end="2011-10-13"></spell>
+          <spell start="2011-10-19" end="2011-10-19"></spell>
+          <spell start="2011-10-21" end="2011-10-21"></spell>
+          <spell start="2011-10-25" end="2011-10-25"></spell>
+        </spells>
+        <attvalues>
+          <attvalue for="0" value="-1"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://www.techdirt.com/"></attvalue>
+          <attvalue for="4" value="Tech Media (A site that focuses on technological news and information produced by a news organization, such as Arstechnica, Techdirt, or Wired.com)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="598"></attvalue>
+          <attvalue for="7" value="1"></attvalue>
+          <attvalue for="8" value="1"></attvalue>
+          <attvalue for="9" value="1"></attvalue>
+          <attvalue for="10" value="715"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="764.8048"></attvalue>
+          <attvalue for="13" value="1"></attvalue>
+          <attvalue for="14" value="1"></attvalue>
+          <attvalue for="15" value="1"></attvalue>
+        </attvalues>
+        <viz:size value="1.0"></viz:size>
+        <viz:position x="0.91910523" y="0.85613126" z="0.0"></viz:position>
+        <viz:color r="215" g="25" b="28"></viz:color>
+      </node>
+      <node id="1104" label="Forbes" start="2011-10-26" end="2011-10-26">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://www.forbes.com/"></attvalue>
+          <attvalue for="4" value="General Online News Media (A site that is a mainstream media outlet, such as The New York Times and The Washington Post; an online-only news outlet, such as Slate, Salon, or the Huffington Post; or a citizen journalism or non-profit news outlet, such as Global Voices or ProPublica)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="112"></attvalue>
+          <attvalue for="7" value="1"></attvalue>
+          <attvalue for="8" value="1"></attvalue>
+          <attvalue for="9" value="1"></attvalue>
+          <attvalue for="10" value="216"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="138.54141"></attvalue>
+          <attvalue for="13" value="1"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="1"></attvalue>
+        </attvalues>
+        <viz:size value="0.91304356"></viz:size>
+        <viz:position x="1.0" y="0.27595147" z="0.0"></viz:position>
+        <viz:color r="221" g="64" b="56"></viz:color>
+      </node>
+      <node id="18268" label="Politics, Political News - POLITICO.com" start="2011-10-13" end="2011-10-13">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://politico.com"></attvalue>
+          <attvalue for="4" value="General Online News Media (A site that is a mainstream media outlet, such as The New York Times and The Washington Post; an online-only news outlet, such as Slate, Salon, or the Huffington Post; or a citizen journalism or non-profit news outlet, such as Global Voices or ProPublica)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="138"></attvalue>
+          <attvalue for="7" value="1"></attvalue>
+          <attvalue for="8" value="0"></attvalue>
+          <attvalue for="9" value="1"></attvalue>
+          <attvalue for="10" value="38"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="174.21031"></attvalue>
+          <attvalue for="13" value="1"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.6086956"></viz:size>
+        <viz:position x="0.699787" y="0.20025083" z="0.0"></viz:position>
+        <viz:color r="246" g="205" b="155"></viz:color>
+      </node>
+      <node id="18535" label="vimeo.com" start="2011-10-25" end="2011-10-25">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="0"></attvalue>
+          <attvalue for="2" value="0"></attvalue>
+          <attvalue for="3" value="http://vimeo.com"></attvalue>
+          <attvalue for="4" value="User-Generated Content Platform, Networking Site, or Internet Tool (A general communication and networking platform or tool, like Wikipedia, YouTube, Twitter, and Scribd, or a search engine like Google or speech platform like the Daily Kos)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="12"></attvalue>
+          <attvalue for="7" value="0"></attvalue>
+          <attvalue for="8" value="1"></attvalue>
+          <attvalue for="9" value="0"></attvalue>
+          <attvalue for="10" value="4"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="15.684195"></attvalue>
+          <attvalue for="13" value="0"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.0"></viz:size>
+        <viz:position x="0.8177098" y="0.45143467" z="0.0"></viz:position>
+        <viz:color r="44" g="123" b="182"></viz:color>
+      </node>
+      <node id="18640" label="techliberation.com" start="2011-10-26" end="2011-10-26">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="0"></attvalue>
+          <attvalue for="3" value="http://techliberation.com"></attvalue>
+          <attvalue for="4" value="Blogger(s) (A web log, written by one or more individuals, that is not associated with a professional or advocacy organization or institution) "></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="12"></attvalue>
+          <attvalue for="7" value="0"></attvalue>
+          <attvalue for="8" value="0"></attvalue>
+          <attvalue for="9" value="0"></attvalue>
+          <attvalue for="10" value="10"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="16.941519"></attvalue>
+          <attvalue for="13" value="0"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.3478261"></viz:size>
+        <viz:position x="0.21288073" y="0.59729224" z="0.0"></viz:position>
+        <viz:color r="190" g="214" b="188"></viz:color>
+      </node>
+      <node id="4415" label="CNET">
+        <spells>
+          <spell start="2011-10-03" end="2011-10-03"></spell>
+          <spell start="2011-10-11" end="2011-10-11"></spell>
+          <spell start="2011-10-26" end="2011-10-26"></spell>
+        </spells>
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://cnet.com"></attvalue>
+          <attvalue for="4" value="Tech Media (A site that focuses on technological news and information produced by a news organization, such as Arstechnica, Techdirt, or Wired.com)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="375"></attvalue>
+          <attvalue for="7" value="1"></attvalue>
+          <attvalue for="8" value="1"></attvalue>
+          <attvalue for="9" value="1"></attvalue>
+          <attvalue for="10" value="309"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="444.66104"></attvalue>
+          <attvalue for="13" value="1"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="1"></attvalue>
+        </attvalues>
+        <viz:size value="1.0"></viz:size>
+        <viz:position x="0.0" y="0.6126157" z="0.0"></viz:position>
+        <viz:color r="215" g="25" b="28"></viz:color>
+      </node>
+      <node id="5813" label="Ars Technica">
+        <spells>
+          <spell start="2011-10-11" end="2011-10-11"></spell>
+          <spell start="2011-10-26" end="2011-10-26"></spell>
+        </spells>
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://arstechnica.com/index.php"></attvalue>
+          <attvalue for="4" value="Tech Media (A site that focuses on technological news and information produced by a news organization, such as Arstechnica, Techdirt, or Wired.com)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="328"></attvalue>
+          <attvalue for="7" value="1"></attvalue>
+          <attvalue for="8" value="1"></attvalue>
+          <attvalue for="9" value="1"></attvalue>
+          <attvalue for="10" value="201"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="394.26907"></attvalue>
+          <attvalue for="13" value="1"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="1"></attvalue>
+        </attvalues>
+        <viz:size value="0.8260869"></viz:size>
+        <viz:position x="0.59257907" y="0.6150267" z="0.0"></viz:position>
+        <viz:color r="228" g="105" b="84"></viz:color>
+      </node>
+      <node id="5816" label="reddit">
+        <spells>
+          <spell start="2011-10-03" end="2011-10-03"></spell>
+          <spell start="2011-10-26" end="2011-10-26"></spell>
+        </spells>
+        <attvalues>
+          <attvalue for="0" value="1"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://www.reddit.com/"></attvalue>
+          <attvalue for="4" value="Social Linking Site (A site that aggregates links based at least partially on user submissions and/or ranking, such as Reddit, Digg, Slashdot, MetaFilter, StumbleUpon, and other social news sites)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="366"></attvalue>
+          <attvalue for="7" value="1"></attvalue>
+          <attvalue for="8" value="1"></attvalue>
+          <attvalue for="9" value="1"></attvalue>
+          <attvalue for="10" value="623"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="458.76346"></attvalue>
+          <attvalue for="13" value="1"></attvalue>
+          <attvalue for="14" value="1"></attvalue>
+          <attvalue for="15" value="1"></attvalue>
+        </attvalues>
+        <viz:size value="0.8260869"></viz:size>
+        <viz:position x="0.06857081" y="0.3483128" z="0.0"></viz:position>
+        <viz:color r="228" g="105" b="84"></viz:color>
+      </node>
+      <node id="18438" label="govtrack.us" start="2011-10-26" end="2011-10-26">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="0"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://www.govtrack.us"></attvalue>
+          <attvalue for="4" value="Independent Group (An academic or nonprofit group that is not affiliated with the private sector or government, such as the Electronic Frontier Foundation or the Center for Democracy and Technology)"></attvalue>
+          <attvalue for="5" value="0"></attvalue>
+          <attvalue for="6" value="73"></attvalue>
+          <attvalue for="7" value="0"></attvalue>
+          <attvalue for="8" value="0"></attvalue>
+          <attvalue for="9" value="0"></attvalue>
+          <attvalue for="10" value="5"></attvalue>
+          <attvalue for="11" value="0"></attvalue>
+          <attvalue for="12" value="105.9746"></attvalue>
+          <attvalue for="13" value="0"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.21739131"></viz:size>
+        <viz:position x="0.45825696" y="0.31902212" z="0.0"></viz:position>
+        <viz:color r="135" g="180" b="185"></viz:color>
+      </node>
+      <node id="18367" label="eff.org" start="2011-10-26" end="2011-10-26">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="https://www.eff.org"></attvalue>
+          <attvalue for="4" value="Independent Group (An academic or nonprofit group that is not affiliated with the private sector or government, such as the Electronic Frontier Foundation or the Center for Democracy and Technology)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="430"></attvalue>
+          <attvalue for="7" value="0"></attvalue>
+          <attvalue for="8" value="1"></attvalue>
+          <attvalue for="9" value="1"></attvalue>
+          <attvalue for="10" value="60"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="606.47473"></attvalue>
+          <attvalue for="13" value="1"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="1"></attvalue>
+        </attvalues>
+        <viz:size value="0.95652175"></viz:size>
+        <viz:position x="0.36355704" y="0.6518216" z="0.0"></viz:position>
+        <viz:color r="218" g="44" b="42"></viz:color>
+      </node>
+      <node id="5525" label="CNET News.com" start="2011-10-26" end="2011-10-26">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://news.cnet.com/"></attvalue>
+          <attvalue for="4" value="Tech Media (A site that focuses on technological news and information produced by a news organization, such as Arstechnica, Techdirt, or Wired.com)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="37"></attvalue>
+          <attvalue for="7" value="1"></attvalue>
+          <attvalue for="8" value="1"></attvalue>
+          <attvalue for="9" value="1"></attvalue>
+          <attvalue for="10" value="154"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="47.091084"></attvalue>
+          <attvalue for="13" value="1"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="1"></attvalue>
+        </attvalues>
+        <viz:size value="0.86956525"></viz:size>
+        <viz:position x="0.25229037" y="0.4676769" z="0.0"></viz:position>
+        <viz:color r="225" g="85" b="70"></viz:color>
+      </node>
+      <node id="4433" label="ReadWriteWeb" start="2011-10-01" end="2011-10-01">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://www.readwriteweb.com/"></attvalue>
+          <attvalue for="4" value="Tech Media (A site that focuses on technological news and information produced by a news organization, such as Arstechnica, Techdirt, or Wired.com)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="31"></attvalue>
+          <attvalue for="7" value="1"></attvalue>
+          <attvalue for="8" value="1"></attvalue>
+          <attvalue for="9" value="1"></attvalue>
+          <attvalue for="10" value="95"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="38.07514"></attvalue>
+          <attvalue for="13" value="1"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="1"></attvalue>
+        </attvalues>
+        <viz:size value="0.6956522"></viz:size>
+        <viz:position x="0.9698944" y="0.44922236" z="0.0"></viz:position>
+        <viz:color r="239" g="165" b="127"></viz:color>
+      </node>
+      <node id="4438" label="TechCrunch" start="2011-10-26" end="2011-10-26">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://techcrunch.com"></attvalue>
+          <attvalue for="4" value="Tech Media (A site that focuses on technological news and information produced by a news organization, such as Arstechnica, Techdirt, or Wired.com)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="104"></attvalue>
+          <attvalue for="7" value="1"></attvalue>
+          <attvalue for="8" value="1"></attvalue>
+          <attvalue for="9" value="1"></attvalue>
+          <attvalue for="10" value="87"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="143.41432"></attvalue>
+          <attvalue for="13" value="1"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.652174"></viz:size>
+        <viz:position x="0.5419483" y="0.0" z="0.0"></viz:position>
+        <viz:color r="242" g="185" b="141"></viz:color>
+      </node>
+      <node id="18375" label="thomas.loc.gov" start="2011-10-26" end="2011-10-26">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="0"></attvalue>
+          <attvalue for="2" value="0"></attvalue>
+          <attvalue for="3" value="http://thomas.loc.gov"></attvalue>
+          <attvalue for="4" value="Government (A site associated with and run by a government-affiliated entity, such as the DOJ website, White House blog, or a U.S. Senator's official website)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="60"></attvalue>
+          <attvalue for="7" value="0"></attvalue>
+          <attvalue for="8" value="0"></attvalue>
+          <attvalue for="9" value="0"></attvalue>
+          <attvalue for="10" value="2"></attvalue>
+          <attvalue for="11" value="0"></attvalue>
+          <attvalue for="12" value="77.194565"></attvalue>
+          <attvalue for="13" value="0"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.26086956"></viz:size>
+        <viz:position x="0.5660002" y="0.2623855" z="0.0"></viz:position>
+        <viz:color r="154" g="191" b="186"></viz:color>
+      </node>
+      <node id="6" label="Los Angeles Times">
+        <spells>
+          <spell start="2011-10-19" end="2011-10-19"></spell>
+          <spell start="2011-10-26" end="2011-10-26"></spell>
+        </spells>
+        <attvalues>
+          <attvalue for="0" value="1"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://www.latimes.com/"></attvalue>
+          <attvalue for="4" value="General Online News Media (A site that is a mainstream media outlet, such as The New York Times and The Washington Post; an online-only news outlet, such as Slate, Salon, or the Huffington Post; or a citizen journalism or non-profit news outlet, such as Global Voices or ProPublica)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="42"></attvalue>
+          <attvalue for="7" value="1"></attvalue>
+          <attvalue for="8" value="1"></attvalue>
+          <attvalue for="9" value="1"></attvalue>
+          <attvalue for="10" value="64"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="58.41008"></attvalue>
+          <attvalue for="13" value="1"></attvalue>
+          <attvalue for="14" value="1"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.5217391"></viz:size>
+        <viz:position x="0.5994533" y="0.38260522" z="0.0"></viz:position>
+        <viz:color r="253" g="245" b="183"></viz:color>
+      </node>
+      <node id="6162" label="VentureBeat" start="2011-10-18" end="2011-10-18">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://venturebeat.com"></attvalue>
+          <attvalue for="4" value="Tech Media (A site that focuses on technological news and information produced by a news organization, such as Arstechnica, Techdirt, or Wired.com)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="31"></attvalue>
+          <attvalue for="7" value="1"></attvalue>
+          <attvalue for="8" value="1"></attvalue>
+          <attvalue for="9" value="1"></attvalue>
+          <attvalue for="10" value="156"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="35.57711"></attvalue>
+          <attvalue for="13" value="1"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="1"></attvalue>
+        </attvalues>
+        <viz:size value="0.6086956"></viz:size>
+        <viz:position x="0.22851142" y="0.2676973" z="0.0"></viz:position>
+        <viz:color r="246" g="205" b="155"></viz:color>
+      </node>
+      <node id="1145" label="DRUDGE REPORT 2008&amp;#174;" start="2011-10-04" end="2011-10-04">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://drudgereport.com/"></attvalue>
+          <attvalue for="4" value="News Aggregator (A site that contains little to no original content and compiles news from other sites, such as Yahoo News or Google News)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="104"></attvalue>
+          <attvalue for="7" value="1"></attvalue>
+          <attvalue for="8" value="1"></attvalue>
+          <attvalue for="9" value="1"></attvalue>
+          <attvalue for="10" value="19"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="137.65671"></attvalue>
+          <attvalue for="13" value="1"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="1"></attvalue>
+        </attvalues>
+        <viz:size value="0.6086956"></viz:size>
+        <viz:position x="0.50806034" y="0.95292276" z="0.0"></viz:position>
+        <viz:color r="246" g="205" b="155"></viz:color>
+      </node>
+      <node id="5532" label="The Register">
+        <spells>
+          <spell start="2011-10-18" end="2011-10-18"></spell>
+          <spell start="2011-10-25" end="2011-10-25"></spell>
+        </spells>
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://www.theregister.co.uk/"></attvalue>
+          <attvalue for="4" value="Tech Media (A site that focuses on technological news and information produced by a news organization, such as Arstechnica, Techdirt, or Wired.com)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="10"></attvalue>
+          <attvalue for="7" value="1"></attvalue>
+          <attvalue for="8" value="1"></attvalue>
+          <attvalue for="9" value="1"></attvalue>
+          <attvalue for="10" value="91"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="11.916667"></attvalue>
+          <attvalue for="13" value="1"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="1"></attvalue>
+        </attvalues>
+        <viz:size value="0.39130434"></viz:size>
+        <viz:position x="0.64747286" y="0.074522726" z="0.0"></viz:position>
+        <viz:color r="209" g="226" b="189"></viz:color>
+      </node>
+      <node id="5839" label="Waxy.org Links" start="2011-10-26" end="2011-10-26">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://www.waxy.org/links/"></attvalue>
+          <attvalue for="4" value="Social Linking Site (A site that aggregates links based at least partially on user submissions and/or ranking, such as Reddit, Digg, Slashdot, MetaFilter, StumbleUpon, and other social news sites)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="0"></attvalue>
+          <attvalue for="7" value="1"></attvalue>
+          <attvalue for="8" value="1"></attvalue>
+          <attvalue for="9" value="1"></attvalue>
+          <attvalue for="10" value="30"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="0.0"></attvalue>
+          <attvalue for="13" value="1"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="1"></attvalue>
+        </attvalues>
+        <viz:size value="0.5217391"></viz:size>
+        <viz:position x="0.50285244" y="0.8044656" z="0.0"></viz:position>
+        <viz:color r="253" g="245" b="183"></viz:color>
+      </node>
+      <node id="18364" label="thehill.com" start="2011-10-26" end="2011-10-26">
+        <attvalues>
+          <attvalue for="0" value="1"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://thehill.com"></attvalue>
+          <attvalue for="4" value="General Online News Media (A site that is a mainstream media outlet, such as The New York Times and The Washington Post; an online-only news outlet, such as Slate, Salon, or the Huffington Post; or a citizen journalism or non-profit news outlet, such as Global Voices or ProPublica)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="151"></attvalue>
+          <attvalue for="7" value="1"></attvalue>
+          <attvalue for="8" value="1"></attvalue>
+          <attvalue for="9" value="1"></attvalue>
+          <attvalue for="10" value="67"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="184.07025"></attvalue>
+          <attvalue for="13" value="1"></attvalue>
+          <attvalue for="14" value="1"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.5217391"></viz:size>
+        <viz:position x="0.4328233" y="0.45792618" z="0.0"></viz:position>
+        <viz:color r="253" g="245" b="183"></viz:color>
+      </node>
+      <node id="115" label="Daily Kos: State of the Nation">
+        <spells>
+          <spell start="2011-10-03" end="2011-10-03"></spell>
+          <spell start="2011-10-13" end="2011-10-13"></spell>
+        </spells>
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://www.dailykos.com"></attvalue>
+          <attvalue for="4" value="User-Generated Content Platform, Networking Site, or Internet Tool (A general communication and networking platform or tool, like Wikipedia, YouTube, Twitter, and Scribd, or a search engine like Google or speech platform like the Daily Kos)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="19"></attvalue>
+          <attvalue for="7" value="1"></attvalue>
+          <attvalue for="8" value="1"></attvalue>
+          <attvalue for="9" value="0"></attvalue>
+          <attvalue for="10" value="66"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="28.414837"></attvalue>
+          <attvalue for="13" value="1"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.6086956"></viz:size>
+        <viz:position x="0.4477454" y="0.13457714" z="0.0"></viz:position>
+        <viz:color r="246" g="205" b="155"></viz:color>
+      </node>
+      <node id="5520" label="A List Apart" start="2011-10-26" end="2011-10-26">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="0"></attvalue>
+          <attvalue for="2" value="0"></attvalue>
+          <attvalue for="3" value="http://www.alistapart.com/articles/"></attvalue>
+          <attvalue for="4" value="Tech Media (A site that focuses on technological news and information produced by a news organization, such as Arstechnica, Techdirt, or Wired.com)"></attvalue>
+          <attvalue for="5" value="0"></attvalue>
+          <attvalue for="6" value="5"></attvalue>
+          <attvalue for="7" value="1"></attvalue>
+          <attvalue for="8" value="0"></attvalue>
+          <attvalue for="9" value="0"></attvalue>
+          <attvalue for="10" value="1"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="5.0"></attvalue>
+          <attvalue for="13" value="0"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.04347826"></viz:size>
+        <viz:position x="0.8715342" y="0.42663547" z="0.0"></viz:position>
+        <viz:color r="62" g="134" b="182"></viz:color>
+      </node>
+      <node id="5579" label="MetaFilter" start="2011-10-21" end="2011-10-21">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://www.metafilter.com/"></attvalue>
+          <attvalue for="4" value="Social Linking Site (A site that aggregates links based at least partially on user submissions and/or ranking, such as Reddit, Digg, Slashdot, MetaFilter, StumbleUpon, and other social news sites)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="5"></attvalue>
+          <attvalue for="7" value="0"></attvalue>
+          <attvalue for="8" value="1"></attvalue>
+          <attvalue for="9" value="1"></attvalue>
+          <attvalue for="10" value="23"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="5.9166665"></attvalue>
+          <attvalue for="13" value="1"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="1"></attvalue>
+        </attvalues>
+        <viz:size value="0.39130434"></viz:size>
+        <viz:position x="0.20422393" y="0.7782725" z="0.0"></viz:position>
+        <viz:color r="209" g="226" b="189"></viz:color>
+      </node>
+      <node id="18408" label="demandprogress.org" start="2011-10-21" end="2011-10-21">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://demandprogress.org"></attvalue>
+          <attvalue for="4" value="Independent Group (An academic or nonprofit group that is not affiliated with the private sector or government, such as the Electronic Frontier Foundation or the Center for Democracy and Technology)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="20"></attvalue>
+          <attvalue for="7" value="0"></attvalue>
+          <attvalue for="8" value="0"></attvalue>
+          <attvalue for="9" value="1"></attvalue>
+          <attvalue for="10" value="11"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="25.98128"></attvalue>
+          <attvalue for="13" value="1"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.08695652"></viz:size>
+        <viz:position x="0.50807124" y="0.35340223" z="0.0"></viz:position>
+        <viz:color r="80" g="145" b="183"></viz:color>
+      </node>
+      <node id="18448" label="popvox.com" start="2011-10-26" end="2011-10-26">
+        <attvalues>
+          <attvalue for="0" value="1"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="https://www.popvox.com"></attvalue>
+          <attvalue for="4" value="User-Generated Content Platform, Networking Site, or Internet Tool (A general communication and networking platform or tool, like Wikipedia, YouTube, Twitter, and Scribd, or a search engine like Google or speech platform like the Daily Kos)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="8"></attvalue>
+          <attvalue for="7" value="1"></attvalue>
+          <attvalue for="8" value="0"></attvalue>
+          <attvalue for="9" value="1"></attvalue>
+          <attvalue for="10" value="3"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="8.366667"></attvalue>
+          <attvalue for="13" value="1"></attvalue>
+          <attvalue for="14" value="1"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.04347826"></viz:size>
+        <viz:position x="0.21596788" y="0.7171209" z="0.0"></viz:position>
+        <viz:color r="62" g="134" b="182"></viz:color>
+      </node>
+      <node id="312" label="Democratic Underground" start="2011-10-17" end="2011-10-17">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="0"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://www.democraticunderground.com"></attvalue>
+          <attvalue for="4" value="User-Generated Content Platform, Networking Site, or Internet Tool (A general communication and networking platform or tool, like Wikipedia, YouTube, Twitter, and Scribd, or a search engine like Google or speech platform like the Daily Kos)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="0"></attvalue>
+          <attvalue for="7" value="1"></attvalue>
+          <attvalue for="8" value="0"></attvalue>
+          <attvalue for="9" value="1"></attvalue>
+          <attvalue for="10" value="13"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="0.0"></attvalue>
+          <attvalue for="13" value="1"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="1"></attvalue>
+        </attvalues>
+        <viz:size value="0.13043478"></viz:size>
+        <viz:position x="0.53091854" y="0.3161515" z="0.0"></viz:position>
+        <viz:color r="99" g="157" b="184"></viz:color>
+      </node>
+      <node id="111" label="Think Progress  " start="2011-10-14" end="2011-10-14">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="0"></attvalue>
+          <attvalue for="2" value="0"></attvalue>
+          <attvalue for="3" value="http://thinkprogress.org"></attvalue>
+          <attvalue for="4" value="Independent Group (An academic or nonprofit group that is not affiliated with the private sector or government, such as the Electronic Frontier Foundation or the Center for Democracy and Technology)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="10"></attvalue>
+          <attvalue for="7" value="0"></attvalue>
+          <attvalue for="8" value="0"></attvalue>
+          <attvalue for="9" value="1"></attvalue>
+          <attvalue for="10" value="21"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="13.076667"></attvalue>
+          <attvalue for="13" value="1"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.39130434"></viz:size>
+        <viz:position x="0.5641353" y="0.17963102" z="0.0"></viz:position>
+        <viz:color r="209" g="226" b="189"></viz:color>
+      </node>
+      <node id="18526" label="broadcastingcable.com" start="2011-10-17" end="2011-10-17">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="0"></attvalue>
+          <attvalue for="2" value="0"></attvalue>
+          <attvalue for="3" value="http://www.broadcastingcable.com"></attvalue>
+          <attvalue for="4" value="General Online News Media (A site that is a mainstream media outlet, such as The New York Times and The Washington Post; an online-only news outlet, such as Slate, Salon, or the Huffington Post; or a citizen journalism or non-profit news outlet, such as Global Voices or ProPublica)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="3"></attvalue>
+          <attvalue for="7" value="0"></attvalue>
+          <attvalue for="8" value="0"></attvalue>
+          <attvalue for="9" value="0"></attvalue>
+          <attvalue for="10" value="4"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="3.1833334"></attvalue>
+          <attvalue for="13" value="0"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.0"></viz:size>
+        <viz:position x="0.6253842" y="0.1635084" z="0.0"></viz:position>
+        <viz:color r="44" g="123" b="182"></viz:color>
+      </node>
+      <node id="18403" label="sag.org" start="2011-10-26" end="2011-10-26">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="0"></attvalue>
+          <attvalue for="2" value="0"></attvalue>
+          <attvalue for="3" value="http://www.sag.org"></attvalue>
+          <attvalue for="4" value="Private Sector (A non-news media for-profit actor, including, for instance, trade organizations, industry sites, and domain registrars) "></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="16"></attvalue>
+          <attvalue for="7" value="1"></attvalue>
+          <attvalue for="8" value="0"></attvalue>
+          <attvalue for="9" value="0"></attvalue>
+          <attvalue for="10" value="2"></attvalue>
+          <attvalue for="11" value="0"></attvalue>
+          <attvalue for="12" value="19.953333"></attvalue>
+          <attvalue for="13" value="1"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.08695652"></viz:size>
+        <viz:position x="0.12907925" y="0.6724129" z="0.0"></viz:position>
+        <viz:color r="80" g="145" b="183"></viz:color>
+      </node>
+      <node id="5628" label="Daring Fireball" start="2011-10-26" end="2011-10-26">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://daringfireball.net/"></attvalue>
+          <attvalue for="4" value="Blogger(s) (A web log, written by one or more individuals, that is not associated with a professional or advocacy organization or institution) "></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="0"></attvalue>
+          <attvalue for="7" value="1"></attvalue>
+          <attvalue for="8" value="1"></attvalue>
+          <attvalue for="9" value="1"></attvalue>
+          <attvalue for="10" value="11"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="0.0"></attvalue>
+          <attvalue for="13" value="1"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.0"></viz:size>
+        <viz:position x="0.49060822" y="0.29196823" z="0.0"></viz:position>
+        <viz:color r="44" g="123" b="182"></viz:color>
+      </node>
+      <node id="18609" label="fixtheuschamber.org" start="2011-10-13" end="2011-10-13">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="0"></attvalue>
+          <attvalue for="2" value="0"></attvalue>
+          <attvalue for="3" value="http://www.fixtheuschamber.org"></attvalue>
+          <attvalue for="4" value="Independent Group (An academic or nonprofit group that is not affiliated with the private sector or government, such as the Electronic Frontier Foundation or the Center for Democracy and Technology)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="2"></attvalue>
+          <attvalue for="7" value="0"></attvalue>
+          <attvalue for="8" value="0"></attvalue>
+          <attvalue for="9" value="0"></attvalue>
+          <attvalue for="10" value="1"></attvalue>
+          <attvalue for="11" value="0"></attvalue>
+          <attvalue for="12" value="2.0"></attvalue>
+          <attvalue for="13" value="0"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.08695652"></viz:size>
+        <viz:position x="0.639749" y="0.010524433" z="0.0"></viz:position>
+        <viz:color r="80" g="145" b="183"></viz:color>
+      </node>
+    </nodes>
+    <edges>
+      <edge id="2215" source="5968" target="18362" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="67" source="5968" target="18370" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="6" source="5968" target="18340" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3779" source="5968" target="18268" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2093" source="5968" target="4415" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="138" source="5968" target="5813" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3746" source="5968" target="18438" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4700" source="5968" target="18367" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3355" source="5968" target="5525" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="822" source="5968" target="4433" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="311" source="5968" target="1145" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4732" source="5968" target="18364" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2171" source="5968" target="18408" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="5205" source="4491" target="18362" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2718" source="4491" target="18370" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4912" source="4491" target="5968" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2840" source="4491" target="18340" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1669" source="4491" target="18268" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2553" source="4491" target="5813" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2660" source="4491" target="18367" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3926" source="4491" target="4433" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2557" source="4491" target="6" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2563" source="4491" target="18364" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3160" source="4491" target="115" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4957" source="4491" target="5579" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4959" source="4491" target="18408" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3092" source="4491" target="111" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2911" source="1104" target="18370" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4629" source="1104" target="5968" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3036" source="1104" target="18340" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="900" source="1104" target="4491" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1470" source="1104" target="18268" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3079" source="1104" target="5813" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3139" source="1104" target="18367" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1578" source="1104" target="5525" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1014" source="1104" target="4438" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3370" source="1104" target="18375" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3064" source="1104" target="6" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2758" source="1104" target="1145" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3277" source="1104" target="5532" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3073" source="1104" target="18364" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2604" source="1104" target="111" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4126" source="18640" target="18340" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4716" source="18640" target="4491" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="20" source="18640" target="1104" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1224" source="18640" target="4415" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3983" source="18640" target="5813" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="5091" source="18640" target="18438" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2459" source="18640" target="18375" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4462" source="18640" target="115" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4046" source="4415" target="18362" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1579" source="4415" target="18370" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1708" source="4415" target="18340" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2248" source="4415" target="4491" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2490" source="4415" target="1104" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2801" source="4415" target="18268" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2913" source="4415" target="5525" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2360" source="4415" target="4438" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="74" source="4415" target="18375" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1447" source="4415" target="1145" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4465" source="4415" target="5579" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="5220" source="4415" target="18403" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1854" source="5813" target="18340" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2669" source="5813" target="18268" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4321" source="5813" target="4415" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3062" source="5813" target="5525" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1288" source="5813" target="1145" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4691" source="5813" target="5532" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3059" source="5816" target="18362" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="5061" source="5816" target="18370" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2412" source="5816" target="5968" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="5010" source="5816" target="18340" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3519" source="5816" target="4491" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3281" source="5816" target="1104" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2596" source="5816" target="4415" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4990" source="5816" target="5813" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3406" source="5816" target="4438" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="5115" source="5816" target="1145" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1612" source="18367" target="18370" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2871" source="18367" target="18268" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4532" source="18367" target="4415" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1763" source="18367" target="5813" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="889" source="18367" target="5816" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2831" source="18367" target="18438" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1427" source="18367" target="1145" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4572" source="18367" target="5532" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1776" source="18367" target="18364" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1883" source="5525" target="18362" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4083" source="5525" target="18370" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4208" source="5525" target="18340" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4663" source="5525" target="4491" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="555" source="5525" target="18268" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3435" source="5525" target="5816" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3965" source="5525" target="18367" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="126" source="5525" target="4438" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2543" source="5525" target="18375" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4277" source="5525" target="1145" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3899" source="5525" target="18364" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4547" source="5525" target="115" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3716" source="5525" target="18403" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4511" source="4433" target="18370" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4474" source="4433" target="18340" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4929" source="4433" target="18268" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1568" source="4433" target="4415" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4343" source="4433" target="5813" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3839" source="4433" target="5816" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4240" source="4433" target="18367" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="646" source="4433" target="5525" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4863" source="4433" target="4438" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2118" source="4433" target="18375" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4337" source="4433" target="6" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4005" source="4433" target="1145" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4140" source="4433" target="115" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1689" source="4433" target="18408" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2675" source="4438" target="18370" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4764" source="4438" target="5968" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2548" source="4438" target="18340" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="5279" source="4438" target="4491" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1803" source="4438" target="18268" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2835" source="4438" target="5813" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1747" source="4438" target="18438" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2771" source="4438" target="18367" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1757" source="6" target="18370" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3113" source="6" target="18640" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4338" source="6" target="4415" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1591" source="6" target="5813" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1103" source="6" target="5816" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2682" source="6" target="18438" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1648" source="6" target="18367" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3074" source="6" target="5525" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2522" source="6" target="4438" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4643" source="6162" target="18370" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2873" source="6162" target="5968" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4574" source="6162" target="18340" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4037" source="6162" target="4491" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4135" source="6162" target="1104" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2125" source="6162" target="4415" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4739" source="6162" target="5813" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4971" source="6162" target="5816" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="90" source="6162" target="18367" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3387" source="6162" target="5525" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="5362" source="6162" target="4433" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3872" source="6162" target="4438" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1586" source="6162" target="18375" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="147" source="6162" target="18364" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2347" source="6162" target="18448" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3426" source="1145" target="18362" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3193" source="1145" target="4491" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1944" source="1145" target="18268" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="253" source="5532" target="18362" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2183" source="5532" target="18370" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2044" source="5532" target="18340" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1513" source="5532" target="4491" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4577" source="5532" target="4415" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2819" source="5532" target="5816" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4395" source="5532" target="18375" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2063" source="5839" target="18362" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="332" source="5839" target="18370" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="276" source="5839" target="18340" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4553" source="5839" target="4491" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4292" source="5839" target="1104" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3269" source="5839" target="18268" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="243" source="5839" target="5813" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="645" source="5839" target="5816" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4777" source="5839" target="18367" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3857" source="5839" target="5525" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4411" source="5839" target="4438" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="231" source="5839" target="6" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4832" source="5839" target="18364" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4350" source="18364" target="4415" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1097" source="18364" target="5816" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1258" source="18364" target="1145" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="5247" source="115" target="18340" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2707" source="115" target="1104" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2411" source="115" target="18268" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3390" source="115" target="4415" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="5350" source="115" target="5813" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1377" source="115" target="5816" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="802" source="115" target="18367" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1183" source="115" target="1145" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="824" source="115" target="18364" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1000" source="115" target="111" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4613" source="115" target="18609" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1088" source="5520" target="18268" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2071" source="5520" target="18367" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1810" source="5579" target="18370" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2236" source="5579" target="1104" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4513" source="5579" target="18535" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1640" source="5579" target="5813" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1178" source="5579" target="5816" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2617" source="5579" target="18438" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1574" source="5579" target="18367" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1367" source="5579" target="1145" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1823" source="18448" target="18403" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1502" source="312" target="5813" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1449" source="312" target="18367" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="1512" source="312" target="18364" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2357" source="312" target="18526" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="5360" source="111" target="18370" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4453" source="111" target="5968" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="2214" source="111" target="18268" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="3244" source="111" target="4415" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="993" source="111" target="1145" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="732" source="111" target="18364" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="4724" source="111" target="18609" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="5374" source="5628" target="18367" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+      <edge id="5116" source="18609" target="18268" start="2011-10-01" end="2012-03-01">
+        <attvalues>
+          <attvalue for="weight" value="1.0"></attvalue>
+        </attvalues>
+      </edge>
+    </edges>
+  </graph>
+</gexf>
