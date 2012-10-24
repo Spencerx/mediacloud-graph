@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gexf xmlns="http://www.gexf.net/1.2draft" version="1.2" xmlns:viz="http://www.gexf.net/1.2draft/viz" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd">
+  <meta lastmodifieddate="2012-10-24">
+    <creator>Gephi 0.8.1</creator>
+    <description></description>
+  </meta>
+  <graph defaultedgetype="directed" timeformat="date" mode="dynamic">
+    <attributes class="node" mode="static">
+      <attribute id="0" title="sentiment_58billion" type="integer"></attribute>
+      <attribute id="1" title="tagged_dns" type="integer"></attribute>
+      <attribute id="2" title="tagged_coica" type="integer"></attribute>
+      <attribute id="3" title="url" type="string"></attribute>
+      <attribute id="4" title="media_type" type="string"></attribute>
+      <attribute id="5" title="tagged_pipa" type="integer"></attribute>
+      <attribute id="6" title="link_count" type="integer"></attribute>
+      <attribute id="7" title="tagged_steal" type="integer"></attribute>
+      <attribute id="8" title="tagged_break" type="integer"></attribute>
+      <attribute id="9" title="tagged_china" type="integer"></attribute>
+      <attribute id="10" title="story_count" type="integer"></attribute>
+      <attribute id="11" title="tagged_sopa" type="integer"></attribute>
+      <attribute id="12" title="link_weight" type="float"></attribute>
+      <attribute id="13" title="tagged_jobs" type="integer"></attribute>
+      <attribute id="14" title="tagged_58billion" type="integer"></attribute>
+      <attribute id="15" title="tagged_acta" type="integer"></attribute>
+    </attributes>
+    <nodes>
+      <node id="4491" label="Techdirt">
+        <spells>
+          <spell start="2010-09-27" end="2010-09-27"></spell>
+          <spell start="2010-09-28" end="2010-09-28"></spell>
+          <spell start="2010-09-29" end="2010-09-29"></spell>
+          <spell start="2010-09-30" end="2010-09-30"></spell>
+        </spells>
+        <attvalues>
+          <attvalue for="0" value="-1"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://www.techdirt.com/"></attvalue>
+          <attvalue for="4" value="Tech Media (A site that focuses on technological news and information produced by a news organization, such as Arstechnica, Techdirt, or Wired.com)"></attvalue>
+          <attvalue for="5" value="0"></attvalue>
+          <attvalue for="6" value="2"></attvalue>
+          <attvalue for="7" value="0"></attvalue>
+          <attvalue for="8" value="0"></attvalue>
+          <attvalue for="9" value="0"></attvalue>
+          <attvalue for="10" value="7"></attvalue>
+          <attvalue for="11" value="0"></attvalue>
+          <attvalue for="12" value="8.668978"></attvalue>
+          <attvalue for="13" value="0"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.18181817"></viz:size>
+        <viz:position x="0.41124535" y="0.30953068" z="0.0"></viz:position>
+        <viz:color r="255" g="0" b="43"></viz:color>
+      </node>
+      <node id="19079" label="itmanagement.earthweb.com" start="2010-09-28" end="2010-09-28">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="0"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://itmanagement.earthweb.com"></attvalue>
+          <attvalue for="4" value="Tech Media (A site that focuses on technological news and information produced by a news organization, such as Arstechnica, Techdirt, or Wired.com)"></attvalue>
+          <attvalue for="5" value="0"></attvalue>
+          <attvalue for="6" value="1"></attvalue>
+          <attvalue for="7" value="0"></attvalue>
+          <attvalue for="8" value="0"></attvalue>
+          <attvalue for="9" value="0"></attvalue>
+          <attvalue for="10" value="1"></attvalue>
+          <attvalue for="11" value="0"></attvalue>
+          <attvalue for="12" value="1.0"></attvalue>
+          <attvalue for="13" value="0"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.090909086"></viz:size>
+        <viz:position x="0.34132913" y="0.15468413" z="0.0"></viz:position>
+        <viz:color r="255" g="0" b="43"></viz:color>
+      </node>
+      <node id="5953" label="CrunchGear" start="2010-10-01" end="2010-10-01">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://www.crunchgear.com"></attvalue>
+          <attvalue for="4" value="Tech Media (A site that focuses on technological news and information produced by a news organization, such as Arstechnica, Techdirt, or Wired.com)"></attvalue>
+          <attvalue for="5" value="0"></attvalue>
+          <attvalue for="6" value="1"></attvalue>
+          <attvalue for="7" value="0"></attvalue>
+          <attvalue for="8" value="0"></attvalue>
+          <attvalue for="9" value="0"></attvalue>
+          <attvalue for="10" value="1"></attvalue>
+          <attvalue for="11" value="0"></attvalue>
+          <attvalue for="12" value="2.1833334"></attvalue>
+          <attvalue for="13" value="0"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.090909086"></viz:size>
+        <viz:position x="0.6770193" y="0.83581734" z="0.0"></viz:position>
+        <viz:color r="255" g="0" b="43"></viz:color>
+      </node>
+      <node id="18438" label="govtrack.us" start="2010-11-18" end="2010-11-18">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="0"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://www.govtrack.us"></attvalue>
+          <attvalue for="4" value="Independent Group (An academic or nonprofit group that is not affiliated with the private sector or government, such as the Electronic Frontier Foundation or the Center for Democracy and Technology)"></attvalue>
+          <attvalue for="5" value="0"></attvalue>
+          <attvalue for="6" value="6"></attvalue>
+          <attvalue for="7" value="0"></attvalue>
+          <attvalue for="8" value="0"></attvalue>
+          <attvalue for="9" value="0"></attvalue>
+          <attvalue for="10" value="1"></attvalue>
+          <attvalue for="11" value="0"></attvalue>
+          <attvalue for="12" value="85.23537"></attvalue>
+          <attvalue for="13" value="0"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.54545456"></viz:size>
+        <viz:position x="0.44081178" y="0.8402557" z="0.0"></viz:position>
+        <viz:color r="0" g="255" b="38"></viz:color>
+      </node>
+      <node id="5579" label="MetaFilter" start="2010-09-29" end="2010-09-29">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="0"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://www.metafilter.com/"></attvalue>
+          <attvalue for="4" value="Social Linking Site (A site that aggregates links based at least partially on user submissions and/or ranking, such as Reddit, Digg, Slashdot, MetaFilter, StumbleUpon, and other social news sites)"></attvalue>
+          <attvalue for="5" value="0"></attvalue>
+          <attvalue for="6" value="0"></attvalue>
+          <attvalue for="7" value="0"></attvalue>
+          <attvalue for="8" value="0"></attvalue>
+          <attvalue for="9" value="0"></attvalue>
+          <attvalue for="10" value="1"></attvalue>
+          <attvalue for="11" value="0"></attvalue>
+          <attvalue for="12" value="0.0"></attvalue>
+          <attvalue for="13" value="0"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.0"></viz:size>
+        <viz:position x="0.34713072" y="0.49512023" z="0.0"></viz:position>
+        <viz:color r="255" g="196" b="0"></viz:color>
+      </node>
+      <node id="18765" label="ipbrief.net" start="2010-09-26" end="2010-09-26">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="0"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://www.ipbrief.net"></attvalue>
+          <attvalue for="4" value="Independent Group (An academic or nonprofit group that is not affiliated with the private sector or government, such as the Electronic Frontier Foundation or the Center for Democracy and Technology)"></attvalue>
+          <attvalue for="5" value="0"></attvalue>
+          <attvalue for="6" value="1"></attvalue>
+          <attvalue for="7" value="0"></attvalue>
+          <attvalue for="8" value="0"></attvalue>
+          <attvalue for="9" value="0"></attvalue>
+          <attvalue for="10" value="1"></attvalue>
+          <attvalue for="11" value="0"></attvalue>
+          <attvalue for="12" value="1.0"></attvalue>
+          <attvalue for="13" value="0"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.090909086"></viz:size>
+        <viz:position x="0.22613165" y="0.59227824" z="0.0"></viz:position>
+        <viz:color r="0" g="255" b="38"></viz:color>
+      </node>
+      <node id="18367" label="eff">
+        <spells>
+          <spell start="2010-09-28" end="2010-09-28"></spell>
+          <spell start="2010-09-30" end="2010-09-30"></spell>
+          <spell start="2010-12-03" end="2010-12-03"></spell>
+        </spells>
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="https://www.eff.org"></attvalue>
+          <attvalue for="4" value="Independent Group (An academic or nonprofit group that is not affiliated with the private sector or government, such as the Electronic Frontier Foundation or the Center for Democracy and Technology)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="11"></attvalue>
+          <attvalue for="7" value="0"></attvalue>
+          <attvalue for="8" value="0"></attvalue>
+          <attvalue for="9" value="0"></attvalue>
+          <attvalue for="10" value="3"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="73.20791"></attvalue>
+          <attvalue for="13" value="0"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="1.0"></viz:size>
+        <viz:position x="0.7099177" y="0.40267965" z="0.0"></viz:position>
+        <viz:color r="0" g="255" b="38"></viz:color>
+      </node>
+      <node id="19232" label="torproject.org" start="2011-11-25" end="2011-11-25">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="0"></attvalue>
+          <attvalue for="2" value="0"></attvalue>
+          <attvalue for="3" value="https://www.torproject.org"></attvalue>
+          <attvalue for="4" value="User-Generated Content Platform, Networking Site, or Internet Tool (A general communication and networking platform or tool, like Wikipedia, YouTube, Twitter, and Scribd, or a search engine like Google or speech platform like the Daily Kos)"></attvalue>
+          <attvalue for="5" value="1"></attvalue>
+          <attvalue for="6" value="1"></attvalue>
+          <attvalue for="7" value="0"></attvalue>
+          <attvalue for="8" value="0"></attvalue>
+          <attvalue for="9" value="0"></attvalue>
+          <attvalue for="10" value="1"></attvalue>
+          <attvalue for="11" value="1"></attvalue>
+          <attvalue for="12" value="15.2931385"></attvalue>
+          <attvalue for="13" value="0"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.090909086"></viz:size>
+        <viz:position x="0.74974877" y="1.0" z="0.0"></viz:position>
+        <viz:color r="255" g="0" b="157"></viz:color>
+      </node>
+      <node id="4434" label="Wired">
+        <spells>
+          <spell start="2010-09-20" end="2010-09-20"></spell>
+          <spell start="2010-10-01" end="2010-10-01"></spell>
+        </spells>
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://www.wired.com/rss/index.xml"></attvalue>
+          <attvalue for="4" value="Tech Media (A site that focuses on technological news and information produced by a news organization, such as Arstechnica, Techdirt, or Wired.com)"></attvalue>
+          <attvalue for="5" value="0"></attvalue>
+          <attvalue for="6" value="2"></attvalue>
+          <attvalue for="7" value="1"></attvalue>
+          <attvalue for="8" value="0"></attvalue>
+          <attvalue for="9" value="1"></attvalue>
+          <attvalue for="10" value="2"></attvalue>
+          <attvalue for="11" value="0"></attvalue>
+          <attvalue for="12" value="10.759677"></attvalue>
+          <attvalue for="13" value="0"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.18181817"></viz:size>
+        <viz:position x="0.09731894" y="0.43144864" z="0.0"></viz:position>
+        <viz:color r="255" g="0" b="43"></viz:color>
+      </node>
+      <node id="4462" label="ResourceShelf" start="2010-09-28" end="2010-09-28">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="0"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://www.resourceshelf.com"></attvalue>
+          <attvalue for="4" value="General Online News Media (A site that is a mainstream media outlet, such as The New York Times and The Washington Post; an online-only news outlet, such as Slate, Salon, or the Huffington Post; or a citizen journalism or non-profit news outlet, such as Global Voices or ProPublica)"></attvalue>
+          <attvalue for="5" value="0"></attvalue>
+          <attvalue for="6" value="0"></attvalue>
+          <attvalue for="7" value="0"></attvalue>
+          <attvalue for="8" value="0"></attvalue>
+          <attvalue for="9" value="0"></attvalue>
+          <attvalue for="10" value="1"></attvalue>
+          <attvalue for="11" value="0"></attvalue>
+          <attvalue for="12" value="0.0"></attvalue>
+          <attvalue for="13" value="0"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.0"></viz:size>
+        <viz:position x="0.92926246" y="0.47911528" z="0.0"></viz:position>
+        <viz:color r="0" g="238" b="255"></viz:color>
+      </node>
+      <node id="4438" label="TechCrunch" start="2010-10-01" end="2010-10-01">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://techcrunch.com"></attvalue>
+          <attvalue for="4" value="Tech Media (A site that focuses on technological news and information produced by a news organization, such as Arstechnica, Techdirt, or Wired.com)"></attvalue>
+          <attvalue for="5" value="0"></attvalue>
+          <attvalue for="6" value="0"></attvalue>
+          <attvalue for="7" value="0"></attvalue>
+          <attvalue for="8" value="0"></attvalue>
+          <attvalue for="9" value="0"></attvalue>
+          <attvalue for="10" value="1"></attvalue>
+          <attvalue for="11" value="0"></attvalue>
+          <attvalue for="12" value="1.0"></attvalue>
+          <attvalue for="13" value="0"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.0"></viz:size>
+        <viz:position x="0.60114986" y="0.7211867" z="0.0"></viz:position>
+        <viz:color r="255" g="0" b="43"></viz:color>
+      </node>
+      <node id="5842" label="PCWorld" start="2010-09-29" end="2010-09-29">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="1"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://www.pcworld.com"></attvalue>
+          <attvalue for="4" value="Tech Media (A site that focuses on technological news and information produced by a news organization, such as Arstechnica, Techdirt, or Wired.com)"></attvalue>
+          <attvalue for="5" value="0"></attvalue>
+          <attvalue for="6" value="0"></attvalue>
+          <attvalue for="7" value="0"></attvalue>
+          <attvalue for="8" value="0"></attvalue>
+          <attvalue for="9" value="1"></attvalue>
+          <attvalue for="10" value="3"></attvalue>
+          <attvalue for="11" value="0"></attvalue>
+          <attvalue for="12" value="0.0"></attvalue>
+          <attvalue for="13" value="1"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.0"></viz:size>
+        <viz:position x="0.89319277" y="0.16487966" z="0.0"></viz:position>
+        <viz:color r="255" g="0" b="43"></viz:color>
+      </node>
+      <node id="18408" label="demandprogress.org" start="2010-09-29" end="2010-09-29">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="0"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://demandprogress.org"></attvalue>
+          <attvalue for="4" value="Independent Group (An academic or nonprofit group that is not affiliated with the private sector or government, such as the Electronic Frontier Foundation or the Center for Democracy and Technology)"></attvalue>
+          <attvalue for="5" value="0"></attvalue>
+          <attvalue for="6" value="1"></attvalue>
+          <attvalue for="7" value="0"></attvalue>
+          <attvalue for="8" value="0"></attvalue>
+          <attvalue for="9" value="1"></attvalue>
+          <attvalue for="10" value="1"></attvalue>
+          <attvalue for="11" value="0"></attvalue>
+          <attvalue for="12" value="3.1833334"></attvalue>
+          <attvalue for="13" value="0"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.090909086"></viz:size>
+        <viz:position x="0.9146266" y="0.0" z="0.0"></viz:position>
+        <viz:color r="0" g="255" b="38"></viz:color>
+      </node>
+      <node id="18820" label="ce.org" start="2010-11-20" end="2010-11-20">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="0"></attvalue>
+          <attvalue for="2" value="0"></attvalue>
+          <attvalue for="3" value="http://www.ce.org"></attvalue>
+          <attvalue for="4" value="Private Sector (A non-news media for-profit actor, including, for instance, trade organizations, industry sites, and domain registrars) "></attvalue>
+          <attvalue for="5" value="0"></attvalue>
+          <attvalue for="6" value="2"></attvalue>
+          <attvalue for="7" value="0"></attvalue>
+          <attvalue for="8" value="0"></attvalue>
+          <attvalue for="9" value="0"></attvalue>
+          <attvalue for="10" value="1"></attvalue>
+          <attvalue for="11" value="0"></attvalue>
+          <attvalue for="12" value="4.1833334"></attvalue>
+          <attvalue for="13" value="0"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.18181817"></viz:size>
+        <viz:position x="1.0" y="0.13597877" z="0.0"></viz:position>
+        <viz:color r="200" g="255" b="0"></viz:color>
+      </node>
+      <node id="6872" label="Desertpeace" start="2010-10-01" end="2010-10-01">
+        <attvalues>
+          <attvalue for="0" value="0"></attvalue>
+          <attvalue for="1" value="0"></attvalue>
+          <attvalue for="2" value="1"></attvalue>
+          <attvalue for="3" value="http://desertpeace.wordpress.com"></attvalue>
+          <attvalue for="4" value="Blogger(s) (A web log, written by one or more individuals, that is not associated with a professional or advocacy organization or institution) "></attvalue>
+          <attvalue for="5" value="0"></attvalue>
+          <attvalue for="6" value="0"></attvalue>
+          <attvalue for="7" value="0"></attvalue>
+          <attvalue for="8" value="0"></attvalue>
+          <attvalue for="9" value="0"></attvalue>
+          <attvalue for="10" value="1"></attvalue>
+          <attvalue for="11" value="0"></attvalue>
+          <attvalue for="12" value="0.0"></attvalue>
+          <attvalue for="13" value="0"></attvalue>
+          <attvalue for="14" value="0"></attvalue>
+          <attvalue for="15" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="0.0"></viz:size>
+        <viz:position x="0.0" y="0.41328326" z="0.0"></viz:position>
+        <viz:color r="0" g="0" b="255"></viz:color>
+      </node>
+    </nodes>
+    <edges>
+      <edge id="0" source="4491" target="19079">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="10" source="4491" target="18367">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="1" source="5953" target="18438">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="4" source="5953" target="18367">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="5" source="5953" target="19232">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="2" source="5579" target="4491" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="12" source="5579" target="18438">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="3" source="5579" target="18765">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="8" source="5579" target="18367">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="6" source="5579" target="4434">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="7" source="4462" target="18367">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="15" source="4438" target="5953">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="11" source="4438" target="18438">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="9" source="4438" target="18367">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="13" source="5842" target="18367" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="14" source="5842" target="18408">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="16" source="5842" target="18820" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="17" source="6872" target="4434">
+        <attvalues></attvalues>
+      </edge>
+    </edges>
+  </graph>
+</gexf>
