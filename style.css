@@ -1,0 +1,66 @@
+body {
+    font-family: Arial;
+    background-color: #888;
+    margin: 1em 3em;
+    text-align: center;
+}
+dt {
+    font-weight: bold;
+}
+dd {
+    margin-bottom: 0.3em;
+}
+svg, .info-panel {
+    background-color: white;
+    border: 1px solid #aaa;
+}
+g.node {
+    cursor: pointer;
+}
+g.not-selected circle {
+    fill-opacity: 0.3;
+}
+g.not-selected text {
+    opacity: 0.3;
+}
+g.selected circle {
+    /*
+    stroke-width: 4px;
+    stroke: red;
+    */
+}
+g.selected text {
+    font-size: 1em !important;
+}
+line.link {
+    stroke: #aaa;
+    opacity: 0.5;
+}
+line.link.shown {
+    display: block !important;
+}
+#date-slider {
+    margin: 0 auto 1em;
+}
+#wrapper {
+    display: inline-block;
+    background-color: white;
+    padding: 1em;
+    max-width: 1250px;
+}
+#graph-wrapper, .info-panel {
+    vertical-align: top;
+    float: left;
+}
+#graph {
+    margin-bottom: 1em;
+}
+.info-panel {
+    width: 400px;
+    height: 223px;
+    overflow-y: auto;
+    text-align: left;
+    padding: 1em;
+    margin: 0 0 1em 1em;
+}
+

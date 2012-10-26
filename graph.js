@@ -29,26 +29,45 @@ function play(frames) {
 function go(frame, i) {
     // Keep slider in sync with playing
     if (typeof i != 'undefined') { $('#date-slider').slider('value', i); }
+
+    // Calculate the denormalized position so we can use it later
+    frame.nodes = frame.nodes.map(function(n) { 
+            n.denormPosition = denormalizePosition(n.position);
+            return n;
+    });
+
     var nodes = svg.selectAll("g.node")
         .data(frame.nodes, function(n) { return n.id; })
 
-    // Enter
+    var links = svg.selectAll("line.link")
+        .data(frame.links, function(l) { return l.id; });
+
+    links.enter()
+        .insert("line", 'g.node')
+        .attr("class", "link")
+        .attr('x1', function(l) { return frame.nodes[l.source].denormPosition.x; })
+        .attr('y1', function(l) { return frame.nodes[l.source].denormPosition.y; })
+        .attr('x2', function(l) { return frame.nodes[l.target].denormPosition.x; })
+        .attr('y2', function(l) { return frame.nodes[l.target].denormPosition.y; })
+        .style('display', 'none');
+
     var group = nodes.enter()
         .append("g")
         .attr("class", "node")
         .attr("transform", function(n) {
             return "translate("
-                + convertXCoord(n.position.x)
+                + n.denormPosition.x
                 + ","
-                + convertYCoord(n.position.y)
+                + n.denormPosition.y
                 + ")";
         })
         .classed('not-selected', function() { return !d3.select('.not-selected').empty(); })
 
+
     group
         .append('circle')
         .attr('r', 0)
-        .attr('id', function(n) { return n.id; })
+        .attr('id', function(n) { return n.index; })
         .style("fill", function(n) { return d3.rgb(n.color.r, n.color.g, n.color.b); });
 
     group
@@ -62,11 +81,16 @@ function go(frame, i) {
     var trans = nodes
         .transition()
         .duration(DURATION)
-        .attr("transform", function(n) { return "translate(" + convertXCoord(n.position.x) + "," + convertYCoord(n.position.y) + ")"; });
+        .attr("transform", function(n) {
+            return "translate("
+                + n.denormPosition.x
+                + ","
+                + n.denormPosition.y
+                + ")";
+        })
 
     trans
         .select('circle')
-        //.ease('linear')
         .attr("r", function(n) { return radius(n.size); })
         .style("fill", function(n) { return d3.rgb(n.color.r, n.color.g, n.color.b); })
     
@@ -76,6 +100,18 @@ function go(frame, i) {
             var size = fontSize(radius(n.size));
             return size > LABEL_CUTOFF ? size + 'px' : '0';
         })
+
+    links.filter('.shown').transition().duration(DURATION)
+        .attr('x1', function(l) { return frame.nodes[l.source].denormPosition.x; })
+        .attr('y1', function(l) { return frame.nodes[l.source].denormPosition.y; })
+        .attr('x2', function(l) { return frame.nodes[l.target].denormPosition.x; })
+        .attr('y2', function(l) { return frame.nodes[l.target].denormPosition.y; })
+
+    links.filter(':not(.shown)')
+        .attr('x1', function(l) { return frame.nodes[l.source].denormPosition.x; })
+        .attr('y1', function(l) { return frame.nodes[l.source].denormPosition.y; })
+        .attr('x2', function(l) { return frame.nodes[l.target].denormPosition.x; })
+        .attr('y2', function(l) { return frame.nodes[l.target].denormPosition.y; })
 
     // Exit
     var exit = nodes.exit(),
@@ -90,6 +126,11 @@ function go(frame, i) {
         .style('font-size', '0px');
 
     exitTrans.remove();
+
+    links.exit()
+        .transition()
+        .style('stroke-width', 0)
+        .remove();
 
     // Keep node-info in sync with data in node
     userSelected = svg.select('g.node.selected');
@@ -109,42 +150,17 @@ function go(frame, i) {
         d3.select(this).classed('selected', true);
         nodes.classed('not-selected', function(n) { return n != node; });
         populateNodeInfo(node);
+        showLinks(node);
     });
 
     svg.on('click',
         function() {
             nodes.classed('not-selected', false).classed('selected', false);
+            links.classed('shown', false);
             d3.select('#node-info').html('');
         },
     // Capture
     true);
-
-    /*
-    var links = svg.selectAll("line.link")
-        .data(frame.links, function(l) { return l.id; });
-
-    links.enter()
-        .append("line")
-        .attr("class", "link")
-        .attr('x1', function(l) { return d3.select(nodes[0][l.source]).attr('cx'); })
-        .attr('y1', function(l) { return d3.select(nodes[0][l.source]).attr('cy'); })
-        .attr('x2', function(l) { return d3.select(nodes[0][l.target]).attr('cx'); })
-        .attr('y2', function(l) { return d3.select(nodes[0][l.target]).attr('cy'); })
-        .style("stroke-width", 0);
-
-    links
-        .transition()
-        .attr('x1', function(l) { return d3.select(nodes[0][l.source]).attr('cx'); })
-        .attr('y1', function(l) { return d3.select(nodes[0][l.source]).attr('cy'); })
-        .attr('x2', function(l) { return d3.select(nodes[0][l.target]).attr('cx'); })
-        .attr('y2', function(l) { return d3.select(nodes[0][l.target]).attr('cy'); })
-        .style("stroke-width", 1);
-
-    links.exit()
-        .transition()
-        .style('stroke-width', 0)
-        .remove();
-    //*/
 }
 
 function convertXCoord(x) {
@@ -153,6 +169,10 @@ function convertXCoord(x) {
 
 function convertYCoord(y) {
     return height - y * (height - Y_MARGIN * 2) - Y_MARGIN;
+}
+
+function denormalizePosition(position) {
+    return { x: convertXCoord(position.x), y: convertYCoord(position.y) };
 }
 
 function populateNodeInfo(node) {
@@ -165,7 +185,14 @@ function populateNodeInfo(node) {
     );
 }
 
-d3.json('frames3.json', function(frames) {
+function showLinks(node) {
+    d3.selectAll('line.link').filter(function(link) {
+        return link.source == node.index || link.target == node.index;
+    })
+    .classed('shown', true);
+}
+
+d3.json('frames2.json', function(frames) {
     var slider = $('#date-slider').slider({
         min: 0,
         max: frames.length - 1,
