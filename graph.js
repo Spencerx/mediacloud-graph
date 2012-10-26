@@ -1,30 +1,37 @@
-var width = 800,
-    height = 800,
-    MAX_SIZE = 20,
-    MIN_SIZE = 2,
+var GRAPH_WIDTH   = 700,
+    GRAPH_HEIGHT  = 700,
+    MAX_SIZE      = 45,
+    MIN_SIZE      = 2,
     MAX_FONT_SIZE = 36,
     MIN_FONT_SIZE = 3,
-    X_MARGIN = 60,
-    Y_MARGIN = 60,
-    TIMEOUT = 2000,
-    DURATION = 1500,
-    LABEL_CUTOFF = 4;
+    X_MARGIN      = 60,
+    Y_MARGIN      = 60,
+    TIMEOUT       = 2000,
+    DURATION      = 1500,
+    LABEL_CUTOFF  = 4,
+    SHOW_LABELS   = false,
+    radius        = d3.scale.linear().domain([0,1]).range([MIN_SIZE, MAX_SIZE]),
+    fontSize      = d3.scale.linear().domain([LABEL_CUTOFF,MAX_SIZE]).range([MIN_FONT_SIZE, MAX_FONT_SIZE]).clamp(true);
 
 var svg = d3.select("#graph").append("svg")
-    .attr("width", width)
-    .attr("height", height);
+        .attr("width", GRAPH_WIDTH)
+        .attr("height", GRAPH_HEIGHT);
 
-var radius = d3.scale.linear().domain([0,1]).range([MIN_SIZE, MAX_SIZE]);
-var fontSize = d3.scale.linear().domain([LABEL_CUTOFF,MAX_SIZE]).range([MIN_FONT_SIZE, MAX_FONT_SIZE]).clamp(true);
+d3.select('#date-slider').style('width', (GRAPH_WIDTH - 2 * X_MARGIN) + 'px');
+d3.select('#graph-wrapper').style('width', GRAPH_WIDTH + 'px');
 
-d3.select('#date-slider').style('width', (width - 2 * X_MARGIN) + 'px');
-d3.select('#graph-wrapper').style('width', width + 'px');
-
-function play(frames) {
-    frames.forEach(function(frame, i) {
-        setTimeout(go, i * TIMEOUT, frame, i);
-    })
-}
+d3.json('frames2.json', function(frames) {
+    var slider = $('#date-slider').slider({
+        min: 0,
+        max: frames.length - 1,
+        range: "min",
+        change: function(event, ui) {
+            go(frames[ui.value]);
+        }
+    });
+    go(frames[0]);
+    d3.select('#play').on('click', function(d, i) { play(frames); });
+});
 
 function go(frame, i) {
     // Keep slider in sync with playing
@@ -36,33 +43,27 @@ function go(frame, i) {
             return n;
     });
 
+    // Grab the selectors now so we don't have to keep doing it
     var nodes = svg.selectAll("g.node")
         .data(frame.nodes, function(n) { return n.id; })
-
     var links = svg.selectAll("line.link")
         .data(frame.links, function(l) { return l.id; });
 
-    links.enter()
+    var linkEnter = links.enter()
         .insert("line", 'g.node')
+        .style('display', 'none')
         .attr("class", "link")
-        .attr('x1', function(l) { return frame.nodes[l.source].denormPosition.x; })
-        .attr('y1', function(l) { return frame.nodes[l.source].denormPosition.y; })
-        .attr('x2', function(l) { return frame.nodes[l.target].denormPosition.x; })
-        .attr('y2', function(l) { return frame.nodes[l.target].denormPosition.y; })
-        .style('display', 'none');
+        .datum(function(l) { return updateInteralLinkPosition(l, frame); })
+    setLinkEndAttrs(linkEnter);
+
+    var selectedNode = d3.select('g.node.selected');
+    if (!selectedNode.empty()) { showLinks(selectedNode.datum()); }
 
     var group = nodes.enter()
         .append("g")
         .attr("class", "node")
-        .attr("transform", function(n) {
-            return "translate("
-                + n.denormPosition.x
-                + ","
-                + n.denormPosition.y
-                + ")";
-        })
-        .classed('not-selected', function() { return !d3.select('.not-selected').empty(); })
-
+        .attr("transform", function(n) { return "translate(" + n.denormPosition.x + "," + n.denormPosition.y + ")"; })
+        .classed('not-selected', function() { return !d3.select('.not-selected').empty(); });
 
     group
         .append('circle')
@@ -73,7 +74,7 @@ function go(frame, i) {
     group
         .append('text')
         .attr('text-anchor', 'middle')
-        .attr('dy', '.2em')
+        .attr('dy', '.3em')
         .text(function(n) { return n.label; })
         .style('font-size', '0px');
 
@@ -81,56 +82,36 @@ function go(frame, i) {
     var trans = nodes
         .transition()
         .duration(DURATION)
-        .attr("transform", function(n) {
-            return "translate("
-                + n.denormPosition.x
-                + ","
-                + n.denormPosition.y
-                + ")";
-        })
+        .attr("transform", function(n) { return "translate(" + n.denormPosition.x + "," + n.denormPosition.y + ")"; })
 
     trans
         .select('circle')
         .attr("r", function(n) { return radius(n.size); })
         .style("fill", function(n) { return d3.rgb(n.color.r, n.color.g, n.color.b); })
     
-    trans
-        .select('text')
-        .style('font-size', function(n) {
-            var size = fontSize(radius(n.size));
-            return size > LABEL_CUTOFF ? size + 'px' : '0';
-        })
+    if (SHOW_LABELS) {
+        trans
+            .select('text')
+            .style('font-size', function(n) {
+                var size = fontSize(radius(n.size));
+                return size > LABEL_CUTOFF ? size + 'px' : '0';
+            });
+    }
 
-    links.filter('.shown').transition().duration(DURATION)
-        .attr('x1', function(l) { return frame.nodes[l.source].denormPosition.x; })
-        .attr('y1', function(l) { return frame.nodes[l.source].denormPosition.y; })
-        .attr('x2', function(l) { return frame.nodes[l.target].denormPosition.x; })
-        .attr('y2', function(l) { return frame.nodes[l.target].denormPosition.y; })
-
-    links.filter(':not(.shown)')
-        .attr('x1', function(l) { return frame.nodes[l.source].denormPosition.x; })
-        .attr('y1', function(l) { return frame.nodes[l.source].denormPosition.y; })
-        .attr('x2', function(l) { return frame.nodes[l.target].denormPosition.x; })
-        .attr('y2', function(l) { return frame.nodes[l.target].denormPosition.y; })
+    var hiddenLinks = links.datum(function(l) { return updateInteralLinkPosition(l, frame); }).filter(':not(.shown)'),
+        shownLinks = links.filter('.shown').transition().duration(DURATION);
+    setLinkEndAttrs(hiddenLinks);
+    setLinkEndAttrs(shownLinks, true);
 
     // Exit
     var exit = nodes.exit(),
         exitTrans = exit.transition();
 
-    exitTrans
-        .select('circle')
-        .attr('r', 0);
-
-    exitTrans
-        .select('text')
-        .style('font-size', '0px');
-
+    exitTrans.select('circle').attr('r', 0);
+    exitTrans.select('text').style('font-size', '0px');
     exitTrans.remove();
 
-    links.exit()
-        .transition()
-        .style('stroke-width', 0)
-        .remove();
+    links.exit().transition().style('stroke-width', 0).remove();
 
     // Keep node-info in sync with data in node
     userSelected = svg.select('g.node.selected');
@@ -150,6 +131,7 @@ function go(frame, i) {
         d3.select(this).classed('selected', true);
         nodes.classed('not-selected', function(n) { return n != node; });
         populateNodeInfo(node);
+        setLinkEndAttrs(links);
         showLinks(node);
     });
 
@@ -163,16 +145,11 @@ function go(frame, i) {
     true);
 }
 
-function convertXCoord(x) {
-    return x * (width - X_MARGIN * 2) + X_MARGIN;
-}
-
-function convertYCoord(y) {
-    return height - y * (height - Y_MARGIN * 2) - Y_MARGIN;
-}
-
 function denormalizePosition(position) {
-    return { x: convertXCoord(position.x), y: convertYCoord(position.y) };
+    return {
+        x: position.x * (GRAPH_WIDTH - X_MARGIN * 2) + X_MARGIN,
+        y: GRAPH_HEIGHT - position.y * (GRAPH_HEIGHT - Y_MARGIN * 2) - Y_MARGIN
+    };
 }
 
 function populateNodeInfo(node) {
@@ -189,18 +166,39 @@ function showLinks(node) {
     d3.selectAll('line.link').filter(function(link) {
         return link.source == node.index || link.target == node.index;
     })
-    .classed('shown', true);
+    .classed('shown', true)
+    .transition().duration(DURATION)
+    .attr('x2', function(l) { return l.position.x2; })
+    .attr('y2', function(l) { return l.position.y2; });
 }
 
-d3.json('frames2.json', function(frames) {
-    var slider = $('#date-slider').slider({
-        min: 0,
-        max: frames.length - 1,
-        range: "min",
-        change: function(event, ui) {
-            go(frames[ui.value]);
-        }
-    });
-    go(frames[0]);
-    d3.select('#play').on('click', function(d, i) { play(frames); });
-});
+function updateInteralLinkPosition(link, frame) {
+    link.position = {
+        x1: frame.nodes[link.source].denormPosition.x,
+        y1: frame.nodes[link.source].denormPosition.y,
+        x2: frame.nodes[link.target].denormPosition.x,
+        y2: frame.nodes[link.target].denormPosition.y
+    };
+    return link;
+}
+
+function setLinkEndAttrs(links, maximized) {
+    links
+        .attr('x1', function(l) { return l.position.x1; })
+        .attr('y1', function(l) { return l.position.y1; })
+    if (maximized) {
+    links
+        .attr('x2', function(l) { return l.position.x2; })
+        .attr('y2', function(l) { return l.position.y2; })
+    } else {
+    links
+        .attr('x2', function(l) { return l.position.x1; })
+        .attr('y2', function(l) { return l.position.y1; })
+    }
+}
+
+function play(frames) {
+    frames.forEach(function(frame, i) {
+        setTimeout(go, i * TIMEOUT, frame, i);
+    })
+}

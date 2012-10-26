@@ -31,6 +31,7 @@ class MyDocument < Nokogiri::XML::SAX::Document
             @active_node = {
                 'id'    => attributes['id'].to_i,
                 'label' => attributes['label'],
+                'index' => @nodes.length
             }
         when 'attvalue'
             attr = @attributes.select { |attr| attr['id'] == attributes['for'] }.first
