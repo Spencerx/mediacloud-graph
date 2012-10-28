@@ -29,6 +29,9 @@ g.selected circle {
     stroke: red;
     */
 }
+g.connected circle {
+    fill-opacity: 1;
+}
 g.selected text {
     font-size: 1em !important;
 }

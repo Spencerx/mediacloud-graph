@@ -10,15 +10,48 @@ var GRAPH_WIDTH   = 700,
     DURATION      = 1500,
     LABEL_CUTOFF  = 4,
     SHOW_LABELS   = false,
+    ZOOM_SPEED    = 0.3,
+    MAX_ZOOM      = 8,
+    MIN_ZOOM      = 1,
     radius        = d3.scale.linear().domain([0,1]).range([MIN_SIZE, MAX_SIZE]),
     fontSize      = d3.scale.linear().domain([LABEL_CUTOFF,MAX_SIZE]).range([MIN_FONT_SIZE, MAX_FONT_SIZE]).clamp(true);
 
-var svg = d3.select("#graph").append("svg")
+var svg = d3.select("#graph")
+    .append("svg")
         .attr("width", GRAPH_WIDTH)
-        .attr("height", GRAPH_HEIGHT);
+        .attr("height", GRAPH_HEIGHT)
+        .attr("pointer-events", "all")
+        .append('g')
+        .attr('id', 'zoom-wrap')
+        .call(d3.behavior.zoom().scaleExtent([1, 8]).on("zoom", redraw))
+        .append('g')
+        
+svg.append('svg:rect')
+    .attr('width', GRAPH_WIDTH)
+    .attr('height', GRAPH_HEIGHT)
+    .attr('fill', 'white'); 
+
+svg.append('svg:defs')
+    .append('svg:marker')
+    .attr('id', 'triangle')
+    .attr('viewBox', '0 0 10 10')
+    .attr('refX', 1)
+    .attr('refY', 5)
+    .attr('markerWidth', 6)
+    .attr('markerHeight', 6)
+    .attr('orient', 'auto')
+    .append('path')
+    .attr('d', 'M 0 0 L 10 5 L 0 10 z');
 
 d3.select('#date-slider').style('width', (GRAPH_WIDTH - 2 * X_MARGIN) + 'px');
 d3.select('#graph-wrapper').style('width', GRAPH_WIDTH + 'px');
+
+function redraw() {
+    xScale = d3.scale.linear().domain([-1 * (d3.event.scale - 1) * svg.node().getBBox().width, 0]).range([-1 * (d3.event.scale - 1) * svg.node().getBBox().width, 0]).clamp(true); 
+    yScale = d3.scale.linear().domain([-1 * (d3.event.scale - 1) * svg.node().getBBox().height, 0]).range([-1 * (d3.event.scale - 1) * svg.node().getBBox().height, 0]).clamp(true); 
+    d3.event.translate = [xScale(d3.event.translate[0]), yScale(d3.event.translate[1])];
+    svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+}
 
 d3.json('frames2.json', function(frames) {
     var slider = $('#date-slider').slider({
@@ -52,6 +85,7 @@ function go(frame, i) {
     var linkEnter = links.enter()
         .insert("line", 'g.node')
         .style('display', 'none')
+    //    .style('marker-end', 'url(#triangle)')
         .attr("class", "link")
         .datum(function(l) { return updateInteralLinkPosition(l, frame); })
     setLinkEndAttrs(linkEnter);
@@ -68,13 +102,12 @@ function go(frame, i) {
     group
         .append('circle')
         .attr('r', 0)
-        .attr('id', function(n) { return n.index; })
         .style("fill", function(n) { return d3.rgb(n.color.r, n.color.g, n.color.b); });
 
     group
         .append('text')
         .attr('text-anchor', 'middle')
-        .attr('dy', '.3em')
+        .attr('dy', '5px')
         .text(function(n) { return n.label; })
         .style('font-size', '0px');
 
@@ -114,7 +147,7 @@ function go(frame, i) {
     links.exit().transition().style('stroke-width', 0).remove();
 
     // Keep node-info in sync with data in node
-    userSelected = svg.select('g.node.selected');
+    userSelected = d3.select('g.node.selected');
     if (!userSelected.empty()) {
         populateNodeInfo(userSelected.data()[0]);
     }
@@ -135,7 +168,7 @@ function go(frame, i) {
         showLinks(node);
     });
 
-    svg.on('click',
+    d3.select('#graph').on('click',
         function() {
             nodes.classed('not-selected', false).classed('selected', false);
             links.classed('shown', false);
@@ -163,13 +196,26 @@ function populateNodeInfo(node) {
 }
 
 function showLinks(node) {
-    d3.selectAll('line.link').filter(function(link) {
+    var links = d3.selectAll('line.link').filter(function(link) {
         return link.source == node.index || link.target == node.index;
+    });
+
+    /*
+    links.each(function(link) {
+        d3.selectAll('g.node').filter(function(node) {
+            return link.source == node.index;
+        }).select('circle').transition().style('fill', '#ee2222').style('fill-opacity', 1);
+        d3.selectAll('g.node').filter(function(node) {
+            return link.target == node.index;
+        }).select('circle').transition().style('fill', '#2222ee').style('fill-opacity', 1);
     })
-    .classed('shown', true)
-    .transition().duration(DURATION)
-    .attr('x2', function(l) { return l.position.x2; })
-    .attr('y2', function(l) { return l.position.y2; });
+    */
+
+    links
+        .classed('shown', true)
+        .transition().duration(DURATION)
+        .attr('x2', function(l) { return l.position.x2; })
+        .attr('y2', function(l) { return l.position.y2; });
 }
 
 function updateInteralLinkPosition(link, frame) {
