@@ -1,20 +1,20 @@
-var GRAPH_WIDTH   = 700,
-    GRAPH_HEIGHT  = 700,
-    MAX_SIZE      = 25,
-    MIN_SIZE      = 2,
-    MAX_FONT_SIZE = 36,
-    MIN_FONT_SIZE = 3,
-    X_MARGIN      = 60,
-    Y_MARGIN      = 60,
-    TIMEOUT       = 2000,
-    DURATION      = 1500,
-    LABEL_CUTOFF  = 4,
-    SHOW_LABELS   = false,
-    ZOOM_SPEED    = 0.3,
-    MAX_ZOOM      = 8,
-    MIN_ZOOM      = 1,
-    radius        = d3.scale.linear().domain([0,1]).range([MIN_SIZE, MAX_SIZE]),
-    fontSize      = d3.scale.linear().domain([LABEL_CUTOFF,MAX_SIZE]).range([MIN_FONT_SIZE, MAX_FONT_SIZE]).clamp(true);
+var GRAPH_WIDTH       = 700,
+    GRAPH_HEIGHT      = 700,
+    MAX_SIZE          = 25,
+    MIN_SIZE          = 2,
+    MAX_FONT_SIZE     = 36,
+    MIN_FONT_SIZE     = 3,
+    X_MARGIN          = 60,
+    Y_MARGIN          = 60,
+    TIMEOUT           = 2000,
+    DURATION          = 1500,
+    LABEL_SIZE_CUTOFF = 4,
+    SHOW_LABELS       = false,
+    ZOOM_SPEED        = 0.3,
+    MAX_ZOOM          = 10,
+    MIN_ZOOM          = 1,
+    radius            = d3.scale.linear().domain([0,1]).range([MIN_SIZE, MAX_SIZE]),
+    fontSize          = d3.scale.linear().domain([MIN_SIZE,MAX_SIZE]).range([MIN_FONT_SIZE, MAX_FONT_SIZE]).clamp(true);
 
 var svg = d3.select("#graph")
     .append("svg")
@@ -46,24 +46,18 @@ svg.append('svg:defs')
 d3.select('#date-slider').style('width', (GRAPH_WIDTH - 2 * X_MARGIN) + 'px');
 d3.select('#graph-wrapper').style('width', GRAPH_WIDTH + 'px');
 d3.select('#show-edges').on('click', function() {
-    console.log('here');
     if (!d3.select(this).filter(':checked').empty()) {
         d3.selectAll('line.link')
             .classed('shown', true)
             .transition().duration(DURATION)
             .attr('x2', function(l) { return l.position.x2; })
             .attr('y2', function(l) { return l.position.y2; });
+    } else {
+        setLinkEndAttrs(d3.selectAll('line.link').classed('shown', false));
     }
 });
 
-function redraw() {
-    xScale = d3.scale.linear().domain([-1 * (d3.event.scale - 1) * svg.node().getBBox().width, 0]).range([-1 * (d3.event.scale - 1) * svg.node().getBBox().width, 0]).clamp(true); 
-    yScale = d3.scale.linear().domain([-1 * (d3.event.scale - 1) * svg.node().getBBox().height, 0]).range([-1 * (d3.event.scale - 1) * svg.node().getBBox().height, 0]).clamp(true); 
-    d3.event.translate = [xScale(d3.event.translate[0]), yScale(d3.event.translate[1])];
-    svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
-}
-
-d3.json('frames4.json', function(frames) {
+d3.json('frames3.json', function(frames) {
     var slider = $('#date-slider').slider({
         min: 0,
         max: frames.length - 1,
@@ -75,6 +69,20 @@ d3.json('frames4.json', function(frames) {
     go(frames[0]);
     d3.select('#play').on('click', function(d, i) { play(frames); });
 });
+
+function redraw() {
+    xScale = d3.scale.linear().domain([-1 * (d3.event.scale - 1) * svg.node().getBBox().width, 0]).range([-1 * (d3.event.scale - 1) * svg.node().getBBox().width, 0]).clamp(true); 
+    yScale = d3.scale.linear().domain([-1 * (d3.event.scale - 1) * svg.node().getBBox().height, 0]).range([-1 * (d3.event.scale - 1) * svg.node().getBBox().height, 0]).clamp(true); 
+    d3.event.translate = [xScale(d3.event.translate[0]), yScale(d3.event.translate[1])];
+    svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+    d3.selectAll('circle').attr('r', function(n) { return radius(n.size) / d3.event.scale; });
+    d3.selectAll('line.link').style('stroke-width', function() { return 1 / d3.event.scale; });
+    d3.selectAll('text').style('font-size', function(n) {             
+        var size = fontSize(radius(n.size)) / d3.event.scale;
+        return size > LABEL_CUTOFF ? size + 'px' : '0';
+    });
+
+}
 
 function go(frame, i) {
     // Keep slider in sync with playing
@@ -106,7 +114,8 @@ function go(frame, i) {
     var group = nodes.enter()
         .append("g")
         .attr("class", "node")
-        .attr("transform", function(n) { return "translate(" + n.denormPosition.x + "," + n.denormPosition.y + ")"; })
+        .attr("transform", function(n) { return "translate("
+            + n.denormPosition.x + "," + n.denormPosition.y + ")"; })
         .classed('not-selected', function() { return !d3.select('.not-selected').empty(); });
 
     group
@@ -117,29 +126,25 @@ function go(frame, i) {
     group
         .append('text')
         .attr('text-anchor', 'middle')
-        .attr('dy', '5px')
+        .attr('dy', '0.3em')
         .text(function(n) { return n.label; })
-        .style('font-size', '0px');
+        .classed('hidden', function(n) { return !SHOW_LABELS || fontSize(radius(n.size)) < LABEL_SIZE_CUTOFF; })
+        .style('font-size', function(n) {
+            return fontSize(radius(n.size));
+        });
 
     // Update
     var trans = nodes
         .transition()
         .duration(DURATION)
-        .attr("transform", function(n) { return "translate(" + n.denormPosition.x + "," + n.denormPosition.y + ")"; })
+        .attr("transform", function(n) { return "translate("
+            + n.denormPosition.x + "," + n.denormPosition.y + ")";
+        });
 
     trans
         .select('circle')
         .attr("r", function(n) { return radius(n.size); })
         .style("fill", function(n) { return d3.rgb(n.color.r, n.color.g, n.color.b); })
-    
-    if (SHOW_LABELS) {
-        trans
-            .select('text')
-            .style('font-size', function(n) {
-                var size = fontSize(radius(n.size));
-                return size > LABEL_CUTOFF ? size + 'px' : '0';
-            });
-    }
 
     var hiddenLinks = links.datum(function(l) { return updateInteralLinkPosition(l, frame); }).filter(':not(.shown)'),
         shownLinks = links.filter('.shown').transition().duration(DURATION);

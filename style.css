@@ -32,8 +32,10 @@ g.selected circle {
 g.connected circle {
     fill-opacity: 1;
 }
+text.hidden {
+    display: none;
+}
 g.selected text {
-    font-size: 1em !important;
 }
 line.link {
     stroke: #aaa;
