@@ -72,13 +72,13 @@ end
 # Create a new parser
 parser = Nokogiri::XML::SAX::Parser.new(MyDocument.new)
 
-filenames = Dir.entries('key_frames2').reject! { |filename| filename[0] == '.' }.sort_by! { |filename| filename.to_i }
+filenames = Dir.entries('key_frames4').reject! { |filename| filename[0] == '.' }.sort_by! { |filename| filename.to_i }
 
 # Feed the parser some XML
 #parser.parse(File.open('data/sopa_media_link_monthly_2010-10-02_2010-11-02.gexf'))
 filenames.each do |filename|
-    puts "key_frames2/#{filename}"
-    parser.parse_file("key_frames2/#{filename}")
+    puts "key_frames4/#{filename}"
+    parser.parse_file("key_frames4/#{filename}")
 end
 
-File.open('frames2.json', 'w') {|f| f.write(@@frames.to_json) }
+File.open('frames4.json', 'w') {|f| f.write(@@frames.to_json) }

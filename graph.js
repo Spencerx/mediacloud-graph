@@ -1,6 +1,6 @@
 var GRAPH_WIDTH   = 700,
     GRAPH_HEIGHT  = 700,
-    MAX_SIZE      = 45,
+    MAX_SIZE      = 25,
     MIN_SIZE      = 2,
     MAX_FONT_SIZE = 36,
     MIN_FONT_SIZE = 3,
@@ -45,6 +45,16 @@ svg.append('svg:defs')
 
 d3.select('#date-slider').style('width', (GRAPH_WIDTH - 2 * X_MARGIN) + 'px');
 d3.select('#graph-wrapper').style('width', GRAPH_WIDTH + 'px');
+d3.select('#show-edges').on('click', function() {
+    console.log('here');
+    if (!d3.select(this).filter(':checked').empty()) {
+        d3.selectAll('line.link')
+            .classed('shown', true)
+            .transition().duration(DURATION)
+            .attr('x2', function(l) { return l.position.x2; })
+            .attr('y2', function(l) { return l.position.y2; });
+    }
+});
 
 function redraw() {
     xScale = d3.scale.linear().domain([-1 * (d3.event.scale - 1) * svg.node().getBBox().width, 0]).range([-1 * (d3.event.scale - 1) * svg.node().getBBox().width, 0]).clamp(true); 
@@ -53,7 +63,7 @@ function redraw() {
     svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
 }
 
-d3.json('frames2.json', function(frames) {
+d3.json('frames4.json', function(frames) {
     var slider = $('#date-slider').slider({
         min: 0,
         max: frames.length - 1,
