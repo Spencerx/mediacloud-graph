@@ -13,6 +13,7 @@ var GRAPH_WIDTH       = 700,
     ZOOM_SPEED        = 0.3,
     MAX_ZOOM          = 10,
     MIN_ZOOM          = 1,
+    LABEL_OFFSET      = 0.3,
     radius            = d3.scale.linear().domain([0,1]).range([MIN_SIZE, MAX_SIZE]),
     fontSize          = d3.scale.linear().domain([MIN_SIZE,MAX_SIZE]).range([MIN_FONT_SIZE, MAX_FONT_SIZE]).clamp(true);
 
@@ -23,7 +24,7 @@ var svg = d3.select("#graph")
         .attr("pointer-events", "all")
         .append('g')
         .attr('id', 'zoom-wrap')
-        .call(d3.behavior.zoom().scaleExtent([1, 8]).on("zoom", redraw))
+        .call(d3.behavior.zoom().scaleExtent([1, MAX_ZOOM]).on("zoom", redraw))
         .append('g')
         
 svg.append('svg:rect')
@@ -56,6 +57,8 @@ d3.select('#show-edges').on('click', function() {
         setLinkEndAttrs(d3.selectAll('line.link').classed('shown', false));
     }
 });
+d3.select('#show-labels').on('click', showLabels);
+
 
 d3.json('frames3.json', function(frames) {
     var slider = $('#date-slider').slider({
@@ -70,6 +73,15 @@ d3.json('frames3.json', function(frames) {
     d3.select('#play').on('click', function(d, i) { play(frames); });
 });
 
+function showLabels() {
+    if (!d3.select('#show-labels').filter(':checked').empty()) {
+        d3.selectAll('text')
+            .classed('hidden', function(n) { return fontSize(radius(n.size)) < LABEL_SIZE_CUTOFF; })
+    } else {
+        d3.selectAll('text').classed('hidden', true);
+    }
+}
+
 function redraw() {
     xScale = d3.scale.linear().domain([-1 * (d3.event.scale - 1) * svg.node().getBBox().width, 0]).range([-1 * (d3.event.scale - 1) * svg.node().getBBox().width, 0]).clamp(true); 
     yScale = d3.scale.linear().domain([-1 * (d3.event.scale - 1) * svg.node().getBBox().height, 0]).range([-1 * (d3.event.scale - 1) * svg.node().getBBox().height, 0]).clamp(true); 
@@ -79,9 +91,8 @@ function redraw() {
     d3.selectAll('line.link').style('stroke-width', function() { return 1 / d3.event.scale; });
     d3.selectAll('text').style('font-size', function(n) {             
         var size = fontSize(radius(n.size)) / d3.event.scale;
-        return size > LABEL_CUTOFF ? size + 'px' : '0';
-    });
-
+        return size > LABEL_SIZE_CUTOFF / d3.event.scale ? size + 'px' : '0';
+    }).attr('dy', function() { return LABEL_OFFSET + 'em'; });
 }
 
 function go(frame, i) {
@@ -126,7 +137,7 @@ function go(frame, i) {
     group
         .append('text')
         .attr('text-anchor', 'middle')
-        .attr('dy', '0.3em')
+        .attr('dy', LABEL_OFFSET + 'em')
         .text(function(n) { return n.label; })
         .classed('hidden', function(n) { return !SHOW_LABELS || fontSize(radius(n.size)) < LABEL_SIZE_CUTOFF; })
         .style('font-size', function(n) {
@@ -172,6 +183,8 @@ function go(frame, i) {
         nodes.classed('not-selected', false).classed('selected', false);
         d3.select('#node-info').html('');
     }
+
+    showLabels();
     
     // Event handlers
     nodes.on('click', function() {
