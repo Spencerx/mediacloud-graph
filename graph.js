@@ -119,6 +119,12 @@ function go(frame, i) {
     // Keep slider in sync with playing
     if (typeof i != 'undefined') { $('#date-slider').slider('value', i); }
 
+    if (frame.narrative) {
+        d3.select('#frame-info').text(frame.narrative);
+    } else {
+        d3.select('#frame-info').text('');
+    }
+
     // Calculate the denormalized position so we can use it later
     frame.nodes = frame.nodes.map(function(n) { 
             n.denormPosition = denormalizePosition(n.position);
@@ -217,9 +223,15 @@ function go(frame, i) {
     showLabels();
     
     // Event handlers
-    nodes.on('click', function() {
+    nodes.on('click', function(n) {
         var node = d3.select(this).data()[0];
         d3.select(this).classed('selected', true);
+        if (n.screenshot) {
+            d3.select('#image').html('<img src="' + n.screenshot + '" />');
+        } else {
+            d3.select('#image').html('');
+        }
+            
         if (d3.select('#show-labels:checked').empty()) { 
             d3.selectAll('text.label').classed('hidden', true);
         }

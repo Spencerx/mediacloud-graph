@@ -4,12 +4,23 @@ require 'json/ext'
 @@frames = []
 @@folder_name = 'key_frames3'
 @@output_file = 'frames3.json'
+@@node_narratives = JSON.load(File.open('nodeNarratives.json', 'r'))
+@@frame_narratives = JSON.load(File.open('frameNarratives.json', 'r'))
 
 class MyDocument < Nokogiri::XML::SAX::Document
     def start_document
         @nodes = []
         @links = []
         @attributes = []
+        @narrative = ''
+        @start_date = ''
+        @end_date = ''
+        narrative = @@frame_narratives.select { |narr| narr['frame'] - 1 == @@frames.length }
+        unless narrative.empty?
+            @narrative = narrative[0]['narrative']
+            @start_date = narrative[0]['start_date']
+            @end_date = narrative[0]['end_date']
+        end
     end
 
     def end_document
@@ -19,7 +30,13 @@ class MyDocument < Nokogiri::XML::SAX::Document
             link['target'] = @nodes.index { |node| node['id'] == link['target'] }
             link
         end
-        @@frames << {'nodes' => @nodes, 'links' => @links}
+        @@frames << {
+            'nodes'      => @nodes,
+            'links'      => @links,
+            'narrative'  => @narrative,
+            'start_date' => @start_date,
+            'end_date'   => @end_date
+        }
     end
 
     def start_element name, attributes = []
@@ -35,6 +52,14 @@ class MyDocument < Nokogiri::XML::SAX::Document
                 'label' => attributes['label'],
                 'index' => @nodes.length
             }
+            narratives = @@node_narratives.select do |narrative| 
+                narrative['id'] == @active_node['id'] &&
+                    narrative['frames'].include?(@@frames.length)
+            end
+            unless narratives.empty?
+                @active_node['narrative'] = narratives[0]['narrative']
+                @active_node['screenshot'] = narratives[0]['screenshot']
+            end
         when 'attvalue'
             attr = @attributes.select { |attr| attr['id'] == attributes['for'] }.first
             key = attr['title']

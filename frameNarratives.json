@@ -1,0 +1,21 @@
+[
+{
+    "frame"      : 1,
+    "narrative"  : "This is a week where stuff happened.",
+    "start_date" : "2012-11-10",
+    "end_date"   : "2012-11-17"
+},
+{
+    "frame"      : 2,
+    "narrative"  : "This is another week where stuff happened.",
+    "start_date" : "2012-11-10",
+    "end_date"   : "2012-11-17"
+},
+{
+    "frame"      : 3,
+    "narrative"  : "Whoa, check out Wikipedia this week.",
+    "start_date" : "2012-11-10",
+    "end_date"   : "2012-11-17"
+}
+]
+
