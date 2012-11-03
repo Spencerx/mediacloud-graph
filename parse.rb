@@ -2,8 +2,8 @@ require 'nokogiri'
 require 'json/ext'
 
 @@frames = []
-@@folder_name = 'key_frames'
-@@output_file = 'frames.json'
+@@folder_name = 'key_frames3'
+@@output_file = 'frames3.json'
 
 class MyDocument < Nokogiri::XML::SAX::Document
     def start_document
