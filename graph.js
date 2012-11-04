@@ -78,6 +78,7 @@ d3.select('#show-edges').on('click', function() {
     }
 });
 d3.select('#show-labels').on('click', showLabels);
+d3.select('#graph').on('click', unhighlightNode, true);
 
 
 d3.json('frames3.json', function(frames) {
@@ -116,19 +117,10 @@ function redraw() {
 }
 
 function go(frame, i) {
-    // Keep slider in sync with playing
-    if (typeof i != 'undefined') { $('#date-slider').slider('value', i); }
-
-    if (frame.narrative) {
-        d3.select('#frame-info').text(frame.narrative);
-    } else {
-        d3.select('#frame-info').text('');
-    }
-
     // Calculate the denormalized position so we can use it later
     frame.nodes = frame.nodes.map(function(n) { 
-            n.denormPosition = denormalizePosition(n.position);
-            return n;
+        n.denormPosition = denormalizePosition(n.position);
+        return n;
     });
 
     // Grab the selectors now so we don't have to keep doing it
@@ -137,30 +129,93 @@ function go(frame, i) {
     var links = svg.selectAll("line.link")
         .data(frame.links, function(l) { return l.id; });
 
-    var linkEnter = links.enter()
-        .insert("line", 'g.node')
-        .style('display', 'none')
-    //    .style('marker-end', 'url(#triangle)')
-        .attr("class", "link")
-        .datum(function(l) { return updateInteralLinkPosition(l, frame); })
-    setLinkEndAttrs(linkEnter);
+    // Enter
+    var group = addGroup(nodes);
+    addCircle(group);
+    addText(group);
+    addLink(frame, links);
 
+    // Event handlers
+    nodes.on('click', highlightNode);
+
+    // Update
+    var updateTransition = updateGroup(nodes);
+    updateCircle(updateTransition);
+    updateText(updateTransition);
+    updateLink(links, frame);
+
+    // Exit
+    var exit = nodes.exit(),
+        exitTrans = exit.transition();
+    exitTrans.select('circle').attr('r', 0);
+    exitTrans.select('text.label').style('font-size', '0px');
+    exitTrans.remove();
+    links.exit().transition().style('stroke-width', 0).remove();
+
+    // Keep slider in sync with playing
+    if (typeof i != 'undefined') { $('#date-slider').slider('value', i); }
+
+    updateFrameNarrative(frame);
+
+    // Keep node-info in sync with data in node
+    userSelected = d3.select('g.node.selected');
+    if (!userSelected.empty()) {
+        populateNodeInfo(userSelected.data()[0]);
+    }
+
+    // Show links for the selected node
     var selectedNode = d3.select('g.node.selected');
     if (!selectedNode.empty()) { showLinks(selectedNode.datum()); }
 
-    var group = nodes.enter()
-        .append("g")
-        .attr("class", "node")
-        .attr("transform", function(n) { return "translate("
-            + n.denormPosition.x + "," + n.denormPosition.y + ")"; })
-        .classed('not-selected', function() { return !d3.select('.not-selected').empty(); });
+    // If selected nodes are removed, make everything normal again
+    if (!exit.filter('.selected').empty()) {
+        nodes.classed('not-selected', false).classed('selected', false);
+        d3.select('#node-info').html('');
+    }
 
+    showLabels();
+}
+
+function highlightNode(node) {
+    d3.select(this).classed('selected', true);
+    if (node.screenshot) {
+        d3.select('#image').html('<img src="' + node.screenshot + '" />');
+    } else {
+        d3.select('#image').html('');
+    }
+
+    if (d3.select('#show-labels:checked').empty()) { 
+        d3.selectAll('text.label').classed('hidden', true);
+    }
+    d3.select(this).select('text.label')
+        .classed('hidden', false)
+        .style('font-size', function(n) {
+            return parseInt(d3.select(this).style('font-size')) < 16 ? 16 : fontSize(radius(node.size));
+        });
+    d3.selectAll('g.node').classed('not-selected', function(n) { return n != node; });
+    populateNodeInfo(node);
+    setLinkEndAttrs(d3.selectAll('line.link'));
+    showLinks(node);
+}
+
+function unhighlightNode() {
+    d3.selectAll('g.node').classed('not-selected', false).classed('selected', false);
+    d3.selectAll('line.link').classed('shown', false);
+    if (d3.select('#show-labels:checked').empty()) {
+        d3.selectAll('text.label').classed('hidden', true);
+    }
+    d3.select('#node-info').html('');
+}
+
+function addCircle(group) {
     group
         .append('circle')
         .attr('r', 0)
         //.style("fill", function(n) { return d3.rgb(n.color.r, n.color.g, n.color.b); });
         .style("fill", function(n) { return siteCategory(n.media_type); })
+}
 
+function addText(group) {
     group
         .append('text')
         .attr('text-anchor', 'middle')
@@ -171,92 +226,49 @@ function go(frame, i) {
         .style('font-size', function(n) {
             return fontSize(radius(n.size));
         });
+}
 
-    // Update
+function updateGroup(nodes) {
     var trans = nodes
         .transition()
         .duration(DURATION)
         .attr("transform", function(n) { return "translate("
             + n.denormPosition.x + "," + n.denormPosition.y + ")";
         });
+    return trans;
+}
 
+function updateCircle(trans) {
+    // Circle update
     trans
         .select('circle')
         .attr("r", function(n) { return radius(n.size); })
         //.style("fill", function(n) { return d3.rgb(n.color.r, n.color.g, n.color.b); })
         .style("fill", function(n) { return siteCategory(n.media_type); })
+}
 
+function updateText(trans) {
     trans
         .select('text.label')
         .style('font-size', function(n) {
             return fontSize(radius(n.size));
         })
-        //.each('end', function() { d3.select(this).attr('dy', '0.3em'); })
+    //.each('end', function() { d3.select(this).attr('dy', '0.3em'); })
+}
 
+function updateLink(links, frame) {
     var hiddenLinks = links.datum(function(l) { return updateInteralLinkPosition(l, frame); }).filter(':not(.shown)'),
         shownLinks = links.filter('.shown').transition().duration(DURATION);
     setLinkEndAttrs(hiddenLinks);
     setLinkEndAttrs(shownLinks, true);
+}
 
-    // Exit
-    var exit = nodes.exit(),
-        exitTrans = exit.transition();
-
-    exitTrans.select('circle').attr('r', 0);
-    exitTrans.select('text.label').style('font-size', '0px');
-    exitTrans.remove();
-
-    links.exit().transition().style('stroke-width', 0).remove();
-
-    // Keep node-info in sync with data in node
-    userSelected = d3.select('g.node.selected');
-    if (!userSelected.empty()) {
-        populateNodeInfo(userSelected.data()[0]);
+function updateFrameNarrative(frame) {
+    if (frame.narrative) {
+        d3.select('#frame-info').text(frame.narrative);
+    } else {
+        d3.select('#frame-info').text('');
     }
-
-    // If selected nodes are removed, make everything normal again
-    if (!exit.filter('.selected').empty()) {
-        nodes.classed('not-selected', false).classed('selected', false);
-        d3.select('#node-info').html('');
-    }
-
-    showLabels();
-    
-    // Event handlers
-    nodes.on('click', function(n) {
-        var node = d3.select(this).data()[0];
-        d3.select(this).classed('selected', true);
-        if (n.screenshot) {
-            d3.select('#image').html('<img src="' + n.screenshot + '" />');
-        } else {
-            d3.select('#image').html('');
-        }
-            
-        if (d3.select('#show-labels:checked').empty()) { 
-            d3.selectAll('text.label').classed('hidden', true);
-        }
-        d3.select(this).select('text.label')
-            .classed('hidden', false)
-            .style('font-size', function(n) {
-                return parseInt(d3.select(this).style('font-size')) < 16 ? 16 : fontSize(radius(n.size));
-            });
-        nodes.classed('not-selected', function(n) { return n != node; });
-        populateNodeInfo(node);
-        setLinkEndAttrs(links);
-        showLinks(node);
-    });
-
-    d3.select('#graph').on('click',
-        function() {
-            nodes.classed('not-selected', false).classed('selected', false);
-            links.classed('shown', false);
-            if (d3.select('#show-labels:checked').empty()) {
-                d3.selectAll('text.label').classed('hidden', true);
-            }
-            d3.select('#node-info').html('');
-        },
-    // Capture
-    true);
 }
 
 function denormalizePosition(position) {
@@ -274,6 +286,26 @@ function populateNodeInfo(node) {
             }
         ).reduce(function(prev, curr) { return prev + curr; })
     );
+}
+
+function addGroup(nodes) { 
+    var group = nodes.enter()
+        .append("g")
+        .attr("class", "node")
+        .attr("transform", function(n) { return "translate("
+            + n.denormPosition.x + "," + n.denormPosition.y + ")"; })
+        .classed('not-selected', function() { return !d3.select('.not-selected').empty(); });
+    return group;
+}
+
+function addLink(frame, currentLinks) {
+    var linkEnter = currentLinks.enter()
+        .insert("line", 'g.node')
+        .style('display', 'none')
+        //    .style('marker-end', 'url(#triangle)')
+        .attr("class", "link")
+        .datum(function(l) { return updateInteralLinkPosition(l, frame); });
+    setLinkEndAttrs(linkEnter);
 }
 
 function showLinks(node) {
