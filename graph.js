@@ -13,6 +13,7 @@ var GRAPH_WIDTH       = 700,
     MAX_ZOOM          = 10,
     MIN_ZOOM          = 1,
     LABEL_OFFSET      = 0.3,
+    last_value        = 0,
     radius            = d3.scale.linear().domain([0,1]).range([MIN_SIZE, MAX_SIZE]),
     fontSize          = d3.scale.linear().domain([MIN_SIZE,MAX_SIZE]).range([MIN_FONT_SIZE, MAX_FONT_SIZE]).clamp(true),
     //siteCategory      = d3.scale.ordinal().domain(siteCategories).range(colorbrewer.Set3[11]);
@@ -28,7 +29,10 @@ d3.json('frames3.json', function(frames) {
         max: frames.length - 1,
         range: "min",
         change: function(event, ui) {
-            animate(frames[ui.value]);
+            if (ui.value != last_value) { 
+                animate(frames[ui.value]);
+                last_value = ui.value;
+            }
         }
     });
     animate(frames[0]);
