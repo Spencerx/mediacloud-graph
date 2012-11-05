@@ -15,71 +15,11 @@ var GRAPH_WIDTH       = 700,
     LABEL_OFFSET      = 0.3,
     radius            = d3.scale.linear().domain([0,1]).range([MIN_SIZE, MAX_SIZE]),
     fontSize          = d3.scale.linear().domain([MIN_SIZE,MAX_SIZE]).range([MIN_FONT_SIZE, MAX_FONT_SIZE]).clamp(true),
-    siteCategories    = 
-["Blogger(s) (A web log, written by one or more individuals, that is not associated with a professional or advocacy organization or institution)",
-"Gaming Site (Any website, forum, or news site related to gamers and/or gaming)",
-"General Online News Media (A site that is a mainstream media outlet, such as The New York Times and The Washington Post; an online-only news outlet, such as Slate, Salon, or the Huffington Post; or a citizen journalism or non-profit news outlet, such as Global Voices or ProPublica)",
-"Government (A site associated with and run by a government-affiliated entity, such as the DOJ website, White House blog, or a U.S. Senator's official website)",
-"Independent Group (An academic or nonprofit group that is not affiliated with the private sector or government, such as the Electronic Frontier Foundation or the Center for Democracy and Technology)",
-"News Aggregator (A site that contains little to no original content and compiles news from other sites, such as Yahoo News or Google News)",
-"Private Sector (A non-news media for-profit actor, including, for instance, trade organizations, industry sites, and domain registrars)",
-"Social Linking Site (A site that aggregates links based at least partially on user submissions and/or ranking, such as Reddit, Digg, Slashdot, MetaFilter, StumbleUpon, and other social news sites)",
-"SOPA/PIPA/COICA-Specific Campaign (A site specifically dedicated to campaigning for or against SOPA, PIPA, or COICA, such as americancensorship.org, keepthewebopen.com, or sopastrike.com)",
-"Tech Media (A site that focuses on technological news and information produced by a news organization, such as Arstechnica, Techdirt, or Wired.com)",
-"User-Generated Content Platform, Networking Site, or Internet Tool (A general communication and networking platform or tool, like Wikipedia, YouTube, Twitter, and Scribd, or a search engine like Google or speech platform like the Daily Kos)"],
     siteCategory      = d3.scale.ordinal().domain(siteCategories).range(colorbrewer.Set3[11]);
 
-
-var svg = d3.select("#graph")
-    .append("svg")
-        .attr("width", GRAPH_WIDTH)
-        .attr("height", GRAPH_HEIGHT)
-        .attr("pointer-events", "all")
-        .append('g')
-        .attr('id', 'zoom-wrap')
-        .call(d3.behavior.zoom().scaleExtent([1, MAX_ZOOM]).on("zoom", redraw))
-        .append('g')
-
-siteCategories.forEach(function(category) { 
-    var div = d3.select('#legend').append('div');
-    div.append('div').style('width', '50px').style('height', '50px')
-    .style('background-color', function() { return siteCategory(category); });
-    div.append('span').text(category);
-});
-        
-svg.append('svg:rect')
-    .attr('width', GRAPH_WIDTH)
-    .attr('height', GRAPH_HEIGHT)
-    .attr('fill', 'white'); 
-
-svg.append('svg:defs')
-    .append('svg:marker')
-    .attr('id', 'triangle')
-    .attr('viewBox', '0 0 10 10')
-    .attr('refX', 1)
-    .attr('refY', 5)
-    .attr('markerWidth', 6)
-    .attr('markerHeight', 6)
-    .attr('orient', 'auto')
-    .append('path')
-    .attr('d', 'M 0 0 L 10 5 L 0 10 z');
-
-d3.select('#date-slider').style('width', (GRAPH_WIDTH - 2 * X_MARGIN) + 'px');
-d3.select('#graph-wrapper').style('width', GRAPH_WIDTH + 'px');
-d3.select('#show-edges').on('click', function() {
-    if (!d3.select(this).filter(':checked').empty()) {
-        d3.selectAll('line.link')
-            .classed('shown', true)
-            .transition().duration(DURATION)
-            .attr('x2', function(l) { return l.position.x2; })
-            .attr('y2', function(l) { return l.position.y2; });
-    } else {
-        setLinkEndAttrs(d3.selectAll('line.link').classed('shown', false));
-    }
-});
-d3.select('#show-labels').on('click', showLabels);
-d3.select('#graph').on('click', unhighlightNode, true);
-
+var svg = setupGraph();
+setupLegend(siteCategories);
+setupEventListeners();
 
 d3.json('frames3.json', function(frames) {
     var slider = $('#date-slider').slider({
@@ -101,6 +41,27 @@ function showLabels() {
     } else {
         d3.selectAll('text.label').classed('hidden', true);
     }
+}
+
+function setupLegend(siteCategories) {
+    siteCategories.forEach(function(category) { 
+        var div = d3.select('#legend').append('div');
+        div.append('div').style('width', '50px').style('height', '50px')
+        .style('background-color', function() { return siteCategory(category); });
+        div.append('span').text(category);
+    });
+}
+
+function setupEventListeners() {
+    d3.select('#show-edges').on('click', function() {
+        if (!d3.select(this).filter(':checked').empty()) {
+            showLinks(d3.selectAll('line.link'));
+        } else {
+            setLinkEndAttrs(d3.selectAll('line.link').classed('hidden', true));
+        }
+    });
+    d3.select('#show-labels').on('click', showLabels);
+    d3.select('#graph').on('click', unhighlightNode, true);
 }
 
 function redraw() {
@@ -127,7 +88,7 @@ function go(frame, i) {
     var nodes = svg.selectAll("g.node")
         .data(frame.nodes, function(n) { return n.id; })
     var links = svg.selectAll("line.link")
-        .data(frame.links, function(l) { return l.id; });
+        .data(frame.links, function(l) { return l.source + '->' + l.target; });
 
     // Enter
     var group = addGroup(nodes);
@@ -159,13 +120,13 @@ function go(frame, i) {
 
     // Keep node-info in sync with data in node
     userSelected = d3.select('g.node.selected');
-    if (!userSelected.empty()) {
-        populateNodeInfo(userSelected.data()[0]);
-    }
+    if (!userSelected.empty()) { populateNodeInfo(userSelected.data()[0]); }
 
     // Show links for the selected node
     var selectedNode = d3.select('g.node.selected');
-    if (!selectedNode.empty()) { showLinks(selectedNode.datum()); }
+    if (!selectedNode.empty()) {
+        showLinks(getNodeLinks(selectedNode.datum()));
+    }
 
     // If selected nodes are removed, make everything normal again
     if (!exit.filter('.selected').empty()) {
@@ -176,6 +137,12 @@ function go(frame, i) {
     showLabels();
 }
 
+function getNodeLinks(node) { 
+    var links = d3.selectAll('line.link').filter(function(link) {
+        return link.source == node.index || link.target == node.index;
+    });
+    return links;
+}
 function highlightNode(node) {
     d3.select(this).classed('selected', true);
     if (node.screenshot) {
@@ -195,12 +162,12 @@ function highlightNode(node) {
     d3.selectAll('g.node').classed('not-selected', function(n) { return n != node; });
     populateNodeInfo(node);
     setLinkEndAttrs(d3.selectAll('line.link'));
-    showLinks(node);
+    showLinks(getNodeLinks(node));
 }
 
 function unhighlightNode() {
     d3.selectAll('g.node').classed('not-selected', false).classed('selected', false);
-    d3.selectAll('line.link').classed('shown', false);
+    d3.selectAll('line.link').classed('hidden', true);
     if (d3.select('#show-labels:checked').empty()) {
         d3.selectAll('text.label').classed('hidden', true);
     }
@@ -257,8 +224,8 @@ function updateText(trans) {
 }
 
 function updateLink(links, frame) {
-    var hiddenLinks = links.datum(function(l) { return updateInteralLinkPosition(l, frame); }).filter(':not(.shown)'),
-        shownLinks = links.filter('.shown').transition().duration(DURATION);
+    var hiddenLinks = links.datum(function(l) { return updateInteralLinkPosition(l, frame); }).filter('.hidden'),
+        shownLinks = links.filter(':not(.hidden)').transition().duration(DURATION);
     setLinkEndAttrs(hiddenLinks);
     setLinkEndAttrs(shownLinks, true);
 }
@@ -269,6 +236,40 @@ function updateFrameNarrative(frame) {
     } else {
         d3.select('#frame-info').text('');
     }
+}
+
+function setupGraph() {
+    var svg = d3.select("#graph")
+        .append("svg")
+        .attr("width", GRAPH_WIDTH)
+        .attr("height", GRAPH_HEIGHT)
+        .attr("pointer-events", "all")
+        .append('g')
+        .attr('id', 'zoom-wrap')
+        .call(d3.behavior.zoom().scaleExtent([1, MAX_ZOOM]).on("zoom", redraw))
+        .append('g');
+
+    svg.append('svg:rect')
+        .attr('width', GRAPH_WIDTH)
+        .attr('height', GRAPH_HEIGHT)
+        .attr('fill', 'white'); 
+
+    svg.append('svg:defs')
+        .append('svg:marker')
+        .attr('id', 'triangle')
+        .attr('viewBox', '0 0 10 10')
+        .attr('refX', 1)
+        .attr('refY', 5)
+        .attr('markerWidth', 6)
+        .attr('markerHeight', 6)
+        .attr('orient', 'auto')
+        .append('path')
+        .attr('d', 'M 0 0 L 10 5 L 0 10 z');
+
+    d3.select('#date-slider').style('width', (GRAPH_WIDTH - 2 * X_MARGIN) + 'px');
+    d3.select('#graph-wrapper').style('width', GRAPH_WIDTH + 'px');
+
+    return svg;
 }
 
 function denormalizePosition(position) {
@@ -301,17 +302,14 @@ function addGroup(nodes) {
 function addLink(frame, currentLinks) {
     var linkEnter = currentLinks.enter()
         .insert("line", 'g.node')
-        .style('display', 'none')
         //    .style('marker-end', 'url(#triangle)')
         .attr("class", "link")
+        .classed('hidden', function() { return d3.select('#show-edges:checked').empty(); })
         .datum(function(l) { return updateInteralLinkPosition(l, frame); });
     setLinkEndAttrs(linkEnter);
 }
 
-function showLinks(node) {
-    var links = d3.selectAll('line.link').filter(function(link) {
-        return link.source == node.index || link.target == node.index;
-    });
+function showLinks(links) {
 
     /*
     links.each(function(link) {
@@ -325,7 +323,7 @@ function showLinks(node) {
     */
 
     links
-        .classed('shown', true)
+        .classed('hidden', false)
         .transition().duration(DURATION)
         .attr('x2', function(l) { return l.position.x2; })
         .attr('y2', function(l) { return l.position.y2; });

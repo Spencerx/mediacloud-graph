@@ -32,7 +32,7 @@ g.selected circle {
 g.connected circle {
     fill-opacity: 1;
 }
-text.hidden {
+text.label.hidden, line.link.hidden {
     display: none;
 }
 g.selected text {
@@ -40,9 +40,6 @@ g.selected text {
 line.link {
     stroke: #aaa;
     opacity: 0.5;
-}
-line.link.shown {
-    display: block !important;
 }
 #date-slider {
     margin: 0 auto 1em;
