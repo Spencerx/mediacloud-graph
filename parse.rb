@@ -2,8 +2,8 @@ require 'nokogiri'
 require 'json/ext'
 
 @@frames = []
-@@folder_name = 'key_frames3'
-@@output_file = 'frames3.json'
+@@folder_name = 'justin_key_frames'
+@@output_file = 'justin_frames.json'
 @@node_narratives = JSON.load(File.open('nodeNarratives.json', 'r'))
 @@frame_narratives = JSON.load(File.open('frameNarratives.json', 'r'))
 
@@ -26,8 +26,8 @@ class MyDocument < Nokogiri::XML::SAX::Document
     def end_document
         # Change links from node IDs to node indexes
         @links.map do |link|
-            link['source'] = @nodes.index { |node| node['id'] == link['source'] }
-            link['target'] = @nodes.index { |node| node['id'] == link['target'] }
+            link['source'] = link['source']
+            link['target'] = link['target']
             link
         end
         @@frames << {

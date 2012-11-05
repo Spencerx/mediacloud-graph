@@ -11,18 +11,31 @@
     </head>
     <body>
         <div id="wrapper">
+            <h1>Stand-in Title</h1>
             <div id="graph-wrapper">
                 <div id="graph"></div>
                 <div id="date-slider"></div>
-                <button id="play">Play</button>
-                <label for="show-labels">Show Labels</label>
-                <input type="checkbox" id="show-labels" name="show-labels" />
-                <label for="show-edges">Show Edges</label>
-                <input type="checkbox" id="show-edges" name="show-edges" />
+                <div id="controls">
+                    <div><button id="play">Play</button></div>
+                    <div>
+                        <label for="show-labels">Show Labels</label>
+                        <input type="checkbox" id="show-labels" name="show-labels" />
+                    </div>
+                    <div>
+                        <label for="show-links">Show Links</label>
+                        <input type="checkbox" id="show-links" name="show-links" />
+                    </div>
+                </div>
             </div>
-            <div id="frame-info" class="info-panel"></div>
-            <div id="node-info" class="info-panel"></div>
-            <div id="image" class="info-panel"></div>
+            <div id="info-wrapper">
+                <h2 id="start-date"></h2>
+                <div id="frame-info"><p></p></div>
+                <h3 id="node-name"></h3>
+                <div id="node-narrative"><p></p></div>
+                <div id="node-info"></div>
+                <div id="site-image"></div>
+            </div>
+            <div style="clear:both"></div>
             <div id="legend" class="info-panel"></div>
         </div>
         <script src="graph.js"></script>

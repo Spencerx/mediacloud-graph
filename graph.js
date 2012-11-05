@@ -6,10 +6,10 @@ var GRAPH_WIDTH       = 700,
     MIN_FONT_SIZE     = 3,
     X_MARGIN          = 60,
     Y_MARGIN          = 60,
-    TIMEOUT           = 2000,
     DURATION          = 1500,
     LINK_DELAY        = 1000,
     LINK_DURATION     = 1000,
+    TIMEOUT           = LINK_DELAY + LINK_DURATION + 750,
     LABEL_SIZE_CUTOFF = 4,
     ZOOM_SPEED        = 0.3,
     MAX_ZOOM          = 10,
@@ -19,13 +19,16 @@ var GRAPH_WIDTH       = 700,
     radius            = d3.scale.linear().domain([0,1]).range([MIN_SIZE, MAX_SIZE]),
     fontSize          = d3.scale.linear().domain([MIN_SIZE,MAX_SIZE]).range([MIN_FONT_SIZE, MAX_FONT_SIZE]).clamp(true),
     //siteCategory      = d3.scale.ordinal().domain(siteCategories).range(colorbrewer.Set3[11]);
-    siteCategory      = d3.scale.category20();
+    siteCategory      = d3.scale.category20(),
+    nodeFieldsToShow  = [
+        { key: 'url', label: 'URL' },
+        { key: 'story_count', label: 'Story Count'}
+    ];
 
 var svg = setupGraph();
 setupLegend(siteCategories);
-setupEventListeners();
 
-d3.json('frames3.json', function(frames) {
+d3.json('justin_frames.json', function(frames) {
     var slider = $('#date-slider').slider({
         min: 0,
         max: frames.length - 1,
@@ -38,8 +41,9 @@ d3.json('frames3.json', function(frames) {
         }
     });
     animate(frames[0]);
-    $('.ui-slider-handle').focus();
     d3.select('#play').on('click', function(d, i) { play(frames); });
+    setupEventListeners();
+    $('.ui-slider-handle').focus();
 });
 
 function animate(frame, i) {
@@ -55,7 +59,7 @@ function animate(frame, i) {
     var links = svg.selectAll("line.link")
         .data(frame.links, function(l) { return l.id; })
 
-    hideLinks(links);
+    hideLinks(d3.selectAll('line.link'));
     hideLabels(nodes);
     
     // Enter
@@ -71,7 +75,7 @@ function animate(frame, i) {
     var updateTransition = updateGroup(nodes);
     updateCircle(updateTransition);
     updateText(updateTransition);
-    updateLink(links, frame);
+    updateLink(d3.selectAll('line.link'), frame);
 
     // Exit
     var exit = nodes.exit(),
@@ -80,6 +84,7 @@ function animate(frame, i) {
     exitTrans.select('text.label').style('font-size', '0px');
     exitTrans.remove();
     links.exit().remove();
+
 
     // Keep slider in sync with playing
     if (typeof i != 'undefined') { $('#date-slider').slider('value', i); }
@@ -92,7 +97,7 @@ function animate(frame, i) {
 
     // Show links
     var selectedNode = d3.select('g.node.selected');
-    if (!d3.select('#show-edges:checked').empty()) {
+    if (!d3.select('#show-links:checked').empty()) {
         showLinks(d3.selectAll('line.link'), LINK_DELAY);
     } else if (!selectedNode.empty()) {
         showLinks(getNodeLinks(selectedNode), LINK_DELAY);
@@ -107,8 +112,7 @@ function animate(frame, i) {
 
     // If selected nodes are removed, make everything normal again
     if (!exit.filter('.selected').empty()) {
-        nodes.classed('not-selected', false).classed('selected', false);
-        d3.select('#node-info').html('');
+        unhighlightNode();
     }
 }
 
@@ -156,7 +160,7 @@ function setupLegend(siteCategories) {
 }
 
 function setupEventListeners() {
-    d3.select('#show-edges').on('click', function() {
+    d3.select('#show-links').on('click', function() {
         if (!d3.select(this).filter(':checked').empty()) {
             showLinks(d3.selectAll('line.link'));
         } else {
@@ -169,6 +173,8 @@ function setupEventListeners() {
             showLabels(d3.selectAll('g.node'));
     });
     d3.select('#graph').on('click', unhighlightNode, true);
+    // I want the slider to always be in focus because I like to use the arrow keys
+    d3.select('html').on('click', function() { $('.ui-slider-handle').focus(); });
 }
 
 function redraw() {
@@ -197,7 +203,7 @@ function addLink(frame, links) {
     var newLinks = links 
         .insert("line", 'g.node')
         //    .style('marker-end', 'url(#triangle)')
-        .attr("class", "link")
+        .classed('link', true)
         .classed('hidden', true)
         .datum(function(l) { return updateInteralLinkPosition(l, frame); });
 
@@ -259,10 +265,61 @@ function updateLink(links, frame) {
 }
 
 function updateFrameNarrative(frame) {
+    var month_names = new Array ( );
+    month_names[month_names.length] = "January";
+    month_names[month_names.length] = "February";
+    month_names[month_names.length] = "March";
+    month_names[month_names.length] = "April";
+    month_names[month_names.length] = "May";
+    month_names[month_names.length] = "June";
+    month_names[month_names.length] = "July";
+    month_names[month_names.length] = "August";
+    month_names[month_names.length] = "September";
+    month_names[month_names.length] = "October";
+    month_names[month_names.length] = "November";
+    month_names[month_names.length] = "December";
+
+    var day_names = new Array ( );
+    day_names[day_names.length] = "Sunday";
+    day_names[day_names.length] = "Monday";
+    day_names[day_names.length] = "Tuesday";
+    day_names[day_names.length] = "Wednesday";
+    day_names[day_names.length] = "Thursday";
+    day_names[day_names.length] = "Friday";
+    day_names[day_names.length] = "Saturday";
+
     if (frame.narrative) {
-        d3.select('#frame-info').text(frame.narrative);
+        d3.select('#frame-info p').text(frame.narrative);
     } else {
-        d3.select('#frame-info').text('');
+        d3.select('#frame-info p').text('');
+    }
+
+    if (frame.start_date && frame.end_date) {
+        var start_date = new Date(frame.start_date),
+            end_date   = new Date(frame.end_date);
+        d3.select('#start-date').text(function() { 
+            if (start_date.getMonth() == end_date.getMonth()) {
+                return month_names[start_date.getMonth()].substr(0, 3)
+                + ' ' + start_date.getDate()
+                + ' - ' + end_date.getDate()
+                + ', ' + end_date.getFullYear();
+            } else if (start_date.getFullYear() == end_date.getFullYear()) {
+                return month_names[start_date.getMonth()].substr(0, 3)
+                + ' ' + start_date.getDate()
+                + ' - ' + month_names[end_date.getMonth()].substr(0, 3)
+                + ' ' + end_date.getDate()
+                + ', ' + end_date.getFullYear();
+            } else {
+                return month_names[start_date.getMonth()].substr(0, 3)
+                + ' ' + start_date.getDate()
+                + ', ' + start_date.getFullYear();
+                + ' - ' + month_names[end_date.getMonth()].substr(0, 3)
+                + ' ' + end_date.getDate()
+                + ', ' + end_date.getFullYear();
+            }
+        });
+    } else {
+        d3.select('#start-date').text('');
     }
 }
 
@@ -300,12 +357,19 @@ function hideLinks(links) {
     minimizeLinks(links.classed('hidden', true).transition());
 }
 
-function getNodeLinks(node) { 
+function getNodeLinks(node, type) { 
     if (typeof node.datum == 'function') {
         var node = node.datum();
     }
     var links = d3.selectAll('line.link').filter(function(link) {
-        return link.source == node.index || link.target == node.index;
+        switch (type) {
+            case 'inbound':
+                return link.target == node.id;
+            case 'outbound':
+                return link.source == node.id;
+            default:
+                return link.target == node.id || link.source == node.id;
+        }
     });
     return links;
 }
@@ -313,9 +377,9 @@ function getNodeLinks(node) {
 function highlightNode(node) {
     d3.select(this).classed('selected', true);
     if (node.screenshot) {
-        d3.select('#image').html('<img src="' + node.screenshot + '" />');
+        d3.select('#site-image').html('<img src="' + node.screenshot + '" />');
     } else {
-        d3.select('#image').html('');
+        d3.select('#site-image').html('');
     }
 
     if (d3.select('#show-labels:checked').empty()) { 
@@ -328,6 +392,10 @@ function highlightNode(node) {
         });
     d3.selectAll('g.node').classed('not-selected', function(n) { return n != node; });
     populateNodeInfo(node);
+    d3.select('#node-name').text(node.label);
+    if (node.narrative) {
+        d3.select('#node-narrative p').text(node.narrative);
+    }
     hideLinks(d3.selectAll('line.link'));
     showLinks(getNodeLinks(node));
 }
@@ -338,16 +406,27 @@ function unhighlightNode() {
     if (d3.select('#show-labels:checked').empty()) {
         hideLabels(d3.selectAll('g.node'));
     }
-    d3.select('#node-info').html('');
+    d3.selectAll('#node-info, #site-image, #node-narrative p, #node-name').html('');
 }
 
 function updateInteralLinkPosition(link, frame) {
-    link.position = {
-        x1: frame.nodes[link.source].denormPosition.x,
-        y1: frame.nodes[link.source].denormPosition.y,
-        x2: frame.nodes[link.target].denormPosition.x,
-        y2: frame.nodes[link.target].denormPosition.y
-    };
+    var sourceNode = frame.nodes.filter(function(n) {
+        return link.source == n.id;
+    })[0];
+    var targetNode = frame.nodes.filter(function(n) {
+        return link.target == n.id;
+    })[0];
+
+    if (sourceNode && targetNode) {
+        link.position = {
+            x1: sourceNode.denormPosition.x,
+            y1: sourceNode.denormPosition.y,
+            x2: targetNode.denormPosition.x,
+            y2: targetNode.denormPosition.y
+        };
+    } else {
+        link.position = { x1: 0, y1: 0, x2: 0, y2: 0 };
+    }
     return link;
 }
 
@@ -383,11 +462,11 @@ function denormalizePosition(position) {
 
 function populateNodeInfo(node) {
     d3.select('#node-info').html(
-        Object.keys(node).map(
-            function(key) {
-                return '<dt>' + key + '</dt><dd>' + node[key] + '</dd>';
-            }
-        ).reduce(function(prev, curr) { return prev + curr; })
+        nodeFieldsToShow.map(function(field) {
+            return '<dt>' + field.label + '</dt><dd>' + node[field.key] + '</dd>';
+        }).reduce(function(prev, curr) { return prev + curr; })
+        + '<dt>Inbound Links:</dt><dd>' + getNodeLinks(node, 'inbound')[0].length + '</dd>'
+        + '<dt>Outbound Links:</dt><dd>' + getNodeLinks(node, 'outbound')[0].length + '</dd>'
     );
 }
 

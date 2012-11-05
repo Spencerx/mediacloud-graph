@@ -2,7 +2,6 @@ body {
     font-family: Arial;
     background-color: #888;
     margin: 1em 3em;
-    text-align: center;
 }
 dt {
     font-weight: bold;
@@ -48,21 +47,31 @@ line.link {
     display: inline-block;
     background-color: white;
     padding: 1em;
-    max-width: 1250px;
+    width: 1000px;
 }
-#graph-wrapper, .info-panel {
+#graph-wrapper {
+    vertical-align: top;
+    width: 820px;
+    float: left;
+}
+#info-wrapper {
+    margin-left: 16px;
+    width: 270px;
     vertical-align: top;
     float: left;
 }
 #graph {
     margin-bottom: 1em;
 }
+#controls {
+    text-align: center;
+    }
 .info-panel {
-    width: 400px;
-    height: 223px;
     overflow-y: auto;
     text-align: left;
     padding: 1em;
     margin: 0 0 1em 1em;
+}
+#frame-info {
 }
 
