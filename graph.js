@@ -8,6 +8,8 @@ var GRAPH_WIDTH       = 700,
     Y_MARGIN          = 60,
     TIMEOUT           = 2000,
     DURATION          = 1500,
+    LINK_DELAY        = 1000,
+    LINK_DURATION     = 1000,
     LABEL_SIZE_CUTOFF = 4,
     ZOOM_SPEED        = 0.3,
     MAX_ZOOM          = 10,
@@ -36,6 +38,7 @@ d3.json('frames3.json', function(frames) {
         }
     });
     animate(frames[0]);
+    $('.ui-slider-handle').focus();
     d3.select('#play').on('click', function(d, i) { play(frames); });
 });
 
@@ -90,9 +93,9 @@ function animate(frame, i) {
     // Show links
     var selectedNode = d3.select('g.node.selected');
     if (!d3.select('#show-edges:checked').empty()) {
-        showLinks(d3.selectAll('line.link'));
+        showLinks(d3.selectAll('line.link'), LINK_DELAY);
     } else if (!selectedNode.empty()) {
-        showLinks(getNodeLinks(selectedNode));
+        showLinks(getNodeLinks(selectedNode), LINK_DELAY);
     }
 
     // Show labels
@@ -171,13 +174,12 @@ function setupEventListeners() {
 function redraw() {
     xScale = d3.scale.linear().domain([-1 * (d3.event.scale - 1) * svg.node().getBBox().width, 0]).range([-1 * (d3.event.scale - 1) * svg.node().getBBox().width, 0]).clamp(true); 
     yScale = d3.scale.linear().domain([-1 * (d3.event.scale - 1) * svg.node().getBBox().height, 0]).range([-1 * (d3.event.scale - 1) * svg.node().getBBox().height, 0]).clamp(true); 
-    d3.event.translate = [xScale(d3.event.translate[0]), yScale(d3.event.translate[1])];
+    //d3.event.translate = [xScale(d3.event.translate[0]), yScale(d3.event.translate[1])];
     svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
     d3.selectAll('circle').attr('r', function(n) { return radius(n.size) / d3.event.scale; });
     d3.selectAll('line.link').style('stroke-width', function() { return 1 / d3.event.scale; });
     d3.selectAll('text.label').style('font-size', function(n) {             
-        var size = fontSize(radius(n.size)) / d3.event.scale;
-        return size > LABEL_SIZE_CUTOFF / d3.event.scale ? size + 'px' : '0';
+        return fontSize(radius(n.size)) / d3.event.scale;
     }).attr('dy', function() { return LABEL_OFFSET + 'em'; });
 }
 
@@ -274,7 +276,7 @@ function hideLabels(nodes) {
         .classed('hidden', true);
 }
 
-function showLinks(links) {
+function showLinks(links, delay) {
 
     /*
     links.each(function(link) {
@@ -287,7 +289,11 @@ function showLinks(links) {
     })
     */
 
-    maximizeLinks(links.classed('hidden', false).transition().duration(DURATION));
+    if (delay) {
+        maximizeLinks(links.classed('hidden', false).transition().delay(delay).duration(LINK_DURATION));
+    } else {
+        maximizeLinks(links.classed('hidden', false).transition().duration(LINK_DURATION));
+    }
 }
 
 function hideLinks(links) {
