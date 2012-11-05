@@ -48,11 +48,14 @@ function animate(frame, i) {
     var links = svg.selectAll("line.link")
         .data(frame.links, function(l) { return l.id; })
 
+    hideLinks(links);
+    hideLabels(nodes);
+    
     // Enter
-    var group = addGroup(nodes);
+    var group = addGroup(nodes.enter());
     addCircle(group);
     addText(group);
-    addLink(frame, links);
+    addLink(frame, links.enter());
 
     // Event handlers
     nodes.on('click', highlightNode);
@@ -69,9 +72,7 @@ function animate(frame, i) {
     exitTrans.select('circle').attr('r', 0);
     exitTrans.select('text.label').style('font-size', '0px');
     exitTrans.remove();
-    links.exit().transition().style('stroke-width', 0).remove();
-
-    hideLinks(links);
+    links.exit().remove();
 
     // Keep slider in sync with playing
     if (typeof i != 'undefined') { $('#date-slider').slider('value', i); }
@@ -82,10 +83,19 @@ function animate(frame, i) {
     userSelected = d3.select('g.node.selected');
     if (!userSelected.empty()) { populateNodeInfo(userSelected.data()[0]); }
 
-    // Show links for the selected node
+    // Show links
     var selectedNode = d3.select('g.node.selected');
-    if (!selectedNode.empty()) {
-        showLinks(getNodeLinks(selectedNode.datum()));
+    if (!d3.select('#show-edges:checked').empty()) {
+        showLinks(d3.selectAll('line.link'));
+    } else if (!selectedNode.empty()) {
+        showLinks(getNodeLinks(selectedNode));
+    }
+
+    // Show labels
+    if (!d3.select('#show-labels:checked').empty()) {
+        showLabels(nodes);
+    } else if (!d3.select('g.node.selected').empty()) {
+        showLabels(d3.select('g.node.selected'));
     }
 
     // If selected nodes are removed, make everything normal again
@@ -93,8 +103,6 @@ function animate(frame, i) {
         nodes.classed('not-selected', false).classed('selected', false);
         d3.select('#node-info').html('');
     }
-
-    showLabels();
 }
 
 function setupGraph() {
@@ -145,10 +153,14 @@ function setupEventListeners() {
         if (!d3.select(this).filter(':checked').empty()) {
             showLinks(d3.selectAll('line.link'));
         } else {
-            minMaxLink(d3.selectAll('line.link').classed('hidden', true));
+            setLinkEndAttr(d3.selectAll('line.link').classed('hidden', true));
         }
     });
-    d3.select('#show-labels').on('click', showLabels);
+    d3.select('#show-labels').on('click', function() {
+        d3.select(this).filter(':checked').empty() ?
+            hideLabels(d3.selectAll('g.node:not(.selected)')) :
+            showLabels(d3.selectAll('g.node'));
+    });
     d3.select('#graph').on('click', unhighlightNode, true);
 }
 
@@ -166,7 +178,7 @@ function redraw() {
 }
 
 function addGroup(nodes) { 
-    var group = nodes.enter()
+    var group = nodes
         .append("g")
         .attr("class", "node")
         .attr("transform", function(n) { return "translate("
@@ -175,14 +187,15 @@ function addGroup(nodes) {
     return group;
 }
 
-function addLink(frame, currentLinks) {
-    var linkEnter = currentLinks.enter()
+function addLink(frame, links) {
+    var newLinks = links 
         .insert("line", 'g.node')
         //    .style('marker-end', 'url(#triangle)')
         .attr("class", "link")
-        .classed('hidden', function() { return d3.select('#show-edges:checked').empty(); })
+        .classed('hidden', true)
         .datum(function(l) { return updateInteralLinkPosition(l, frame); });
-    minMaxLink(linkEnter);
+
+    minimizeLinks(newLinks);
 }
 
 function addCircle(group) {
@@ -236,6 +249,7 @@ function updateText(trans) {
 
 function updateLink(links, frame) {
     links.datum(function(l) { return updateInteralLinkPosition(l, frame); });
+    minimizeLinks(links);
 }
 
 function updateFrameNarrative(frame) {
@@ -246,13 +260,14 @@ function updateFrameNarrative(frame) {
     }
 }
 
-function showLabels() {
-    if (!d3.select('#show-labels:checked').empty()) {
-        d3.selectAll('text.label')
-            .classed('hidden', function(n) { return fontSize(radius(n.size)) < LABEL_SIZE_CUTOFF; })
-    } else {
-        d3.selectAll('text.label').classed('hidden', true);
-    }
+function showLabels(nodes) {
+    nodes.selectAll('text.label')
+        .classed('hidden', function(n) { return fontSize(radius(n.size)) < LABEL_SIZE_CUTOFF; })
+}
+
+function hideLabels(nodes) {
+    nodes.selectAll('text.label')
+        .classed('hidden', true);
 }
 
 function showLinks(links) {
@@ -276,6 +291,9 @@ function hideLinks(links) {
 }
 
 function getNodeLinks(node) { 
+    if (typeof node.datum == 'function') {
+        var node = node.datum();
+    }
     var links = d3.selectAll('line.link').filter(function(link) {
         return link.source == node.index || link.target == node.index;
     });
@@ -300,25 +318,20 @@ function highlightNode(node) {
         });
     d3.selectAll('g.node').classed('not-selected', function(n) { return n != node; });
     populateNodeInfo(node);
-    minMaxLink(d3.selectAll('line.link'));
+    hideLinks(d3.selectAll('line.link'));
     showLinks(getNodeLinks(node));
 }
 
 function unhighlightNode() {
     d3.selectAll('g.node').classed('not-selected', false).classed('selected', false);
-    d3.selectAll('line.link').classed('hidden', true);
+    hideLinks(d3.selectAll('line.link'));
     if (d3.select('#show-labels:checked').empty()) {
-        d3.selectAll('text.label').classed('hidden', true);
+        hideLabels(d3.selectAll('g.node'));
     }
     d3.select('#node-info').html('');
 }
 
 function updateInteralLinkPosition(link, frame) {
-    if (link.source == 29 && link.target == 15) {
-        console.log(link);
-        console.log(frame.nodes[link.source]);
-        console.log(frame.nodes[link.target]);
-        }
     link.position = {
         x1: frame.nodes[link.source].denormPosition.x,
         y1: frame.nodes[link.source].denormPosition.y,
@@ -329,14 +342,14 @@ function updateInteralLinkPosition(link, frame) {
 }
 
 function minimizeLinks(links) { 
-    minMaxLink(links);
+    setLinkEndAttr(links);
 }
 
 function maximizeLinks(links) {
-    minMaxLink(links, true);
+    setLinkEndAttr(links, true);
 }
 
-function minMaxLink(links, maximized) {
+function setLinkEndAttr(links, maximized) {
     links
         .attr('x1', function(l) { return l.position.x1; })
         .attr('y1', function(l) { return l.position.y1; });
