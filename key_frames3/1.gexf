@@ -4,7 +4,7 @@
     <creator>Gephi 0.8.1</creator>
     <description></description>
   </meta>
-  <graph defaultedgetype="directed" timeformat="date" mode="dynamic">
+  <graph defaultedgetype="directed" timeformat="date" mode="static">
     <attributes class="node" mode="static">
       <attribute id="0" title="sentiment_58billion" type="integer"></attribute>
       <attribute id="1" title="tagged_dns" type="integer"></attribute>
@@ -25,12 +25,6 @@
     </attributes>
     <nodes>
       <node id="4491" label="Techdirt">
-        <spells>
-          <spell start="2010-09-27" end="2010-09-27"></spell>
-          <spell start="2010-09-28" end="2010-09-28"></spell>
-          <spell start="2010-09-29" end="2010-09-29"></spell>
-          <spell start="2010-09-30" end="2010-09-30"></spell>
-        </spells>
         <attvalues>
           <attvalue for="0" value="-1"></attvalue>
           <attvalue for="1" value="1"></attvalue>
@@ -53,7 +47,7 @@
         <viz:position x="0.41124535" y="0.30953068" z="0.0"></viz:position>
         <viz:color r="255" g="0" b="43"></viz:color>
       </node>
-      <node id="19079" label="itmanagement.earthweb.com" start="2010-09-28" end="2010-09-28">
+      <node id="19079" label="itmanagement.earthweb.com" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -76,7 +70,7 @@
         <viz:position x="0.34132913" y="0.15468413" z="0.0"></viz:position>
         <viz:color r="255" g="0" b="43"></viz:color>
       </node>
-      <node id="5953" label="CrunchGear" start="2010-10-01" end="2010-10-01">
+      <node id="5953" label="CrunchGear" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="1"></attvalue>
@@ -99,7 +93,7 @@
         <viz:position x="0.6770193" y="0.83581734" z="0.0"></viz:position>
         <viz:color r="255" g="0" b="43"></viz:color>
       </node>
-      <node id="18438" label="govtrack.us" start="2010-11-18" end="2010-11-18">
+      <node id="18438" label="govtrack.us" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -122,7 +116,7 @@
         <viz:position x="0.44081178" y="0.8402557" z="0.0"></viz:position>
         <viz:color r="0" g="255" b="38"></viz:color>
       </node>
-      <node id="5579" label="MetaFilter" start="2010-09-29" end="2010-09-29">
+      <node id="5579" label="MetaFilter" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -145,7 +139,7 @@
         <viz:position x="0.34713072" y="0.49512023" z="0.0"></viz:position>
         <viz:color r="255" g="196" b="0"></viz:color>
       </node>
-      <node id="18765" label="ipbrief.net" start="2010-09-26" end="2010-09-26">
+      <node id="18765" label="ipbrief.net" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -169,11 +163,6 @@
         <viz:color r="0" g="255" b="38"></viz:color>
       </node>
       <node id="18367" label="eff">
-        <spells>
-          <spell start="2010-09-28" end="2010-09-28"></spell>
-          <spell start="2010-09-30" end="2010-09-30"></spell>
-          <spell start="2010-12-03" end="2010-12-03"></spell>
-        </spells>
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="1"></attvalue>
@@ -196,7 +185,7 @@
         <viz:position x="0.7099177" y="0.40267965" z="0.0"></viz:position>
         <viz:color r="0" g="255" b="38"></viz:color>
       </node>
-      <node id="19232" label="torproject.org" start="2011-11-25" end="2011-11-25">
+      <node id="19232" label="torproject.org" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -220,10 +209,6 @@
         <viz:color r="255" g="0" b="157"></viz:color>
       </node>
       <node id="4434" label="Wired">
-        <spells>
-          <spell start="2010-09-20" end="2010-09-20"></spell>
-          <spell start="2010-10-01" end="2010-10-01"></spell>
-        </spells>
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="1"></attvalue>
@@ -246,7 +231,7 @@
         <viz:position x="0.09731894" y="0.43144864" z="0.0"></viz:position>
         <viz:color r="255" g="0" b="43"></viz:color>
       </node>
-      <node id="4462" label="ResourceShelf" start="2010-09-28" end="2010-09-28">
+      <node id="4462" label="ResourceShelf" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -269,7 +254,7 @@
         <viz:position x="0.92926246" y="0.47911528" z="0.0"></viz:position>
         <viz:color r="0" g="238" b="255"></viz:color>
       </node>
-      <node id="4438" label="TechCrunch" start="2010-10-01" end="2010-10-01">
+      <node id="4438" label="TechCrunch" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="1"></attvalue>
@@ -292,7 +277,7 @@
         <viz:position x="0.60114986" y="0.7211867" z="0.0"></viz:position>
         <viz:color r="255" g="0" b="43"></viz:color>
       </node>
-      <node id="5842" label="PCWorld" start="2010-09-29" end="2010-09-29">
+      <node id="5842" label="PCWorld" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="1"></attvalue>
@@ -315,7 +300,7 @@
         <viz:position x="0.89319277" y="0.16487966" z="0.0"></viz:position>
         <viz:color r="255" g="0" b="43"></viz:color>
       </node>
-      <node id="18408" label="demandprogress.org" start="2010-09-29" end="2010-09-29">
+      <node id="18408" label="demandprogress.org" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -338,7 +323,7 @@
         <viz:position x="0.9146266" y="0.0" z="0.0"></viz:position>
         <viz:color r="0" g="255" b="38"></viz:color>
       </node>
-      <node id="18820" label="ce.org" start="2010-11-20" end="2010-11-20">
+      <node id="18820" label="ce.org" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -361,7 +346,7 @@
         <viz:position x="1.0" y="0.13597877" z="0.0"></viz:position>
         <viz:color r="200" g="255" b="0"></viz:color>
       </node>
-      <node id="6872" label="Desertpeace" start="2010-10-01" end="2010-10-01">
+      <node id="6872" label="Desertpeace" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>

@@ -22,6 +22,7 @@ var GRAPH_WIDTH       = 700,
     siteCategory      = d3.scale.category20(),
     nodeFieldsToShow  = [
         { key: 'url', label: 'URL' },
+        { key: 'media_type', label: 'Media Type'},
         { key: 'story_count', label: 'Story Count'}
     ];
 
@@ -153,9 +154,9 @@ function setupGraph() {
 function setupLegend(siteCategories) {
     siteCategories.forEach(function(category) { 
         var div = d3.select('#legend').append('div');
-        div.append('div').style('width', '50px').style('height', '50px')
+        div.append('div').classed('legend-swatch', true)
         .style('background-color', function() { return siteCategory(category); });
-        div.append('span').text(category);
+        div.append('span').text(category.replace(/ \([^\(\)]*\)$/g, ''));
     });
 }
 
@@ -377,7 +378,7 @@ function getNodeLinks(node, type) {
 function highlightNode(node) {
     d3.select(this).classed('selected', true);
     if (node.screenshot) {
-        d3.select('#site-image').html('<img src="' + node.screenshot + '" />');
+        d3.select('#site-image').html('<dt>Screenshot</dt><img src="' + node.screenshot + '" />');
     } else {
         d3.select('#site-image').html('');
     }
@@ -392,7 +393,7 @@ function highlightNode(node) {
         });
     d3.selectAll('g.node').classed('not-selected', function(n) { return n != node; });
     populateNodeInfo(node);
-    d3.select('#node-name').text(node.label);
+    d3.select('#info-wrapper').insert('h3', '#node-narrative').attr('id', 'node-name').text(node.label);
     if (node.narrative) {
         d3.select('#node-narrative p').text(node.narrative);
     }
@@ -406,7 +407,8 @@ function unhighlightNode() {
     if (d3.select('#show-labels:checked').empty()) {
         hideLabels(d3.selectAll('g.node'));
     }
-    d3.selectAll('#node-info, #site-image, #node-narrative p, #node-name').html('');
+    d3.selectAll('#node-info, #site-image, #node-narrative p').html('');
+    d3.select('#node-name').remove();
 }
 
 function updateInteralLinkPosition(link, frame) {
@@ -465,8 +467,8 @@ function populateNodeInfo(node) {
         nodeFieldsToShow.map(function(field) {
             return '<dt>' + field.label + '</dt><dd>' + node[field.key] + '</dd>';
         }).reduce(function(prev, curr) { return prev + curr; })
-        + '<dt>Inbound Links:</dt><dd>' + getNodeLinks(node, 'inbound')[0].length + '</dd>'
-        + '<dt>Outbound Links:</dt><dd>' + getNodeLinks(node, 'outbound')[0].length + '</dd>'
+        + '<dt>Inbound Links</dt><dd>' + getNodeLinks(node, 'inbound')[0].length + '</dd>'
+        + '<dt>Outbound Links</dt><dd>' + getNodeLinks(node, 'outbound')[0].length + '</dd>'
     );
 }
 

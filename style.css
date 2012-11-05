@@ -1,16 +1,28 @@
 body {
-    font-family: Arial;
+    font-family: "Open Sans";
     background-color: #888;
-    margin: 1em 3em;
+    margin: 1em auto;
+    font-size: 18px;
+    width: 1000px;
+}
+#wrapper {
+    display: inline-block;
+    background-color: white;
+    padding: 0 1em 1em;
+    width: 1000px;
 }
 dt {
-    font-weight: bold;
 }
 dd {
-    margin-bottom: 0.3em;
+    margin-left: 1.7em;
+    margin-bottom: 0.5em;
 }
-svg, .info-panel {
-    background-color: white;
+h1, h2, h3 {
+    font-family: "Lustria";
+    font-weight: normal;
+    border-bottom: 1px solid #ddd;
+}
+svg, #legend {
     border: 1px solid #aaa;
 }
 g.node {
@@ -43,12 +55,6 @@ line.link {
 #date-slider {
     margin: 0 auto 1em;
 }
-#wrapper {
-    display: inline-block;
-    background-color: white;
-    padding: 1em;
-    width: 1000px;
-}
 #graph-wrapper {
     vertical-align: top;
     width: 820px;
@@ -65,13 +71,29 @@ line.link {
 }
 #controls {
     text-align: center;
-    }
-.info-panel {
+}
+#legend {
     overflow-y: auto;
     text-align: left;
     padding: 1em;
-    margin: 0 0 1em 1em;
+}
+#legend > div > span {
+    vertical-align: top;
+    line-height: 40px;
+}
+.legend-swatch {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-right: 1em;
 }
 #frame-info {
+    margin-bottom: 2em;
 }
-
+#site-image img {
+    width: 100%;
+}
+#node-info, #site-image {
+    font-size: 0.7em;
+}

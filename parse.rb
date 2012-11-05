@@ -54,7 +54,7 @@ class MyDocument < Nokogiri::XML::SAX::Document
             }
             narratives = @@node_narratives.select do |narrative| 
                 narrative['id'] == @active_node['id'] &&
-                    narrative['frames'].include?(@@frames.length)
+                    narrative['frames'].include?(@@frames.length + 1)
             end
             unless narratives.empty?
                 @active_node['narrative'] = narratives[0]['narrative']

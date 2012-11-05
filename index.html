@@ -3,6 +3,8 @@
     <head>
         <script src="d3.v2.js"></script>
         <link href="jquery-ui/css/smoothness/jquery-ui-1.9.0.custom.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Lustria' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
         <link href="style.css" rel="stylesheet">
         <script src="jquery-ui/js/jquery-1.8.2.js"></script>
         <script src="jquery-ui/js/jquery-ui-1.9.0.custom.js"></script>
@@ -11,18 +13,18 @@
     </head>
     <body>
         <div id="wrapper">
-            <h1>Stand-in Title</h1>
+            <h1>SOPA/PIPA Network Analysis</h1>
             <div id="graph-wrapper">
                 <div id="graph"></div>
                 <div id="date-slider"></div>
                 <div id="controls">
                     <div><button id="play">Play</button></div>
                     <div>
-                        <label for="show-labels">Show Labels</label>
+                        <label for="show-labels">Show All Labels</label>
                         <input type="checkbox" id="show-labels" name="show-labels" />
                     </div>
                     <div>
-                        <label for="show-links">Show Links</label>
+                        <label for="show-links">Show All Links</label>
                         <input type="checkbox" id="show-links" name="show-links" />
                     </div>
                 </div>
@@ -30,7 +32,6 @@
             <div id="info-wrapper">
                 <h2 id="start-date"></h2>
                 <div id="frame-info"><p></p></div>
-                <h3 id="node-name"></h3>
                 <div id="node-narrative"><p></p></div>
                 <div id="node-info"></div>
                 <div id="site-image"></div>

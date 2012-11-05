@@ -4,7 +4,7 @@
     <creator>Gephi 0.8.1</creator>
     <description></description>
   </meta>
-  <graph defaultedgetype="directed" timeformat="date" mode="dynamic">
+  <graph defaultedgetype="directed" timeformat="date" mode="static">
     <attributes class="node" mode="static">
       <attribute id="0" title="sentiment_58billion" type="integer"></attribute>
       <attribute id="1" title="tagged_dns" type="integer"></attribute>
@@ -24,7 +24,7 @@
       <attribute id="15" title="tagged_acta" type="integer"></attribute>
     </attributes>
     <nodes>
-      <node id="4511" label="Extremetech" start="2011-10-26T19:00:00.000" end="2011-10-26T19:00:00.000">
+      <node id="4511" label="Extremetech" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -47,7 +47,7 @@
         <viz:position x="0.51733786" y="0.46101722" z="0.0"></viz:position>
         <viz:color r="255" g="0" b="43"></viz:color>
       </node>
-      <node id="18959" label="dontcensorthenet.com" start="2011-10-26T19:00:00.000" end="2011-10-26T19:00:00.000">
+      <node id="18959" label="dontcensorthenet.com" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -71,10 +71,6 @@
         <viz:color r="255" g="77" b="0"></viz:color>
       </node>
       <node id="5525" label="CNET News.com">
-        <spells>
-          <spell start="2011-10-25T19:00:00.000" end="2011-10-25T19:00:00.000"></spell>
-          <spell start="2011-10-26T19:00:00.000" end="2011-10-26T19:00:00.000"></spell>
-        </spells>
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="1"></attvalue>
@@ -98,13 +94,6 @@
         <viz:color r="255" g="0" b="43"></viz:color>
       </node>
       <node id="18367" label="eff">
-        <spells>
-          <spell start="2010-09-27T19:00:00.000" end="2010-09-27T19:00:00.000"></spell>
-          <spell start="2011-05-11T19:00:00.000" end="2011-05-11T19:00:00.000"></spell>
-          <spell start="2011-05-26T19:00:00.000" end="2011-05-26T19:00:00.000"></spell>
-          <spell start="2011-10-25T19:00:00.000" end="2011-10-25T19:00:00.000"></spell>
-          <spell start="2011-10-27T19:00:00.000" end="2011-10-27T19:00:00.000"></spell>
-        </spells>
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="1"></attvalue>
@@ -127,7 +116,7 @@
         <viz:position x="0.5885336" y="0.62307495" z="0.0"></viz:position>
         <viz:color r="0" g="255" b="38"></viz:color>
       </node>
-      <node id="18403" label="sag.org" start="2011-10-25T19:00:00.000" end="2011-10-25T19:00:00.000">
+      <node id="18403" label="sag.org" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -150,7 +139,7 @@
         <viz:position x="0.2964294" y="0.7184009" z="0.0"></viz:position>
         <viz:color r="200" g="255" b="0"></viz:color>
       </node>
-      <node id="4436" label="GigaOM" start="2011-10-26T19:00:00.000" end="2011-10-26T19:00:00.000">
+      <node id="4436" label="GigaOM" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="1"></attvalue>
@@ -174,11 +163,6 @@
         <viz:color r="255" g="0" b="43"></viz:color>
       </node>
       <node id="5813" label="Ars Technica">
-        <spells>
-          <spell start="2011-05-10T19:00:00.000" end="2011-05-10T19:00:00.000"></spell>
-          <spell start="2011-07-05T19:00:00.000" end="2011-07-05T19:00:00.000"></spell>
-          <spell start="2011-10-25T19:00:00.000" end="2011-10-25T19:00:00.000"></spell>
-        </spells>
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="1"></attvalue>
@@ -202,10 +186,6 @@
         <viz:color r="255" g="0" b="43"></viz:color>
       </node>
       <node id="5816" label="reddit">
-        <spells>
-          <spell start="2011-10-25T19:00:00.000" end="2011-10-25T19:00:00.000"></spell>
-          <spell start="2011-10-27T19:00:00.000" end="2011-10-27T19:00:00.000"></spell>
-        </spells>
         <attvalues>
           <attvalue for="0" value="1"></attvalue>
           <attvalue for="1" value="1"></attvalue>
@@ -228,7 +208,7 @@
         <viz:position x="0.9122944" y="1.0" z="0.0"></viz:position>
         <viz:color r="255" g="196" b="0"></viz:color>
       </node>
-      <node id="5814" label="eWeek - RSS Feeds" start="2011-03-03T19:00:00.000" end="2011-03-03T19:00:00.000">
+      <node id="5814" label="eWeek - RSS Feeds" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="1"></attvalue>
@@ -252,10 +232,6 @@
         <viz:color r="255" g="0" b="43"></viz:color>
       </node>
       <node id="4415" label="CNET">
-        <spells>
-          <spell start="2011-10-25T19:00:00.000" end="2011-10-25T19:00:00.000"></spell>
-          <spell start="2011-10-26T19:00:00.000" end="2011-10-26T19:00:00.000"></spell>
-        </spells>
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="1"></attvalue>
@@ -278,7 +254,7 @@
         <viz:position x="0.40492806" y="0.7894261" z="0.0"></viz:position>
         <viz:color r="255" g="0" b="43"></viz:color>
       </node>
-      <node id="1104" label="Forbes" start="2011-10-25T19:00:00.000" end="2011-10-25T19:00:00.000">
+      <node id="1104" label="Forbes" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -301,7 +277,7 @@
         <viz:position x="0.4045168" y="0.17318581" z="0.0"></viz:position>
         <viz:color r="0" g="238" b="255"></viz:color>
       </node>
-      <node id="18333" label="wyden.senate.gov" start="2011-05-25T19:00:00.000" end="2011-05-25T19:00:00.000">
+      <node id="18333" label="wyden.senate.gov" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -325,10 +301,6 @@
         <viz:color r="0" g="255" b="153"></viz:color>
       </node>
       <node id="18370" label="wikipedia">
-        <spells>
-          <spell start="2011-05-11T19:00:00.000" end="2011-05-11T19:00:00.000"></spell>
-          <spell start="2011-10-25T19:00:00.000" end="2011-10-25T19:00:00.000"></spell>
-        </spells>
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="1"></attvalue>
@@ -351,7 +323,7 @@
         <viz:position x="0.4950677" y="0.9805504" z="0.0"></viz:position>
         <viz:color r="255" g="0" b="157"></viz:color>
       </node>
-      <node id="18448" label="popvox.com" start="2011-10-25T19:00:00.000" end="2011-10-25T19:00:00.000">
+      <node id="18448" label="popvox.com" >
         <attvalues>
           <attvalue for="0" value="1"></attvalue>
           <attvalue for="1" value="1"></attvalue>
@@ -375,11 +347,6 @@
         <viz:color r="255" g="0" b="157"></viz:color>
       </node>
       <node id="4491" label="Techdirt">
-        <spells>
-          <spell start="2011-10-24T19:00:00.000" end="2011-10-24T19:00:00.000"></spell>
-          <spell start="2011-10-26T19:00:00.000" end="2011-10-26T19:00:00.000"></spell>
-          <spell start="2011-10-27T19:00:00.000" end="2011-10-27T19:00:00.000"></spell>
-        </spells>
         <attvalues>
           <attvalue for="0" value="-1"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -403,11 +370,6 @@
         <viz:color r="255" g="0" b="43"></viz:color>
       </node>
       <node id="18586" label="fightforthefuture">
-        <spells>
-          <spell start="2011-10-26T19:00:00.000" end="2011-10-26T19:00:00.000"></spell>
-          <spell start="2011-10-27T19:00:00.000" end="2011-10-27T19:00:00.000"></spell>
-          <spell start="2011-11-14T19:00:00.000" end="2011-11-14T19:00:00.000"></spell>
-        </spells>
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -430,7 +392,7 @@
         <viz:position x="0.9138232" y="0.33127514" z="0.0"></viz:position>
         <viz:color r="0" g="255" b="38"></viz:color>
       </node>
-      <node id="5520" label="A List Apart" start="2011-10-25T19:00:00.000" end="2011-10-25T19:00:00.000">
+      <node id="5520" label="A List Apart" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -454,10 +416,6 @@
         <viz:color r="255" g="0" b="43"></viz:color>
       </node>
       <node id="2" label="Washington Post">
-        <spells>
-          <spell start="2011-10-26T19:00:00.000" end="2011-10-26T19:00:00.000"></spell>
-          <spell start="2011-11-15T19:00:00.000" end="2011-11-15T19:00:00.000"></spell>
-        </spells>
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -480,7 +438,7 @@
         <viz:position x="0.713318" y="0.76748246" z="0.0"></viz:position>
         <viz:color r="0" g="238" b="255"></viz:color>
       </node>
-      <node id="18552" label="opencongress.org" start="2011-05-24T19:00:00.000" end="2011-05-24T19:00:00.000">
+      <node id="18552" label="opencongress.org" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -504,10 +462,6 @@
         <viz:color r="0" g="255" b="38"></viz:color>
       </node>
       <node id="5968" label="Hacker News">
-        <spells>
-          <spell start="2011-10-25T19:00:00.000" end="2011-10-25T19:00:00.000"></spell>
-          <spell start="2011-10-27T19:00:00.000" end="2011-10-27T19:00:00.000"></spell>
-        </spells>
         <attvalues>
           <attvalue for="0" value="1"></attvalue>
           <attvalue for="1" value="1"></attvalue>
@@ -530,7 +484,7 @@
         <viz:position x="0.75402504" y="0.6092691" z="0.0"></viz:position>
         <viz:color r="255" g="196" b="0"></viz:color>
       </node>
-      <node id="4433" label="ReadWriteWeb" start="2011-10-27T19:00:00.000" end="2011-10-27T19:00:00.000">
+      <node id="4433" label="ReadWriteWeb" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -553,7 +507,7 @@
         <viz:position x="0.7718006" y="0.15535949" z="0.0"></viz:position>
         <viz:color r="255" g="0" b="43"></viz:color>
       </node>
-      <node id="18366" label="torrentfreak.com" start="2011-10-27T19:00:00.000" end="2011-10-27T19:00:00.000">
+      <node id="18366" label="torrentfreak.com" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -575,7 +529,7 @@
         <viz:position x="0.8065125" y="0.21974295" z="0.0"></viz:position>
         <viz:color r="255" g="0" b="43"></viz:color>
       </node>
-      <node id="6486" label="Doctor Bulldog &amp; Ronin" start="2011-10-27T19:00:00.000" end="2011-10-27T19:00:00.000">
+      <node id="6486" label="Doctor Bulldog &amp; Ronin" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -598,7 +552,7 @@
         <viz:position x="0.0" y="0.4175845" z="0.0"></viz:position>
         <viz:color r="0" g="0" b="255"></viz:color>
       </node>
-      <node id="18515" label="infowars.com" start="2011-10-26T19:00:00.000" end="2011-10-26T19:00:00.000">
+      <node id="18515" label="infowars.com" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -621,7 +575,7 @@
         <viz:position x="0.06106265" y="0.40162292" z="0.0"></viz:position>
         <viz:color r="0" g="238" b="255"></viz:color>
       </node>
-      <node id="19248" label="wiredforchange" start="2011-11-14T19:00:00.000" end="2011-11-14T19:00:00.000">
+      <node id="19248" label="wiredforchange" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -645,11 +599,6 @@
         <viz:color r="200" g="255" b="0"></viz:color>
       </node>
       <node id="6" label="Los Angeles Times">
-        <spells>
-          <spell start="2011-09-07T19:00:00.000" end="2011-09-07T19:00:00.000"></spell>
-          <spell start="2011-10-25T19:00:00.000" end="2011-10-25T19:00:00.000"></spell>
-          <spell start="2011-10-26T19:00:00.000" end="2011-10-26T19:00:00.000"></spell>
-        </spells>
         <attvalues>
           <attvalue for="0" value="1"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -672,7 +621,7 @@
         <viz:position x="0.40633494" y="0.0" z="0.0"></viz:position>
         <viz:color r="0" g="238" b="255"></viz:color>
       </node>
-      <node id="6081" label="Wonkette" start="2011-10-26T19:00:00.000" end="2011-10-26T19:00:00.000">
+      <node id="6081" label="Wonkette" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -695,7 +644,7 @@
         <viz:position x="0.3441301" y="0.29554674" z="0.0"></viz:position>
         <viz:color r="0" g="238" b="255"></viz:color>
       </node>
-      <node id="19296" label="cryptogon.com" start="2011-10-26T19:00:00.000" end="2011-10-26T19:00:00.000">
+      <node id="19296" label="cryptogon.com" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="1"></attvalue>
@@ -718,7 +667,7 @@
         <viz:position x="0.2883812" y="0.36321747" z="0.0"></viz:position>
         <viz:color r="0" g="0" b="255"></viz:color>
       </node>
-      <node id="18687" label="adweek.com" start="2011-05-25T19:00:00.000" end="2011-05-25T19:00:00.000">
+      <node id="18687" label="adweek.com" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -741,7 +690,7 @@
         <viz:position x="0.5501403" y="0.3804728" z="0.0"></viz:position>
         <viz:color r="0" g="238" b="255"></viz:color>
       </node>
-      <node id="5628" label="Daring Fireball" start="2011-10-25T19:00:00.000" end="2011-10-25T19:00:00.000">
+      <node id="5628" label="Daring Fireball" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -764,7 +713,7 @@
         <viz:position x="0.97792184" y="0.23517874" z="0.0"></viz:position>
         <viz:color r="0" g="0" b="255"></viz:color>
       </node>
-      <node id="18362" label="youtube.com" start="2011-10-25T19:00:00.000" end="2011-10-25T19:00:00.000">
+      <node id="18362" label="youtube.com" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -787,7 +736,7 @@
         <viz:position x="0.9454194" y="0.42815998" z="0.0"></viz:position>
         <viz:color r="255" g="0" b="157"></viz:color>
       </node>
-      <node id="18461" label="aclu.org" start="2012-01-11T19:00:00.000" end="2012-01-11T19:00:00.000">
+      <node id="18461" label="aclu.org" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -810,7 +759,7 @@
         <viz:position x="0.074002594" y="0.65217155" z="0.0"></viz:position>
         <viz:color r="0" g="255" b="38"></viz:color>
       </node>
-      <node id="1095" label="CNN" start="2011-11-16T19:00:00.000" end="2011-11-16T19:00:00.000">
+      <node id="1095" label="CNN" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -833,7 +782,7 @@
         <viz:position x="0.72487396" y="0.68475115" z="0.0"></viz:position>
         <viz:color r="0" g="238" b="255"></viz:color>
       </node>
-      <node id="20032" label="consumersunion.org" start="2011-11-14T19:00:00.000" end="2011-11-14T19:00:00.000">
+      <node id="20032" label="consumersunion.org" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="1"></attvalue>
@@ -856,7 +805,7 @@
         <viz:position x="0.10449896" y="0.8006935" z="0.0"></viz:position>
         <viz:color r="0" g="255" b="38"></viz:color>
       </node>
-      <node id="4508" label="Lifehacker" start="2011-11-17T19:00:00.000" end="2011-11-17T19:00:00.000">
+      <node id="4508" label="Lifehacker" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -879,7 +828,7 @@
         <viz:position x="0.65454566" y="0.39970592" z="0.0"></viz:position>
         <viz:color r="255" g="0" b="43"></viz:color>
       </node>
-      <node id="18455" label="censorshipinamerica.com" start="2011-10-29T19:00:00.000" end="2011-10-29T19:00:00.000">
+      <node id="18455" label="censorshipinamerica.com" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -902,7 +851,7 @@
         <viz:position x="0.9464632" y="0.6890149" z="0.0"></viz:position>
         <viz:color r="0" g="0" b="255"></viz:color>
       </node>
-      <node id="19291" label="dmwmedia.com" start="2011-10-27T19:00:00.000" end="2011-10-27T19:00:00.000">
+      <node id="19291" label="dmwmedia.com" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -925,7 +874,7 @@
         <viz:position x="0.30304816" y="0.61015445" z="0.0"></viz:position>
         <viz:color r="255" g="0" b="43"></viz:color>
       </node>
-      <node id="18268" label="POLITICO" start="2011-11-28T19:00:00.000" end="2011-11-28T19:00:00.000">
+      <node id="18268" label="POLITICO" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -948,7 +897,7 @@
         <viz:position x="0.48320022" y="0.5555917" z="0.0"></viz:position>
         <viz:color r="0" g="238" b="255"></viz:color>
       </node>
-      <node id="18338" label="publicknowledge.org" start="2011-10-26T19:00:00.000" end="2011-10-26T19:00:00.000">
+      <node id="18338" label="publicknowledge.org" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="1"></attvalue>
@@ -972,10 +921,6 @@
         <viz:color r="0" g="255" b="38"></viz:color>
       </node>
       <node id="5532" label="The Register">
-        <spells>
-          <spell start="2011-10-17T19:00:00.000" end="2011-10-17T19:00:00.000"></spell>
-          <spell start="2011-10-24T19:00:00.000" end="2011-10-24T19:00:00.000"></spell>
-        </spells>
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
@@ -998,7 +943,7 @@
         <viz:position x="0.5424078" y="0.22505133" z="0.0"></viz:position>
         <viz:color r="255" g="0" b="43"></viz:color>
       </node>
-      <node id="18496" label="hollywoodreporter.com" start="2011-11-03T20:00:00.000" end="2011-11-03T20:00:00.000">
+      <node id="18496" label="hollywoodreporter.com" >
         <attvalues>
           <attvalue for="0" value="0"></attvalue>
           <attvalue for="1" value="0"></attvalue>
