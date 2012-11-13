@@ -15,6 +15,8 @@ var GRAPH_WIDTH       = 700,
     MAX_ZOOM          = 10,
     MIN_ZOOM          = 1,
     LABEL_OFFSET      = 0.3,
+    PI_TIME           = 0,
+    MAX_PI_TIME       = 10,
     last_value        = 0,
     radius            = d3.scale.linear().domain([0,1]).range([MIN_SIZE, MAX_SIZE]),
     fontSize          = d3.scale.linear().domain([MIN_SIZE,MAX_SIZE]).range([MIN_FONT_SIZE, MAX_FONT_SIZE]).clamp(true),
@@ -26,6 +28,11 @@ var GRAPH_WIDTH       = 700,
         { key: 'story_count', label: 'Story Count'}
     ];
 
+PI_TIME = calculatePi();
+console.log('Pi time: ' + PI_TIME + 'ms');
+if (PI_TIME >= MAX_PI_TIME) {
+    LINK_DELAY = 50;
+}
 var svg = setupGraph();
 //setupLegend(siteCategories);
 
@@ -58,11 +65,8 @@ function animate(frame, i) {
     var nodes = svg.selectAll("g.node")
         .data(frame.nodes, function(n) { return n.id; })
     var links = svg.selectAll("line.link")
-        .data(frame.links, function(l) { return l.id; })
+        .data(frame.links, function(l) { return l.source + '-' + l.target; })
 
-    hideLinks(d3.selectAll('line.link'));
-    hideLabels(nodes);
-    
     // Enter
     var group = addGroup(nodes.enter());
     addCircle(group);
@@ -86,6 +90,8 @@ function animate(frame, i) {
     exitTrans.remove();
     links.exit().remove();
 
+    hideLinks(d3.selectAll('line.link'));
+    hideLabels(nodes);
 
     // Keep slider in sync with playing
     if (typeof i != 'undefined') { $('#date-slider').slider('value', i); }
@@ -196,6 +202,7 @@ function addGroup(nodes) {
     var group = nodes
         .append("g")
         .attr("class", "node")
+        .attr('id', function(n) { return 'node-' + n.id; })
         .attr("transform", function(n) { return "translate("
             + n.denormPosition.x + "," + n.denormPosition.y + ")"; })
         .classed('not-selected', function() { return !d3.select('.not-selected').empty(); });
@@ -208,6 +215,7 @@ function addLink(frame, links) {
         //    .style('marker-end', 'url(#triangle)')
         .classed('link', true)
         .classed('hidden', true)
+        .attr('id', function(l) { return 'link-' + l.source + '-' + l.target; })
         .datum(function(l) { return updateInteralLinkPosition(l, frame); });
 
     minimizeLinks(newLinks);
@@ -235,10 +243,14 @@ function addText(group) {
 }
 
 function updateGroup(nodes) {
+    if (PI_TIME < MAX_PI_TIME) { 
     var trans = nodes
         .transition()
-        .duration(DURATION)
-        .attr("transform", function(n) { return "translate("
+        .duration(DURATION);
+    } else {
+    var trans = nodes;
+    }
+    trans.attr("transform", function(n) { return "translate("
             + n.denormPosition.x + "," + n.denormPosition.y + ")";
         });
     return trans;
@@ -357,7 +369,11 @@ function showLinks(links, delay) {
 }
 
 function hideLinks(links) {
-    minimizeLinks(links.classed('hidden', true).transition());
+    if (PI_TIME < MAX_PI_TIME) {
+        minimizeLinks(links.classed('hidden', true).transition());
+    } else {
+        minimizeLinks(links.classed('hidden', true));
+    }
 }
 
 function getNodeLinks(node, type) { 
@@ -405,19 +421,16 @@ function unhighlightNode() {
 }
 
 function updateInteralLinkPosition(link, frame) {
-    var sourceNode = frame.nodes.filter(function(n) {
-        return link.source == n.id;
-    })[0];
-    var targetNode = frame.nodes.filter(function(n) {
-        return link.target == n.id;
-    })[0];
+    // Gephi is giving us links that shouldn't exist - I think
+    var sourceNode = d3.select('#node-' + link.source);
+    var targetNode = d3.select('#node-' + link.target);
 
-    if (sourceNode && targetNode) {
+    if (!sourceNode.empty() && !targetNode.empty()) {
         link.position = {
-            x1: sourceNode.denormPosition.x,
-            y1: sourceNode.denormPosition.y,
-            x2: targetNode.denormPosition.x,
-            y2: targetNode.denormPosition.y
+            x1: sourceNode.datum().denormPosition.x,
+            y1: sourceNode.datum().denormPosition.y,
+            x2: targetNode.datum().denormPosition.x,
+            y2: targetNode.datum().denormPosition.y
         };
     } else {
         link.position = { x1: 0, y1: 0, x2: 0, y2: 0 };
@@ -484,4 +497,22 @@ function play(frames) {
     frames.forEach(function(frame, i) {
         setTimeout(animate, i * TIMEOUT, frame, i);
     })
+}
+
+function calculatePi(){
+    var num = 1000000;
+    var pi=4,top=4,bot=3,minus = true;
+    var time = next(pi,top,bot,minus,num);
+    return time;
+}
+function next(pi,top,bot,minus,num){
+    var cur_time = Date.now();
+    for(var i=0;i<num;i++){
+        pi += (minus == true)?-(top/bot):(top/bot);
+        minus = !minus;
+        bot+=2;
+    }
+    var end_time = Date.now();
+    var total_time = end_time - cur_time;
+    return total_time;
 }
