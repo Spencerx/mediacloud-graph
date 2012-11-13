@@ -27,7 +27,7 @@ var GRAPH_WIDTH       = 700,
     ];
 
 var svg = setupGraph();
-setupLegend(siteCategories);
+//setupLegend(siteCategories);
 
 d3.json('justin_frames.json', function(frames) {
     var slider = $('#date-slider').slider({
