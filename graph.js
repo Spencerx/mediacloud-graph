@@ -94,7 +94,9 @@ function animate(frame, i) {
 
     // Keep node-info in sync with data in node
     userSelected = d3.select('g.node.selected');
-    if (!userSelected.empty()) { populateNodeInfo(userSelected.data()[0]); }
+    if (!userSelected.empty()) {
+        populateNodeInfo(userSelected.data()[0]);
+    }
 
     // Show links
     var selectedNode = d3.select('g.node.selected');
@@ -377,11 +379,6 @@ function getNodeLinks(node, type) {
 
 function highlightNode(node) {
     d3.select(this).classed('selected', true);
-    if (node.screenshot) {
-        d3.select('#site-image').html('<dt>Screenshot</dt><img src="' + node.screenshot + '" />');
-    } else {
-        d3.select('#site-image').html('');
-    }
 
     if (d3.select('#show-labels:checked').empty()) { 
         d3.selectAll('text.label').classed('hidden', true);
@@ -393,10 +390,6 @@ function highlightNode(node) {
         });
     d3.selectAll('g.node').classed('not-selected', function(n) { return n != node; });
     populateNodeInfo(node);
-    d3.select('#info-wrapper').insert('h3', '#node-narrative').attr('id', 'node-name').text(node.label);
-    if (node.narrative) {
-        d3.select('#node-narrative p').text(node.narrative);
-    }
     hideLinks(d3.selectAll('line.link'));
     showLinks(getNodeLinks(node));
 }
@@ -470,6 +463,21 @@ function populateNodeInfo(node) {
         + '<dt>Inbound Links</dt><dd>' + getNodeLinks(node, 'inbound')[0].length + '</dd>'
         + '<dt>Outbound Links</dt><dd>' + getNodeLinks(node, 'outbound')[0].length + '</dd>'
     );
+    if (node.screenshot) {
+        d3.select('#site-image').html('<dt>Screenshot</dt><img src="' + node.screenshot + '" />');
+    } else {
+        d3.select('#site-image').html('');
+    }
+
+    if (d3.select('#node-name').empty()) {
+        d3.select('#info-wrapper').insert('h3', '#node-narrative').attr('id', 'node-name').text(node.label);
+    } else {
+        d3.select('#node-name').text(node.label);
+    }
+
+    if (node.narrative) {
+        d3.select('#node-narrative p').text(node.narrative);
+    }
 }
 
 function play(frames) {
