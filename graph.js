@@ -4,10 +4,13 @@ var GRAPH_WIDTH       = 700,
     MIN_SIZE          = 3,
     MAX_FONT_SIZE     = 36,
     MIN_FONT_SIZE     = 3,
+    MAX_MIN_ZOOM_FONT_SIZE = 10,
     X_MARGIN          = 60,
     Y_MARGIN          = 60,
     DURATION          = 1500,
-    LINK_DELAY        = 1000,
+    LINK_DELAY_WITH_TRANS = 1000,
+    LINK_DELAY_NO_TRANS = 50,
+    LINK_DELAY        = LINK_DELAY_WITH_TRANS,
     LINK_DURATION     = 1000,
     TIMEOUT           = LINK_DELAY + LINK_DURATION + 750,
     LABEL_SIZE_CUTOFF = 4,
@@ -21,6 +24,7 @@ var GRAPH_WIDTH       = 700,
     last_value        = 0,
     radius            = d3.scale.linear().domain([0,1]).range([MIN_SIZE, MAX_SIZE]),
     fontSize          = d3.scale.linear().domain([MIN_SIZE,MAX_SIZE]).range([MIN_FONT_SIZE, MAX_FONT_SIZE]).clamp(true),
+    minFontSize = d3.scale.linear().domain([1,MAX_ZOOM]).range([MIN_FONT_SIZE, MAX_MIN_ZOOM_FONT_SIZE]).clamp(true),
     //siteCategory      = d3.scale.ordinal().domain(siteCategories).range(colorbrewer.Set3[11]);
     siteCategory      = d3.scale.category20(),
     nodeFieldsToShow  = [
@@ -31,7 +35,7 @@ var GRAPH_WIDTH       = 700,
 
 PI_TIME = calculatePi();
 if (PI_TIME >= MAX_PI_TIME) {
-    LINK_DELAY = 50;
+    LINK_DELAY = LINK_DELAY_NO_TRANS;
     DISABLE_TRANS = true;
 }
 var svg = setupGraph();
@@ -200,20 +204,39 @@ function setupEventListeners() {
             showLabels(d3.selectAll('g.node'));
     });
     d3.select('#graph').on('click', unhighlightNode, true);
+    d3.select('#disable-trans').on('click', function() { 
+        if (d3.select(this).filter(':checked').empty()) {
+            DISABLE_TRANS = false;
+            LINK_DELAY = LINK_DELAY_WITH_TRANS;
+        } else {
+            DISABLE_TRANS = true;
+            LINK_DELAY = LINK_DELAY_NO_TRANS;
+        }
+    });
     // I want the slider to always be in focus because I like to use the arrow keys
     d3.select('html').on('click', function() { $('.ui-slider-handle').focus(); });
 }
 
 function redraw() {
-    xScale = d3.scale.linear().domain([-1 * (d3.event.scale - 1) * svg.node().getBBox().width, 0]).range([-1 * (d3.event.scale - 1) * svg.node().getBBox().width, 0]).clamp(true); 
-    yScale = d3.scale.linear().domain([-1 * (d3.event.scale - 1) * svg.node().getBBox().height, 0]).range([-1 * (d3.event.scale - 1) * svg.node().getBBox().height, 0]).clamp(true); 
+    //xScale = d3.scale.linear().domain([-1 * (d3.event.scale - 1) * svg.node().getBBox().width, 0]).range([-1 * (d3.event.scale - 1) * svg.node().getBBox().width, 0]).clamp(true); 
+    //yScale = d3.scale.linear().domain([-1 * (d3.event.scale - 1) * svg.node().getBBox().height, 0]).range([-1 * (d3.event.scale - 1) * svg.node().getBBox().height, 0]).clamp(true); 
     //d3.event.translate = [xScale(d3.event.translate[0]), yScale(d3.event.translate[1])];
     svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
-    d3.selectAll('circle').attr('r', function(n) { return radius(n.size) / d3.event.scale; });
-    d3.selectAll('line.link').style('stroke-width', function() { return 1 / d3.event.scale; });
-    d3.selectAll('text.label').style('font-size', function(n) {             
-        return fontSize(radius(n.size)) / d3.event.scale;
-    }).attr('dy', function() { return LABEL_OFFSET + 'em'; });
+    d3.selectAll('circle')
+        .attr('r', function(n) { return radius(n.size) / d3.event.scale; })
+        .style('stroke-width', function(n) { return 2 / d3.event.scale; });
+    d3.selectAll('line.link')
+        .style('stroke-width', function() { return 1 / d3.event.scale; });
+    //This is a big performance killer when zooming - fix it
+    d3.selectAll('text.label')
+        .style('font-size', function(n) {             
+            var zoomedFontSize = fontSize.range([minFontSize(d3.event.scale), MAX_FONT_SIZE]);
+            d3.select(this).classed('hidden', function(n) {
+                return d3.select('#show-labels:checked').empty() || zoomedFontSize(radius(n.size)) < LABEL_SIZE_CUTOFF;
+            });
+            return zoomedFontSize(radius(n.size)) / d3.event.scale;
+        })
+        //.attr('dy', function() { return LABEL_OFFSET + 'em'; });
 }
 
 function addGroup(nodes) { 
