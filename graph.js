@@ -16,7 +16,8 @@ var GRAPH_WIDTH       = 700,
     MIN_ZOOM          = 1,
     LABEL_OFFSET      = 0.3,
     PI_TIME           = 0,
-    MAX_PI_TIME       = 50,
+    MAX_PI_TIME       = 100,
+    DISABLE_TRANS     = false,
     last_value        = 0,
     radius            = d3.scale.linear().domain([0,1]).range([MIN_SIZE, MAX_SIZE]),
     fontSize          = d3.scale.linear().domain([MIN_SIZE,MAX_SIZE]).range([MIN_FONT_SIZE, MAX_FONT_SIZE]).clamp(true),
@@ -29,9 +30,9 @@ var GRAPH_WIDTH       = 700,
     ];
 
 PI_TIME = calculatePi();
-console.log('Pi time: ' + PI_TIME + 'ms');
 if (PI_TIME >= MAX_PI_TIME) {
     LINK_DELAY = 50;
+    DISABLE_TRANS = true;
 }
 var svg = setupGraph();
 //setupLegend(siteCategories);
@@ -141,7 +142,8 @@ function setupGraph() {
         .attr('height', GRAPH_HEIGHT)
         .attr('fill', 'white'); 
 
-    svg.append('svg:defs')
+    var defs = svg.append('svg:defs');
+    defs
         .append('svg:marker')
         .attr('id', 'triangle')
         .attr('viewBox', '0 0 10 10')
@@ -152,6 +154,22 @@ function setupGraph() {
         .attr('orient', 'auto')
         .append('path')
         .attr('d', 'M 0 0 L 10 5 L 0 10 z');
+
+    var highlightGradient = defs
+        .append('svg:radialGradient')
+        .attr('id', 'highlight')
+        .attr('r', '100%')
+
+    highlightGradient
+        .append('svg:stop')
+        .attr('offset', '0%')
+        .attr('stop-color', '#FFFF7D');
+
+    highlightGradient
+        .append('svg:stop')
+        .attr('offset', '100%')
+        .attr('stop-color', '#FFFF7D')
+        .attr('stop-opacity', '0');
 
     d3.select('#date-slider').style('width', (GRAPH_WIDTH - 2 * X_MARGIN) + 'px');
     d3.select('#graph-wrapper').style('width', GRAPH_WIDTH + 'px');
@@ -243,12 +261,13 @@ function addText(group) {
 }
 
 function updateGroup(nodes) {
-    if (PI_TIME < MAX_PI_TIME) { 
-    var trans = nodes
-        .transition()
-        .duration(DURATION);
+    nodes.classed('narrated', function(n) { return n.narrative; });
+    if (DISABLE_TRANS) { 
+        var trans = nodes;
     } else {
-    var trans = nodes;
+        var trans = nodes
+            .transition()
+            .duration(DURATION);
     }
     trans.attr("transform", function(n) { return "translate("
             + n.denormPosition.x + "," + n.denormPosition.y + ")";
@@ -369,10 +388,10 @@ function showLinks(links, delay) {
 }
 
 function hideLinks(links) {
-    if (PI_TIME < MAX_PI_TIME) {
-        minimizeLinks(links.classed('hidden', true).transition());
-    } else {
+    if (DISABLE_TRANS) {
         minimizeLinks(links.classed('hidden', true));
+    } else {
+        minimizeLinks(links.classed('hidden', true).transition());
     }
 }
 
@@ -490,6 +509,8 @@ function populateNodeInfo(node) {
 
     if (node.narrative) {
         d3.select('#node-narrative p').text(node.narrative);
+    } else {
+        d3.select('#node-narrative p').text('');
     }
 }
 
@@ -499,6 +520,53 @@ function play(frames) {
     })
 }
 
+function testRendering() {
+    var startTest = top.startTest || function(){};
+    var test = top.test || function(name, fn){ fn(); };
+    var endTest = top.endTest || function(){};
+    var prep = top.prep || function(fn){ fn(); };
+
+    var ret, tmp;
+
+    var elem = document.getElementById("test");
+    var a = document.getElementsByTagName("a")[0];
+    var num = 10240;
+
+    var cur_time = Date.now();
+    //test( "getAttribute", function(){
+        for ( var i = 0; i < num; i++ )
+        ret = elem.getAttribute("id");
+    //});
+
+    //test( "element.property", function(){
+        for ( var i = 0; i < num * 2; i++ )
+        ret = elem.id;
+    //});
+
+    //test( "setAttribute", function(){
+        for ( var i = 0; i < num; i++ )
+        a.setAttribute("id", "foo");
+    //});
+
+    //test( "element.property = value", function(){
+        for ( var i = 0; i < num; i++ )
+        a.id = "foo";
+    //});
+
+    //test( "element.expando = value", function(){
+        for ( var i = 0; i < num; i++ )
+        a["test" + num] = function(){};
+    //});
+
+    //test( "element.expando", function(){
+        for ( var i = 0; i < num; i++ )
+        ret = a["test" + num];
+    //});
+
+    var end_time = Date.now();
+    var total_time = end_time - cur_time;
+    return total_time;
+}
 function calculatePi(){
     var num = 1000000;
     var pi=4,top=4,bot=3,minus = true;

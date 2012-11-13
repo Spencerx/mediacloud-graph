@@ -30,6 +30,7 @@ g.node {
 }
 g.not-selected circle {
     fill-opacity: 0.3;
+    stroke-opacity: 0.3;
 }
 g.not-selected text {
     opacity: 0.3;
@@ -42,6 +43,11 @@ g.selected circle {
 }
 g.connected circle {
     fill-opacity: 1;
+}
+g.narrated circle {
+    stroke-width: 2px;
+    /*stroke:  url(#highlight);*/
+    stroke: black;
 }
 text.label.hidden, line.link.hidden {
     display: none;
