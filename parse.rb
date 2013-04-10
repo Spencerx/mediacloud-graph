@@ -1,11 +1,14 @@
 require 'nokogiri'
 require 'json/ext'
+require 'csv'
 
 @@frames = []
-@@folder_name = 'justin_key_frames'
-@@output_file = 'justin_frames.json'
-@@node_narratives = JSON.load(File.open('nodeNarratives.json', 'r'))
-@@frame_narratives = JSON.load(File.open('frameNarratives.json', 'r'))
+@@folder_name = 'final_data'
+@@output_file = 'final_frames.json'
+@@node_narratives = CSV.open('site_narratives.csv', 'r', {:headers => true})
+@@frame_narratives = CSV.open('frame_narratives.csv', 'r', {:headers => true})
+@@min_position = [10000, 10000]
+@@max_position = [-10000, -10000]
 
 class MyDocument < Nokogiri::XML::SAX::Document
     def start_document
@@ -15,12 +18,8 @@ class MyDocument < Nokogiri::XML::SAX::Document
         @narrative = ''
         @start_date = ''
         @end_date = ''
-        narrative = @@frame_narratives.select { |narr| narr['frame'] - 1 == @@frames.length }
-        unless narrative.empty?
-            @narrative = narrative[0]['narrative']
-            @start_date = narrative[0]['start_date']
-            @end_date = narrative[0]['end_date']
-        end
+        @boundaries = [10000, 10000, -10000, -10000]
+        @size_range = [1000, -1000]
     end
 
     def end_document
@@ -33,9 +32,8 @@ class MyDocument < Nokogiri::XML::SAX::Document
         @@frames << {
             'nodes'      => @nodes,
             'links'      => @links,
-            'narrative'  => @narrative,
-            'start_date' => @start_date,
-            'end_date'   => @end_date
+            'boundaries' => @boundaries,
+            'size_range' => @size_range
         }
     end
 
@@ -45,31 +43,26 @@ class MyDocument < Nokogiri::XML::SAX::Document
         when 'attribute'
             @attributes << attributes
         when 'edge'
-            @links << attributes.merge(attributes) { |key, value| value.to_i }
+            @active_link = attributes.merge(attributes) { |key, value| value.to_i }
         when 'node'
             @active_node = {
                 'id'    => attributes['id'].to_i,
                 'label' => attributes['label'],
                 'index' => @nodes.length
             }
-            narratives = @@node_narratives.select do |narrative| 
-                narrative['id'] == @active_node['id'] &&
-                    narrative['frames'].include?(@@frames.length + 1)
-            end
-            unless narratives.empty?
-                @active_node['narrative'] = narratives[0]['narrative']
-                @active_node['screenshot'] = narratives[0]['screenshot']
-            end
         when 'attvalue'
             attr = @attributes.select { |attr| attr['id'] == attributes['for'] }.first
             key = attr['title']
             case attr['type']
             when 'integer'
-                @active_node[key] = attributes['value'].to_i
+                @active_node[key] = attributes['value'].to_i if @active_node
+                @active_link[key] = attributes['value'].to_i if @active_link
             when 'float'
-                @active_node[key] = attributes['value'].to_f
+                @active_node[key] = attributes['value'].to_f if @active_node
+                @active_link[key] = attributes['value'].to_f if @active_link
             else
-                @active_node[key] = attributes['value'] 
+                @active_node[key] = attributes['value'] if @active_node
+                @active_link[key] = attributes['value'] if @active_link
             end
         when 'spell'
         when 'viz:color'
@@ -80,11 +73,17 @@ class MyDocument < Nokogiri::XML::SAX::Document
             }
         when 'viz:size'
             @active_node['size'] = attributes['value'].to_f
+            @size_range[0] = attributes['value'].to_f if attributes['value'].to_f < @size_range[0]
+            @size_range[1] = attributes['value'].to_f if attributes['value'].to_f > @size_range[1]
         when 'viz:position'
             @active_node['position'] = {
                 'x' => attributes['x'].to_f,
                 'y' => attributes['y'].to_f
             }
+            @boundaries[0] = attributes['x'].to_f if attributes['x'].to_f < @boundaries[0]
+            @boundaries[1] = attributes['y'].to_f if attributes['y'].to_f < @boundaries[1]
+            @boundaries[2] = attributes['x'].to_f if attributes['x'].to_f > @boundaries[2]
+            @boundaries[3] = attributes['y'].to_f if attributes['y'].to_f > @boundaries[3]
         end
     end
 
@@ -92,14 +91,21 @@ class MyDocument < Nokogiri::XML::SAX::Document
         case name
         when 'node'
             @nodes << @active_node
+            @active_node = nil
+        when 'edge'
+            @links << @active_link
+            @active_link = nil
         end
     end
 end
 
+def dates(filename)
+    filename[filename.index('2')...filename.index('.')].split('_')
+end
 # Create a new parser
 parser = Nokogiri::XML::SAX::Parser.new(MyDocument.new)
 
-filenames = Dir.entries(@@folder_name).reject! { |filename| filename[0] == '.' }.sort_by! { |filename| filename.to_i }
+filenames = Dir.entries(@@folder_name).reject! { |filename| filename[0] == '.' }.sort!
 
 # Feed the parser some XML
 #parser.parse(File.open('data/sopa_media_link_monthly_2010-10-02_2010-11-02.gexf'))
@@ -108,4 +114,22 @@ filenames.each do |filename|
     parser.parse_file("#{@@folder_name}/#{filename}")
 end
 
+@@frames.each_with_index do |frame, i|
+    frame_dates = dates(filenames[i])
+    frame['start_date'] = frame_dates[0]
+    frame['end_date'] = frame_dates[1]
+    fnr = @@frame_narratives.find do |fn|
+        fn['week_start_date'].strip.gsub('_', '-') == frame['start_date']
+    end
+    puts fnr unless fnr.nil?
+    frame['narrative'] = fnr['text'] if fnr
+    frame['nodes'].each do |node|
+        nnr = @@node_narratives.find do |nn|
+            nn['week_start_date'].strip.gsub('_', '-') == frame['start_date'] && nn['url'] == node['url']
+        end
+        node['narrative'] = nnr['text'] if nnr
+        @@node_narratives.rewind
+    end
+    @@frame_narratives.rewind
+end
 File.open(@@output_file, 'w') {|f| f.write(@@frames.to_json) }

@@ -1,6 +1,6 @@
 var GRAPH_WIDTH       = 700,
     GRAPH_HEIGHT      = 700,
-    MAX_SIZE          = 25,
+    MAX_SIZE          = 10,
     MIN_SIZE          = 3,
     MAX_FONT_SIZE     = 36,
     MIN_FONT_SIZE     = 3,
@@ -8,7 +8,7 @@ var GRAPH_WIDTH       = 700,
     X_MARGIN          = 60,
     Y_MARGIN          = 60,
     DURATION          = 1500,
-    LINK_DELAY_WITH_TRANS = 1000,
+    LINK_DELAY_WITH_TRANS = 0000,
     LINK_DELAY_NO_TRANS = 50,
     LINK_DELAY        = LINK_DELAY_WITH_TRANS,
     LINK_DURATION     = 1000,
@@ -41,7 +41,7 @@ if (PI_TIME >= MAX_PI_TIME) {
 var svg = setupGraph();
 //setupLegend(siteCategories);
 
-d3.json('justin_frames.json', function(frames) {
+d3.json('test_frames.json', function(frames) {
     var slider = $('#date-slider').slider({
         min: 0,
         max: frames.length - 1,
@@ -95,7 +95,7 @@ function animate(frame, i) {
     exitTrans.remove();
     links.exit().remove();
 
-    hideLinks(d3.selectAll('line.link'));
+    //hideLinks(d3.selectAll('line.link'));
     hideLabels(nodes);
 
     // Keep slider in sync with playing
@@ -318,7 +318,7 @@ function updateText(trans) {
 
 function updateLink(links, frame) {
     links.datum(function(l) { return updateInteralLinkPosition(l, frame); });
-    minimizeLinks(links);
+    //minimizeLinks(links);
 }
 
 function updateFrameNarrative(frame) {
